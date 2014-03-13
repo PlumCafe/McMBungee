@@ -28,7 +28,7 @@ public class Staff
     sender.sendMessage(prefix() + ChatColor.GOLD + "" + ChatColor.BOLD + "Online staff:");
     for (ProxiedPlayer p : ProxyServer.getInstance().getPlayers()) {
       if (hasPermission(p, Integer.valueOf(4)).booleanValue()) {
-        sender.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "-" + this.m.getPlayerDisplay(p, ChatColor.WHITE, false) + ChatColor.GRAY + "" + ChatColor.ITALIC + " (Connected to " + p.getServer().getInfo().getName() + ")");
+        sender.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "> " + this.m.getPlayerDisplay(p, ChatColor.WHITE, false) + ChatColor.GRAY + "" + ChatColor.ITALIC + " (Connected to " + p.getServer().getInfo().getName() + ")");
       }
     }
   }

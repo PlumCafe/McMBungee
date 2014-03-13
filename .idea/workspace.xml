@@ -6,10 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="73c5036f-bd8a-495d-9c99-86e0030bd6c2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/McMBungee.iml" afterPath="$PROJECT_DIR$/McMBungee.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java" afterPath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" readonly="true" id="73c5036f-bd8a-495d-9c99-86e0030bd6c2" name="Default" comment="Initial commit&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="McMBungee.iws" />
@@ -95,7 +92,7 @@
       <file leaf-file-name="Staff.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="3" selection-start="1349" selection-end="1349" vertical-scroll-proportion="0.71070236" vertical-offset="102" max-vertical-offset="884">
+            <state line="24" column="2" selection-start="624" selection-end="624" vertical-scroll-proportion="0.3979933" vertical-offset="0" max-vertical-offset="884">
               <folding>
                 <marker date="1394725980879" expanded="true" signature="1472:1533" placeholder="SELECT * FRO..McMPData..." />
               </folding>
@@ -563,21 +560,25 @@
       <workItem from="1394722208900" duration="145000" />
       <workItem from="1394722463820" duration="2077000" />
       <workItem from="1394724567213" duration="855000" />
-      <workItem from="1394725523518" duration="1288000" />
+      <workItem from="1394725523518" duration="1368000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit&#10;">
       <created>1394724268007</created>
       <updated>1394724268007</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial commit&#10;">
+      <created>1394726815979</created>
+      <updated>1394726815979</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4365000" />
+    <option name="totallyTimeSpent" value="4445000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -720,7 +721,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="3" selection-start="1349" selection-end="1349" vertical-scroll-proportion="0.71070236" vertical-offset="102" max-vertical-offset="884">
+        <state line="24" column="2" selection-start="624" selection-end="624" vertical-scroll-proportion="0.3979933" vertical-offset="0" max-vertical-offset="884">
           <folding>
             <marker date="1394725980879" expanded="true" signature="1472:1533" placeholder="SELECT * FRO..McMPData..." />
           </folding>

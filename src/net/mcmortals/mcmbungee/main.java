@@ -12,7 +12,6 @@ import net.mcmortals.mcmbungee.Commands.Hub;
 import net.mcmortals.mcmbungee.Commands.McMCommand;
 import net.mcmortals.mcmbungee.Commands.MessageMsg;
 import net.mcmortals.mcmbungee.Commands.MessageR;
-import net.mcmortals.mcmbungee.Commands.MessageTell;
 import net.mcmortals.mcmbungee.Commands.Staff;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
@@ -33,7 +32,6 @@ public class main
     public void onEnable() {
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Hub(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new MessageMsg(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new MessageTell(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new MessageR(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Staff(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new McMCommand(this));

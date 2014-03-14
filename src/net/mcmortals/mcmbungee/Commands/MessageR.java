@@ -14,7 +14,7 @@ public class MessageR
     main m = new main();
 
     public MessageR(main This) {
-        super("r", "", new String[0]);
+        super("r", "");
         this.m = This;
     }
 

@@ -9,7 +9,7 @@ import net.md_5.bungee.api.plugin.Command;
 public class Hub
         extends Command {
     public Hub(main This) {
-        super("hub", "", new String[0]);
+        super("hub", "");
     }
 
     public void execute(CommandSender sender, String[] args) {

@@ -6,7 +6,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="73c5036f-bd8a-495d-9c99-86e0030bd6c2" name="Default" comment="Initial commit&#10;">
+    <list default="true" id="73c5036f-bd8a-495d-9c99-86e0030bd6c2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/DatabaseClass.java" afterPath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/DatabaseClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Hub.java" afterPath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Hub.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/McMCommand.java" afterPath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/McMCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageR.java" afterPath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageTell.java" afterPath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageTell.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java" afterPath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="McMBungee.iws" />
@@ -74,7 +80,35 @@
       <file leaf-file-name="Hub.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Hub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="4" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+            <state line="21" column="0" selection-start="633" selection-end="633" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="McMCommand.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/McMCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="13" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="2499">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <marker date="1394793464642" expanded="true" signature="1109:1166" placeholder="SELECT * FRO..McMPData..." />
+                <marker date="1394793464642" expanded="true" signature="1265:1379" placeholder="UPDATE SET T..." />
+                <marker date="1394793464642" expanded="true" signature="2416:2475" placeholder="SELECT * FRO..MCMPlayers..." />
+                <marker date="1394793464642" expanded="true" signature="2566:2690" placeholder="UPDATE MCMPl..." />
+                <marker date="1394793464642" expanded="true" signature="3705:3762" placeholder="SELECT * FRO..McMPData..." />
+                <marker date="1394793464642" expanded="true" signature="3861:3958" placeholder="UPDATE McMPD..." />
+                <marker date="1394793464642" expanded="true" signature="5144:5201" placeholder="SELECT * FRO..McMPData..." />
+                <marker date="1394793464642" expanded="true" signature="5300:5395" placeholder="UPDATE McMPD..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessageTell.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageTell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
               <folding />
             </state>
           </provider>
@@ -83,8 +117,10 @@
       <file leaf-file-name="MessageR.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageR.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="346" selection-end="346" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1819">
-              <folding />
+            <state line="11" column="13" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1462">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,34 +128,9 @@
       <file leaf-file-name="Staff.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="2" selection-start="624" selection-end="624" vertical-scroll-proportion="0.3979933" vertical-offset="0" max-vertical-offset="884">
+            <state line="36" column="2" selection-start="1339" selection-end="1339" vertical-scroll-proportion="0.71070236" vertical-offset="0" max-vertical-offset="782">
               <folding>
-                <marker date="1394725980879" expanded="true" signature="1472:1533" placeholder="SELECT * FRO..McMPData..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseClass.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/DatabaseClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="26" selection-start="953" selection-end="953" vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="2414">
-              <folding>
-                <marker date="1394724908000" expanded="true" signature="735:798" placeholder="SELECT * FRO..MCMPlayers..." />
-                <marker date="1394724908000" expanded="true" signature="1185:1248" placeholder="SELECT * FRO..MCMPlayers..." />
-                <marker date="1394724908000" expanded="true" signature="1648:1711" placeholder="SELECT * FRO..MCMPlayers..." />
-                <marker date="1394724908000" expanded="true" signature="2134:2197" placeholder="SELECT * FRO..MCMPlayers..." />
-                <marker date="1394724908000" expanded="true" signature="2264:2378" placeholder="UPDATE MCMPl..." />
-                <marker date="1394724908000" expanded="true" signature="2437:2529" placeholder="INSERT INTO ..." />
-                <marker date="1394724908000" expanded="true" signature="2774:2837" placeholder="SELECT * FRO..MCMPlayers..." />
-                <marker date="1394724908000" expanded="true" signature="2904:3011" placeholder="UPDATE MCMPl..." />
-                <marker date="1394724908000" expanded="true" signature="3070:3164" placeholder="INSERT INTO ..." />
-                <marker date="1394724908000" expanded="true" signature="3410:3473" placeholder="SELECT * FRO..MCMPlayers..." />
-                <marker date="1394724908000" expanded="true" signature="3540:3649" placeholder="UPDATE MCMPl..." />
-                <marker date="1394724908000" expanded="true" signature="3708:3803" placeholder="INSERT INTO ..." />
-                <marker date="1394724908000" expanded="true" signature="4047:4110" placeholder="SELECT * FRO..MCMPlayers..." />
-                <marker date="1394724908000" expanded="true" signature="4177:4282" placeholder="UPDATE MCMPl..." />
-                <marker date="1394724908000" expanded="true" signature="4341:4434" placeholder="INSERT INTO ..." />
+                <marker date="1394793464582" expanded="true" signature="1537:1598" placeholder="SELECT * FRO..McMPData..." />
               </folding>
             </state>
           </provider>
@@ -138,10 +149,13 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/McMCommand.java" />
         <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/main.java" />
         <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/DatabaseClass.java" />
         <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java" />
+        <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageR.java" />
+        <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Hub.java" />
+        <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/McMCommand.java" />
+        <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageTell.java" />
       </list>
     </option>
   </component>
@@ -179,6 +193,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -267,7 +282,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -286,6 +300,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="LayoutCode.rearrangeEntriesJava" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -560,7 +575,8 @@
       <workItem from="1394722208900" duration="145000" />
       <workItem from="1394722463820" duration="2077000" />
       <workItem from="1394724567213" duration="855000" />
-      <workItem from="1394725523518" duration="1368000" />
+      <workItem from="1394725523518" duration="2060000" />
+      <workItem from="1394792126611" duration="1269000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit&#10;">
       <created>1394724268007</created>
@@ -570,11 +586,15 @@
       <created>1394726815979</created>
       <updated>1394726815979</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Initial commit&#10;">
+      <created>1394726897905</created>
+      <updated>1394726897905</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4445000" />
+    <option name="totallyTimeSpent" value="6406000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -670,60 +690,104 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Hub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="604" selection-end="604" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="459">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/DatabaseClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="26" selection-start="953" selection-end="953" vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="2414">
-          <folding>
-            <marker date="1394724908000" expanded="true" signature="735:798" placeholder="SELECT * FRO..MCMPlayers..." />
-            <marker date="1394724908000" expanded="true" signature="1185:1248" placeholder="SELECT * FRO..MCMPlayers..." />
-            <marker date="1394724908000" expanded="true" signature="1648:1711" placeholder="SELECT * FRO..MCMPlayers..." />
-            <marker date="1394724908000" expanded="true" signature="2134:2197" placeholder="SELECT * FRO..MCMPlayers..." />
-            <marker date="1394724908000" expanded="true" signature="2264:2378" placeholder="UPDATE MCMPl..." />
-            <marker date="1394724908000" expanded="true" signature="2437:2529" placeholder="INSERT INTO ..." />
-            <marker date="1394724908000" expanded="true" signature="2774:2837" placeholder="SELECT * FRO..MCMPlayers..." />
-            <marker date="1394724908000" expanded="true" signature="2904:3011" placeholder="UPDATE MCMPl..." />
-            <marker date="1394724908000" expanded="true" signature="3070:3164" placeholder="INSERT INTO ..." />
-            <marker date="1394724908000" expanded="true" signature="3410:3473" placeholder="SELECT * FRO..MCMPlayers..." />
-            <marker date="1394724908000" expanded="true" signature="3540:3649" placeholder="UPDATE MCMPl..." />
-            <marker date="1394724908000" expanded="true" signature="3708:3803" placeholder="INSERT INTO ..." />
-            <marker date="1394724908000" expanded="true" signature="4047:4110" placeholder="SELECT * FRO..MCMPlayers..." />
-            <marker date="1394724908000" expanded="true" signature="4177:4282" placeholder="UPDATE MCMPl..." />
-            <marker date="1394724908000" expanded="true" signature="4341:4434" placeholder="INSERT INTO ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Hub.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="4" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/Bungee/bungee.jar!/net/md_5/bungee/api/plugin/Command.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="48" selection-start="563" selection-end="563" vertical-scroll-proportion="-9.16" vertical-offset="9" max-vertical-offset="595">
+        <state line="22" column="4" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageR.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="346" selection-end="346" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1819">
+        <state line="10" column="13" selection-start="346" selection-end="346" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1921">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="3" selection-start="687" selection-end="687" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="884">
+          <folding>
+            <marker date="1394793464582" expanded="true" signature="1537:1598" placeholder="SELECT * FRO..McMPData..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/DatabaseClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="26" selection-start="953" selection-end="953" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="2499">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Hub.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="0" selection-start="604" selection-end="604" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="459">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Documents/Bungee/bungee.jar!/net/md_5/bungee/api/plugin/Command.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="48" selection-start="563" selection-end="563" vertical-scroll-proportion="-9.16" vertical-offset="9" max-vertical-offset="595" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/DatabaseClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="9" selection-start="4926" selection-end="4926" vertical-scroll-proportion="3.3829432" vertical-offset="0" max-vertical-offset="2176">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Hub.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="633" selection-end="633" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/McMCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2499">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1394793464642" expanded="true" signature="1109:1166" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1394793464642" expanded="true" signature="1265:1379" placeholder="UPDATE SET T..." />
+            <marker date="1394793464642" expanded="true" signature="2416:2475" placeholder="SELECT * FRO..MCMPlayers..." />
+            <marker date="1394793464642" expanded="true" signature="2566:2690" placeholder="UPDATE MCMPl..." />
+            <marker date="1394793464642" expanded="true" signature="3705:3762" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1394793464642" expanded="true" signature="3861:3958" placeholder="UPDATE McMPD..." />
+            <marker date="1394793464642" expanded="true" signature="5144:5201" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1394793464642" expanded="true" signature="5300:5395" placeholder="UPDATE McMPD..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1462">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageTell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="2" selection-start="624" selection-end="624" vertical-scroll-proportion="0.3979933" vertical-offset="0" max-vertical-offset="884">
+        <state line="36" column="2" selection-start="1339" selection-end="1339" vertical-scroll-proportion="0.71070236" vertical-offset="0" max-vertical-offset="782">
           <folding>
-            <marker date="1394725980879" expanded="true" signature="1472:1533" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1394793464582" expanded="true" signature="1537:1598" placeholder="SELECT * FRO..McMPData..." />
           </folding>
         </state>
       </provider>

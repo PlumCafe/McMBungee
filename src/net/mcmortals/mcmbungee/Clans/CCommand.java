@@ -21,7 +21,7 @@ public class CCommand extends Command {
     public void execute(CommandSender sender, String[] args) {
         if (sender instanceof ProxiedPlayer) {
             if(args.length==0) {
-
+            // CREATE COMMAND
             } else if (args[0].equalsIgnoreCase("create")) {
                 if (args.length==2) {
                     if (!isInAClan((ProxiedPlayer) sender)) {
@@ -30,13 +30,51 @@ public class CCommand extends Command {
                             s.executeUpdate("INSERT INTO McMClan (Name, Owner) VALUES ('" + args[1] +"', '" + sender.getName() +"');");
                             ResultSet res = s.executeQuery("SELECT * FROM McMClan WHERE Name='" + args[1] + "'");
                             if (res.next()) {
-                                s.executeUpdate("UPDATE McMPData SET ClanID=" + res.getInt("ID") + "WHERE PlayerName='" + sender.getName() + "'");
-                                sender.sendMessage(prefix().append("Created clan ").color(ChatColor.GREEN).append(args[1]).color(ChatColor.BOLD).append(" successfully!").color(ChatColor.GREEN).create());
+                                s.executeUpdate("UPDATE McMPData SET ClanID=" + res.getInt("ID") + " WHERE PlayerName='" + sender.getName() + "'");
+                                sender.sendMessage(prefix().append("Created clan ").color(ChatColor.GREEN).append(args[1]).color(ChatColor.GREEN).bold(true).append(" successfully!").color(ChatColor.GREEN).bold(false).create());
                             }
                         } catch (Exception ex) {}
                     } else sender.sendMessage(prefix().append("You are already in a clan! Do /c leave to leave it.").color(ChatColor.RED).create());
                 } else sender.sendMessage(prefix().append("Usage: /c create [Clan Name]").color(ChatColor.RED).create());
+            //INFO COMMAND
+            } else if (args[0].equalsIgnoreCase("info")) {
+                if (args.length==1) {
+                    if (isInAClan((ProxiedPlayer) sender)) {
+                        try {
+                            Statement s = this.m.connect.createStatement();
+                            ResultSet res = s.executeQuery("SELECT * FROM McMClan WHERE ID='" + getClan((ProxiedPlayer) sender) + "'");
+                            if (res.next()) {
+                                sender.sendMessage(prefix().append(" == Clan information == ").color(ChatColor.GOLD).bold(true).create());
+                                sender.sendMessage(prefix().append("Clan name: ").color(ChatColor.AQUA).append(res.getString("Name")).color(ChatColor.GREEN).bold(true).create());
+                                sender.sendMessage(prefix().append("Clan owner: ").color(ChatColor.AQUA).append(res.getString("Owner")).color(ChatColor.GREEN).create());
+                                sender.sendMessage(prefix().append(" =================== ").color(ChatColor.GOLD).bold(true).create());
+                            }
+                        } catch (Exception ex) {}
+                    } else sender.sendMessage(prefix().append("You are not in a clan!").color(ChatColor.RED).create());
+                } else sender.sendMessage(prefix().append("Usage: /c info").color(ChatColor.RED).create());
+            // DISBAND COMMAND :@
+            } else if (args[0].equalsIgnoreCase("disband")) {
+                if (args.length==1) {
+                    if (isInAClan((ProxiedPlayer) sender)) {
+                        try {
+                            Statement s = this.m.connect.createStatement();
+                            ResultSet res = s.executeQuery("SELECT * FROM McMClan WHERE ID='" + getClan((ProxiedPlayer) sender) + "'");
+                            if (res.next()) {
+                                int id= res.getInt("ID");
+                                String own= res.getString("Owner");
+                                String name = res.getString("Name");
+                                res.close();
+                                if (own.equalsIgnoreCase(sender.getName())) {
+                                    s.executeUpdate("DELETE FROM McMClan WHERE ID=" + id);
+                                    s.executeUpdate("UPDATE McMPData SET ClanID=-1 WHERE ClanID=" + id);
+                                    sender.sendMessage(prefix().append("Clan ").color(ChatColor.GOLD).append(name).color(ChatColor.GOLD).bold(true).append(" deleted successfully!").color(ChatColor.GOLD).bold(false).create());
+                                } else sender.sendMessage(prefix().append("You are the owner of your clan!").color(ChatColor.RED).create());
+                            } else sender.sendMessage(prefix().append("Some error occurred! Report this to staff immediately!").color(ChatColor.RED).create());
+                        } catch (Exception ex) {ex.printStackTrace();}
+                    } else sender.sendMessage(prefix().append("You are not in a clan!").color(ChatColor.RED).create());
+                } else sender.sendMessage(prefix().append("Usage: /c disband").color(ChatColor.RED).create());
             }
+        // END OF COMMANDS
         } else sender.sendMessage(prefix().append("You cannot create a class console!").color(ChatColor.RED).create());
     }
 
@@ -53,5 +91,17 @@ public class CCommand extends Command {
             }
         } catch (Exception ex) {return false;}
         return false;
+    }
+
+    Integer getClan(ProxiedPlayer p) {
+        try {
+            Statement statement = this.m.connect.createStatement();
+            ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + p.getName() + "'");
+            if (res.next()) {
+                return res.getInt("ClanID");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();}
+        return -1;
     }
 }

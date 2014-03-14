@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
+import net.mcmortals.mcmbungee.Clans.CCommand;
 import net.mcmortals.mcmbungee.Commands.Hub;
 import net.mcmortals.mcmbungee.Commands.McMCommand;
 import net.mcmortals.mcmbungee.Commands.MessageMsg;
@@ -36,6 +37,7 @@ public class main
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new MessageR(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Staff(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new McMCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new CCommand(this));
         ProxyServer.getInstance().getPluginManager().registerListener(this, this);
         prepare();
     }

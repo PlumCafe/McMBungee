@@ -25,7 +25,7 @@ public class Staff
     public void execute(CommandSender sender, String[] args) {
         sender.sendMessage(prefix() + ChatColor.GOLD + "" + ChatColor.BOLD + "Online staff:");
         for (ProxiedPlayer p : ProxyServer.getInstance().getPlayers()) {
-            if (hasPermission(p, Integer.valueOf(4)).booleanValue()) {
+            if (hasPermission(p, Integer.valueOf(4))) {
                 sender.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "> " + this.m.getPlayerDisplay(p, ChatColor.WHITE, false) + ChatColor.GRAY + "" + ChatColor.ITALIC + " (Connected to " + p.getServer().getInfo().getName() + ")");
             }
         }
@@ -39,13 +39,10 @@ public class Staff
         try {
             Statement statement = this.m.connect.createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + p.getName() + "'");
-            if ((res.next()) &&
-                    (res.getInt("Rank") >= i.intValue())) {
-                return Boolean.valueOf(true);
-            }
-            return Boolean.valueOf(false);
+            if ((res.next()) && (res.getInt("Rank") >= i.intValue())) return true;
+            return false;
         } catch (Exception ex) {
         }
-        return Boolean.valueOf(false);
+        return false;
     }
 }

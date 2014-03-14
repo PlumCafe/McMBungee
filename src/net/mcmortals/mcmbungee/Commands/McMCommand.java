@@ -1,6 +1,5 @@
 package net.mcmortals.mcmbungee.Commands;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -23,7 +22,7 @@ public class McMCommand
         if (args.length == 0) {
             sender.sendMessage(prefix().append("MCMortals created by Bocktrow, Red_Epicness, HeavyMine13!").color(ChatColor.GREEN).create());
         } else if (args[0].equalsIgnoreCase("addtokens")) {
-            if (this.m.hasPermission(sender, Integer.valueOf(6)).booleanValue()) {
+            if (m.hasPermission(sender, 7)) {
                 if (args.length == 3) {
                     try {
                         Statement statement = this.m.connect.createStatement();
@@ -60,7 +59,7 @@ public class McMCommand
                 sender.sendMessage(prefix().append("Usage: /mcm addtokens [Player] [Tokens]").color(ChatColor.RED).create());
             }
         } else if (args[0].equalsIgnoreCase("settokens")) {
-            if (this.m.hasPermission(sender, Integer.valueOf(6)).booleanValue()) {
+            if (m.hasPermission(sender, 7)) {
                 if (args.length == 3) {
                     try {
                         Statement statement = this.m.connect.createStatement();
@@ -81,7 +80,7 @@ public class McMCommand
                 sender.sendMessage(prefix().append("You cannot do that!").color(ChatColor.RED).create());
             }
         } else if (args[0].equalsIgnoreCase("setrank")) {
-            if (this.m.hasPermission(sender, Integer.valueOf(9)).booleanValue()) {
+            if (m.hasPermission(sender, 9)) {
                 if (args.length == 3) {
                     try {
                         Statement statement = this.m.connect.createStatement();

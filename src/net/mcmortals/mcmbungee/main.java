@@ -8,11 +8,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 
 import net.mcmortals.mcmbungee.Clans.CCommand;
-import net.mcmortals.mcmbungee.Commands.Hub;
-import net.mcmortals.mcmbungee.Commands.McMCommand;
-import net.mcmortals.mcmbungee.Commands.MessageMsg;
-import net.mcmortals.mcmbungee.Commands.MessageR;
-import net.mcmortals.mcmbungee.Commands.Staff;
+import net.mcmortals.mcmbungee.Commands.*;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -36,6 +32,9 @@ public class main
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Staff(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new McMCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new CCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new BanCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnbanCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new KickCommand(this));
         ProxyServer.getInstance().getPluginManager().registerListener(this, this);
         prepare();
     }
@@ -115,16 +114,25 @@ public class main
     public void connect(PostLoginEvent e)
             throws SQLException {
         Statement statement = this.connect.createStatement();
-        ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + e.getPlayer().getName() + "'");
+        String uuid = UUID.getUUID(e.getPlayer().getName());
+        ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE UUID='" + uuid + "'");
         int a = -1;
         if (res.next()) {
             a = res.getInt("Rank");
+            if (res.getInt("Banned")==1) {
+                if (res.getInt("BanUntil")==-1) {
+                    e.getPlayer().disconnect("§4[§cMcM§4]\n\n§c§lYou have been banned from the server!§r\n\n §eReason:§f" + res.getString("BanReason") + "\n\n§6Appeal on http://www.mcmortals.net!");
+                    return;
+                }
+                e.getPlayer().disconnect("Okay...");
+                return;
+            }
         }
         if (a != -1) {
-            statement.executeUpdate("UPDATE McMPData SET IPAddress='" + e.getPlayer().getAddress().getAddress().getHostAddress() + "' WHERE PlayerName='" + e.getPlayer().getName() + "'");
+            statement.executeUpdate("UPDATE McMPData SET IPAddress='" + e.getPlayer().getAddress().getAddress().getHostAddress() + "' WHERE UUID='" + uuid + "'");
             this.rank.put(e.getPlayer().getName(), a);
         } else {
-            statement.executeUpdate("INSERT INTO McMPData (PlayerName, IPAddress) VALUES ('" + e.getPlayer().getName() + "', '" + e.getPlayer().getAddress().getAddress().getHostAddress() + "')");
+            statement.executeUpdate("INSERT INTO McMPData (PlayerName, IPAddress, UUID) VALUES ('" + e.getPlayer().getName() + "', '" + e.getPlayer().getAddress().getAddress().getHostAddress() + "', '" + uuid + "')");
             this.rank.put(e.getPlayer().getName(), 0);
         }
         if (hasPermission(e.getPlayer(), 3)) {

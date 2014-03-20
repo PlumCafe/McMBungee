@@ -18,7 +18,7 @@ public class Staff
     main m = null;
 
     public Staff(main This) {
-        super("staff", "", new String[0]);
+        super("staff", "");
         this.m = This;
     }
 

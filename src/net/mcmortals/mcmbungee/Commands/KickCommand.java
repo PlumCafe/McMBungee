@@ -32,10 +32,10 @@ public class KickCommand
                             w++;
                         } while (w < args.length);
                         ProxiedPlayer p = ProxyServer.getInstance().getPlayer(args[0]);
-                        p.disconnect("§4[§cMcM§4]\n\n§c§lYou have been kicked from the server!§r\n\n §eReason:§f" + msg + "\n\n§6Fell free to reconnect, provided you will follow the rules!");
+                        p.disconnect("§4[§cMcM§4]\n\n§6§lYou have been kicked from the server!§r\n\n §eReason:§f" + msg + "\n\n§aFell free to reconnect, provided you will follow the rules!");
                         m.sendToStaff(ChatColor.AQUA + sender.getName() + " kicked " + args[0] + " for " + msg + ".");
                     } catch (Exception ex) {}
-                } else sender.sendMessage(prefix().append("Usage: /kick [Player] [Reason]").color(ChatColor.RED).create());
+                } else sender.sendMessage(prefix().append("Usage: §b/kick [Player] [Reason]").color(ChatColor.RED).create());
             } else sender.sendMessage(prefix().append("You cannot do that!").color(ChatColor.RED).create());
         } catch (Exception ex) {}
     }

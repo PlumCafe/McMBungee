@@ -1,11 +1,13 @@
 package net.mcmortals.mcmbungee.Commands;
 
+import java.awt.*;
 import java.util.HashMap;
 
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
@@ -39,24 +41,19 @@ public class MessageMsg
                     msg = msg + " " + args[w];
                     w++;
                 } while (w < args.length);
-                if ((sender instanceof ProxiedPlayer)) {
-                    ProxiedPlayer p = (ProxiedPlayer) sender;
-                    rec.sendMessage(new ComponentBuilder(this.m.getPlayerDisplay(p, ChatColor.GRAY, false)).append(" -> ").color(ChatColor.GRAY).bold(true).append(this.m.getPlayerDisplay(rec, ChatColor.WHITE, false)).append(" : ").color(ChatColor.GRAY).bold(true).append(msg).create());
-
-
-                    sender.sendMessage(new ComponentBuilder("�7" + this.m.getPlayerDisplay(p, ChatColor.GRAY, false)).append(" -> ").color(ChatColor.GRAY).bold(true).append(this.m.getPlayerDisplay(rec, ChatColor.WHITE, false)).append(" : ").color(ChatColor.GRAY).bold(true).append(msg).create());
-
-
-                    this.m.lstm.put(rec, sender);
-                } else {
-                    rec.sendMessage(new ComponentBuilder("Console ").color(ChatColor.GRAY).append(" -> ").color(ChatColor.GRAY).bold(true).append(this.m.getPlayerDisplay(rec, ChatColor.WHITE, false)).append(" : ").color(ChatColor.GRAY).bold(true).append(msg).create());
-
-
-                    sender.sendMessage(new ComponentBuilder("Console ").color(ChatColor.GRAY).append(" -> ").color(ChatColor.GRAY).bold(true).append(this.m.getPlayerDisplay(rec, ChatColor.WHITE, false)).append(" : ").color(ChatColor.GRAY).bold(true).append(msg).create());
-
-
-                    this.m.lstm.put(rec, sender);
-                }
+                rec.sendMessage(
+                        new ComponentBuilder("From ").color(ChatColor.LIGHT_PURPLE).
+                        append(this.m.getPlayerDisplay(sender, ChatColor.WHITE, false)).bold(false).
+                        append(":").color(ChatColor.LIGHT_PURPLE).
+                        append(msg).color(ChatColor.GRAY).create()
+                );
+                sender.sendMessage(
+                        new ComponentBuilder("To ").color(ChatColor.LIGHT_PURPLE).
+                                append(this.m.getPlayerDisplay(rec, ChatColor.WHITE, false)).bold(false).
+                                append(":").color(ChatColor.LIGHT_PURPLE).
+                                append(msg).color(ChatColor.GRAY).create()
+                );
+                this.m.lstm.put(rec, sender);
             } catch (Exception ex) {
                 sender.sendMessage(prefix().append("That player is offline!").color(ChatColor.RED).create());
             }

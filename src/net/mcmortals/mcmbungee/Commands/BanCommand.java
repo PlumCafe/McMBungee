@@ -3,7 +3,9 @@ package net.mcmortals.mcmbungee.Commands;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
 import java.sql.ResultSet;
@@ -38,8 +40,11 @@ public class BanCommand
                         statement.executeUpdate("UPDATE McMPData SET BanReason='" + msg + "' WHERE PlayerName='" + args[0] + "'");
                         statement.executeUpdate("UPDATE McMPData SET BanUntil=-1 WHERE PlayerName='" + args[0]+ "'");
                         m.sendToStaff(ChatColor.AQUA + sender.getName() + " banned " + args[0] + " for" + msg + ".");
+                        try {
+                            ProxyServer.getInstance().getPlayer(args[0]).disconnect("§4[§cMcM§4]\n\n§c§lYou have been banned from the server!§r\n\n\n §eReason:§f" + msg + "\n\n\n§6Appeal on http://www.mcmortals.net!");
+                        } catch (Exception ex) {}
                     } else sender.sendMessage(prefix().append("No such player has ever joined!").color(ChatColor.RED).create());
-                } else sender.sendMessage(prefix().append("Usage: /ban [Player] [Reason]").color(ChatColor.RED).create());
+                } else sender.sendMessage(prefix().append("Usage: §b/ban [Player] [Reason]").color(ChatColor.RED).create());
             } else sender.sendMessage(prefix().append("You cannot do that!").color(ChatColor.RED).create());
         } catch (Exception ex) {ex.printStackTrace();}
     }
@@ -47,4 +52,6 @@ public class BanCommand
     public ComponentBuilder prefix() {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
     }
+
+
 }

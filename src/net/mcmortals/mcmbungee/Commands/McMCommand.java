@@ -20,7 +20,7 @@ public class McMCommand
 
     public void execute(CommandSender sender, String[] args) {
         if (args.length == 0) {
-            sender.sendMessage(prefix().append("MCMortals created by Bocktrow, Red_Epicness, HeavyMine13!").color(ChatColor.GREEN).create());
+            sender.sendMessage(prefix().append("MCMortals created by Bocktrow and Red_Epicness!").color(ChatColor.GREEN).create());
         } else if (args[0].equalsIgnoreCase("addtokens")) {
             if (m.hasPermission(sender, 7)) {
                 if (args.length == 3) {
@@ -28,7 +28,7 @@ public class McMCommand
                         Statement statement = this.m.connect.createStatement();
                         ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[1] + "'");
                         if (res.next()) {
-                            statement.executeUpdate("UPDATE  SET Tokens='" + (res.getInt("Tokens") + Integer.parseInt(args[2])) + "' WHERE PlayerName='" + args[1] + "'");
+                            statement.executeUpdate("UPDATE McMPData SET Tokens='" + (res.getInt("Tokens") + Integer.parseInt(args[2])) + "' WHERE PlayerName='" + args[1] + "'");
                             sender.sendMessage(prefix().append("Incremented " + args[1] + "'s tokens by " + args[2] + "").color(ChatColor.GREEN).create());
                         } else {
                             sender.sendMessage(prefix().append("No such players has ever joined!").color(ChatColor.RED).create());
@@ -37,7 +37,7 @@ public class McMCommand
                         sender.sendMessage(prefix().append("An error occured!").color(ChatColor.RED).create());
                     }
                 } else {
-                    sender.sendMessage(prefix().append("Usage: /mcm addtokens [Player] [Tokens]").color(ChatColor.RED).create());
+                    sender.sendMessage(prefix().append("Usage: §b/mcm addtokens [Player] [Tokens]").color(ChatColor.RED).create());
                 }
             } else {
                 sender.sendMessage(prefix().append("You cannot do that!").color(ChatColor.RED).create());
@@ -56,7 +56,7 @@ public class McMCommand
                     sender.sendMessage(prefix().append("An error occured!").color(ChatColor.RED).create());
                 }
             } else {
-                sender.sendMessage(prefix().append("Usage: /mcm addtokens [Player] [Tokens]").color(ChatColor.RED).create());
+                sender.sendMessage(prefix().append("Usage: §b/mcm addtokens [Player] [Tokens]").color(ChatColor.RED).create());
             }
         } else if (args[0].equalsIgnoreCase("settokens")) {
             if (m.hasPermission(sender, 7)) {
@@ -74,7 +74,7 @@ public class McMCommand
                         sender.sendMessage(prefix().append("An error occured!").color(ChatColor.RED).create());
                     }
                 } else {
-                    sender.sendMessage(prefix().append("Usage: /mcm settokens [Player] [Tokens]").color(ChatColor.RED).create());
+                    sender.sendMessage(prefix().append("Usage: §b/mcm settokens [Player] [Tokens]").color(ChatColor.RED).create());
                 }
             } else {
                 sender.sendMessage(prefix().append("You cannot do that!").color(ChatColor.RED).create());
@@ -95,7 +95,7 @@ public class McMCommand
                         sender.sendMessage(prefix().append("An error occured!").color(ChatColor.RED).create());
                     }
                 } else {
-                    sender.sendMessage(prefix().append("Usage: /mcm setrank [Player] [RankID]").color(ChatColor.RED).create());
+                    sender.sendMessage(prefix().append("Usage: §b/mcm setrank [Player] [RankID]").color(ChatColor.RED).create());
                 }
             } else {
                 sender.sendMessage(prefix().append("You cannot do that!").color(ChatColor.RED).create());

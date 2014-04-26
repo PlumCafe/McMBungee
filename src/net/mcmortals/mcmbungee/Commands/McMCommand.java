@@ -103,32 +103,35 @@ public class McMCommand
         }
     }
 
-    public String getRank(Integer id) {
-        if (id.intValue() == 9) {
+    public static String getRank(Integer id) {
+        if (id == 10) {
             return ChatColor.DARK_RED + "Operator";
         }
-        if (id.intValue() == 8) {
+        if (id == 9) {
             return ChatColor.DARK_PURPLE + "Developer";
         }
-        if (id.intValue() == 7) {
+        if (id == 8) {
             return ChatColor.RED + "Administrator";
         }
-        if (id.intValue() == 6) {
+        if (id == 7) {
             return ChatColor.DARK_GREEN + "Moderator";
         }
-        if (id.intValue() == 5) {
+        if (id == 6) {
             return ChatColor.BLUE + "Helper";
         }
-        if (id.intValue() == 4) {
+        if (id == 5) {
+            return ChatColor.GREEN + "Host";
+        }
+        if (id == 4) {
             return ChatColor.DARK_AQUA + "Builder";
         }
-        if (id.intValue() == 3) {
-            return ChatColor.GOLD + "YouTuber";
-        }
-        if (id.intValue() == 2) {
+        if (id == 3) {
             return ChatColor.DARK_RED + "Legend";
         }
-        if (id.intValue() == 1) {
+        if (id == 2) {
+            return ChatColor.GOLD + "YouTuber";
+        }
+        if (id == 1) {
             return ChatColor.GREEN + "VIP";
         }
         return "Normal";

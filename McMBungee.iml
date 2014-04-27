@@ -10,7 +10,7 @@
     <orderEntry type="module-library" scope="PROVIDED">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/Bungee/bungee.jar!/" />
+          <root url="jar://$USER_HOME$/Desktop/BungeeCord/BungeeCord.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

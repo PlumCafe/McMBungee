@@ -41,7 +41,7 @@ public class main
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnbanCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new KickCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new SCommand(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new LookupCommand(this));
+        //ProxyServer.getInstance().getPluginManager().registerCommand(this, new LookupCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new TempbanCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new MuteCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnmuteCommand(this));

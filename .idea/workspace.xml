@@ -6,8 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73c5036f-bd8a-495d-9c99-86e0030bd6c2" name="Default" comment="">
+    <list default="true" id="73c5036f-bd8a-495d-9c99-86e0030bd6c2" name="Default" comment="/s command added">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/ChatColorPalette.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/McMBungee.iml" afterPath="$PROJECT_DIR$/McMBungee.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java" afterPath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/main.java" afterPath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="McMBungee.iws" />
@@ -72,13 +75,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="LookupCommand.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/LookupCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="0" selection-start="43" selection-end="5244" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1989">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="48" column="32" selection-start="2653" selection-end="2653" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="3689">
+              <folding>
+                <marker date="1398608219823" expanded="true" signature="5870:5930" placeholder="SELECT * FRO..McMPData..." />
+                <marker date="1398608219823" expanded="true" signature="7057:7123" placeholder="UPDATE McMPD..." />
+                <marker date="1398608219823" expanded="true" signature="7176:7248" placeholder="UPDATE McMPD..." />
+                <marker date="1398608219823" expanded="true" signature="7301:7369" placeholder="UPDATE McMPD..." />
+                <marker date="1398608219823" expanded="true" signature="7509:7588" placeholder="UPDATE McMPD..." />
+                <marker date="1398608219823" expanded="true" signature="7646:7853" placeholder="INSERT INTO ..." />
+                <marker date="1398608219823" expanded="true" signature="8943:9052" placeholder="SELECT * FRO..McMPData..." />
+                <marker date="1398608219823" expanded="true" signature="9918:9972" placeholder="SELECT * FRO..McMPData..." />
+                <marker date="1398608219823" expanded="true" signature="10775:10834" placeholder="UPDATE McMPD..." />
+                <marker date="1398608219823" expanded="true" signature="10887:10954" placeholder="UPDATE McMPD..." />
+                <marker date="1398608219823" expanded="true" signature="11007:11070" placeholder="UPDATE McMPD..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="NewLookupCommand.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="105" selection-start="2137" selection-end="2137" vertical-scroll-proportion="0.29666665" vertical-offset="693" max-vertical-offset="2180">
+            <state line="16" column="0" selection-start="518" selection-end="518" vertical-scroll-proportion="0.14214046" vertical-offset="0" max-vertical-offset="2023">
               <folding>
-                <element signature="imports" expanded="true" />
+                <marker date="1398608219795" expanded="true" signature="1184:1240" placeholder="SELECT * FRO..McMPData..." />
+                <marker date="1398608219795" expanded="true" signature="1572:1635" placeholder="SELECT * FRO..McMInfractions..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChatColorPalette.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/ChatColorPalette.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="73" column="22" selection-start="2378" selection-end="2378" vertical-scroll-proportion="0.0" vertical-offset="1241" max-vertical-offset="1683">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="McMCommand.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/McMCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="111" column="9" selection-start="6346" selection-end="6346" vertical-scroll-proportion="0.0" vertical-offset="1887" max-vertical-offset="2533">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,6 +168,7 @@
         <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/UnuteCommand.java" />
         <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/UnmuteCommand.java" />
         <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/LookupCommand.java" />
+        <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/ChatColorPalette.java" />
         <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/main.java" />
         <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java" />
       </list>
@@ -124,8 +177,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -155,6 +208,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -265,7 +319,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -280,7 +333,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Bungee/plugins" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Bungee/BungeeCord.jar!/" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -300,30 +353,20 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails" singleton="true">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -332,6 +375,9 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -375,21 +421,6 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -409,6 +440,109 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browserFamily" value="FIREFOX" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" output_log_level="null" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browserFamily" value="FIREFOX" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -495,6 +629,10 @@
       <workItem from="1398414163583" duration="1466000" />
       <workItem from="1398441471121" duration="11830000" />
       <workItem from="1398502626220" duration="8413000" />
+      <workItem from="1398587183325" duration="3872000" />
+      <workItem from="1398605143616" duration="26000" />
+      <workItem from="1398605193402" duration="670000" />
+      <workItem from="1398606000618" duration="2215000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit&#10;">
       <created>1394724268007</created>
@@ -548,30 +686,14 @@
       <created>1397827620857</created>
       <updated>1397827620857</updated>
     </task>
-    <task id="LOCAL-00014" summary="/nlookup">
-      <created>1398575728903</created>
-      <updated>1398575728903</updated>
-    </task>
-    <task id="LOCAL-00015" summary="/nlookup&#10;">
-      <created>1398600527975</created>
-      <updated>1398600527975</updated>
-    </task>
-    <task id="LOCAL-00016" summary="/nlookup&#10;">
-      <created>1398601688456</created>
-      <updated>1398601688456</updated>
-    </task>
-    <task id="LOCAL-00017" summary="/nlookup&#10;">
-      <created>1398604888119</created>
-      <updated>1398604888119</updated>
-    </task>
-    <option name="localTasksCounter" value="18" />
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84510000" />
+    <option name="totallyTimeSpent" value="91293000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -579,29 +701,29 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25549048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3422292" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21350078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1315229" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39848813" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24158126" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25549048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3987441" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -626,9 +748,7 @@
     <MESSAGE value="Changes&#10;Whatever" />
     <MESSAGE value="Banning and kicking complete (Not temp)" />
     <MESSAGE value="/s command added" />
-    <MESSAGE value="/nlookup" />
-    <MESSAGE value="/nlookup&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="/nlookup&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="/s command added" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -672,13 +792,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MuteCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="29" selection-start="2551" selection-end="2551" vertical-scroll-proportion="0.0" vertical-offset="980" max-vertical-offset="1740">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/TempbanCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="51" column="77" selection-start="2680" selection-end="2680" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="1720">
@@ -746,8 +859,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="130" column="35" selection-start="5560" selection-end="5560" vertical-scroll-proportion="0.0" vertical-offset="2023" max-vertical-offset="2023">
           <folding>
-            <element signature="e#1043#1051#0" expanded="true" />
-            <element signature="e#1105#1113#0" expanded="true" />
+            <marker date="1398608219823" expanded="true" signature="5870:5930" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="7057:7123" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7176:7248" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7301:7369" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7509:7588" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7646:7853" placeholder="INSERT INTO ..." />
+            <marker date="1398608219823" expanded="true" signature="8943:9052" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="9918:9972" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="10775:10834" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="10887:10954" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="11007:11070" placeholder="UPDATE McMPD..." />
           </folding>
         </state>
       </provider>
@@ -796,8 +918,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="69" column="33" selection-start="2972" selection-end="2972" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2380">
           <folding>
-            <element signature="e#1043#1051#0" expanded="true" />
-            <element signature="e#1105#1113#0" expanded="true" />
+            <marker date="1398608219823" expanded="true" signature="5870:5930" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="7057:7123" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7176:7248" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7301:7369" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7509:7588" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7646:7853" placeholder="INSERT INTO ..." />
+            <marker date="1398608219823" expanded="true" signature="8943:9052" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="9918:9972" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="10775:10834" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="10887:10954" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="11007:11070" placeholder="UPDATE McMPD..." />
           </folding>
         </state>
       </provider>
@@ -832,8 +963,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="114" column="41" selection-start="4629" selection-end="4629" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="2380">
           <folding>
-            <element signature="e#1043#1051#0" expanded="true" />
-            <element signature="e#1105#1113#0" expanded="true" />
+            <marker date="1398608219823" expanded="true" signature="5870:5930" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="7057:7123" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7176:7248" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7301:7369" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7509:7588" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7646:7853" placeholder="INSERT INTO ..." />
+            <marker date="1398608219823" expanded="true" signature="8943:9052" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="9918:9972" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="10775:10834" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="10887:10954" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="11007:11070" placeholder="UPDATE McMPD..." />
           </folding>
         </state>
       </provider>
@@ -868,8 +1008,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="114" column="41" selection-start="4629" selection-end="4629" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="2380">
           <folding>
-            <element signature="e#1043#1051#0" expanded="true" />
-            <element signature="e#1105#1113#0" expanded="true" />
+            <marker date="1398608219823" expanded="true" signature="5870:5930" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="7057:7123" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7176:7248" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7301:7369" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7509:7588" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7646:7853" placeholder="INSERT INTO ..." />
+            <marker date="1398608219823" expanded="true" signature="8943:9052" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="9918:9972" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="10775:10834" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="10887:10954" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="11007:11070" placeholder="UPDATE McMPD..." />
           </folding>
         </state>
       </provider>
@@ -912,6 +1061,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="36" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1105" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Hub.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="25" selection-start="355" selection-end="355" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Clans/CCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="264" column="9" selection-start="19653" selection-end="19653" vertical-scroll-proportion="0.0" vertical-offset="4182" max-vertical-offset="4794">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageMsg.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="55" column="16" selection-start="2456" selection-end="2485" vertical-scroll-proportion="0.0" vertical-offset="443" max-vertical-offset="1020">
@@ -919,9 +1087,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/UUID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="32" selection-start="649" selection-end="649" vertical-scroll-proportion="0.37694013" vertical-offset="0" max-vertical-offset="902">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/SCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="37" selection-start="1476" selection-end="1476" vertical-scroll-proportion="0.6208426" vertical-offset="0" max-vertical-offset="902">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/BanCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="568" selection-end="568" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="952">
           <folding />
         </state>
       </provider>
@@ -954,9 +1136,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="21" selection-start="1743" selection-end="1743" vertical-scroll-proportion="0.7649044" vertical-offset="0" max-vertical-offset="889">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/KickCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="60" selection-start="1452" selection-end="1452" vertical-scroll-proportion="0.60088694" vertical-offset="18" max-vertical-offset="920">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/LookupCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="43" selection-end="5244" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2180">
           <folding />
         </state>
       </provider>
@@ -968,70 +1164,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/UUID.java">
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/ChatColorPalette.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="34" selection-end="177" vertical-scroll-proportion="0.08888889" vertical-offset="0" max-vertical-offset="900">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Clans/CCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="264" column="9" selection-start="19653" selection-end="19653" vertical-scroll-proportion="0.0" vertical-offset="4182" max-vertical-offset="4794">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Hub.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="17" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="460">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/LookupCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="14" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2180">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="12" selection-start="1582" selection-end="1582" vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="860">
+        <state line="73" column="22" selection-start="2378" selection-end="2378" vertical-scroll-proportion="0.0" vertical-offset="885" max-vertical-offset="1649">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="17" selection-start="4929" selection-end="4929" vertical-scroll-proportion="0.0" vertical-offset="1668" max-vertical-offset="4340">
+        <state line="48" column="32" selection-start="2653" selection-end="2653" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="3689">
           <folding>
-            <element signature="e#1043#1051#0" expanded="true" />
-            <element signature="e#1105#1113#0" expanded="true" />
+            <marker date="1398608219823" expanded="true" signature="5870:5930" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="7057:7123" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7176:7248" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7301:7369" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7509:7588" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="7646:7853" placeholder="INSERT INTO ..." />
+            <marker date="1398608219823" expanded="true" signature="8943:9052" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="9918:9972" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219823" expanded="true" signature="10775:10834" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="10887:10954" placeholder="UPDATE McMPD..." />
+            <marker date="1398608219823" expanded="true" signature="11007:11070" placeholder="UPDATE McMPD..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="41" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0" vertical-offset="248" max-vertical-offset="1300">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/BanCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="4" selection-start="1290" selection-end="1290" vertical-scroll-proportion="0.5862458" vertical-offset="0" max-vertical-offset="1120">
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="105" selection-start="2137" selection-end="2137" vertical-scroll-proportion="0.29666665" vertical-offset="693" max-vertical-offset="2180">
+        <state line="16" column="0" selection-start="518" selection-end="518" vertical-scroll-proportion="0.14214046" vertical-offset="0" max-vertical-offset="2023">
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1398608219795" expanded="true" signature="1184:1240" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608219795" expanded="true" signature="1572:1635" placeholder="SELECT * FRO..McMInfractions..." />
           </folding>
         </state>
       </provider>

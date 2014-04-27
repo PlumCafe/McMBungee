@@ -78,7 +78,7 @@
       <file leaf-file-name="NewLookupCommand.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="16" selection-start="505" selection-end="505" vertical-scroll-proportion="-0.6178129" vertical-offset="808" max-vertical-offset="2940">
+            <state line="34" column="57" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.5862458" vertical-offset="0" max-vertical-offset="2940">
               <folding />
             </state>
           </provider>
@@ -562,7 +562,11 @@
       <created>1398617917048</created>
       <updated>1398617917048</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="more /nlookup fixes">
+      <created>1398618726369</created>
+      <updated>1398618726369</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -625,7 +629,8 @@
     <MESSAGE value="Banning and kicking complete (Not temp)" />
     <MESSAGE value="/s command added" />
     <MESSAGE value="/s command added&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="/s command added&#10;" />
+    <MESSAGE value="more /nlookup fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="more /nlookup fixes" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1009,7 +1014,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="16" selection-start="505" selection-end="505" vertical-scroll-proportion="-0.6178129" vertical-offset="808" max-vertical-offset="2940">
+        <state line="34" column="57" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.5862458" vertical-offset="0" max-vertical-offset="2940">
           <folding />
         </state>
       </provider>

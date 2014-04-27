@@ -47,7 +47,7 @@ public class NewLookupCommand extends Command {
                 if (res.getLong("FirstLogin")==0) fsl= ChatColor.GRAY + "Unknown";
                 String lsl = new Date(res.getLong("LastLogin")).toGMTString();
                 if (res.getLong("LastLogin")==0) lsl= ChatColor.GRAY + "Unknown";
-                //---------------------------------------------------------------------------------------
+                //-------------------------------BAN EVENTS------------------------------------
                 HoverEvent banInfo = null;ClickEvent unBan = null;ClickEvent Ban = null;ClickEvent Kick = null;
                 if (Banned) {
                     TextComponent reason = new TextComponent("Reason: " + ChatColor.AQUA + res.getString("BanReason") + "\n"); reason.setColor(ChatColor.GOLD);
@@ -63,7 +63,7 @@ public class NewLookupCommand extends Command {
                     Kick = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/kick "+args[0]);
                     Ban = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/ban "+args[0]);
                 }
-                //---------------------------------------------------------------------------------------
+                //------------------------------MUTE EVENTS----------------------------------
                 HoverEvent muteInfo = null;ClickEvent Mute = null;ClickEvent unMute = null;
                 if (Muted) {
                     TextComponent mreason = new TextComponent("Reason: " + ChatColor.AQUA + res.getString("MuteReason")+ "\n"); mreason.setColor(ChatColor.GOLD);
@@ -82,9 +82,9 @@ public class NewLookupCommand extends Command {
                 infractionsInfo[0] = ban; infractionsInfo[1] = kick; infractionsInfo[2] = mute;
                 HoverEvent infractions = new HoverEvent(HoverEvent.Action.SHOW_TEXT, infractionsInfo);
                 //-----------------------------------------------------------------------------------------
-                ComponentBuilder header = prefix().append("Player lookup: ").color(ChatColor.GOLD).bold(true);
-                appendName(header,res.getInt("Rank"),args[0]);
-                sender.sendMessage(header.create());
+                //ComponentBuilder header = prefix().append("Player lookup: ").color(ChatColor.GOLD).bold(true).append(args[0]);
+                //appendName(header,res.getInt("Rank"),args[0]);
+                sender.sendMessage(prefix().append("Player lookup: ").color(ChatColor.GOLD).bold(true).append(args[0]).create());
                 sender.sendMessage(new ComponentBuilder("Rank: ").color(ChatColor.GOLD).append(McMCommand.getRank(res.getInt("Rank"))).create());
                 sender.sendMessage(new ComponentBuilder("Tokens: ").color(ChatColor.GOLD).append(""+res.getInt("Tokens")).color(ChatColor.AQUA).create());
                 sender.sendMessage(new ComponentBuilder("Tournament points: ").color(ChatColor.GOLD).append(""+res.getInt("TournPoints")).color(ChatColor.AQUA).create());
@@ -120,9 +120,9 @@ public class NewLookupCommand extends Command {
                 } else sender.sendMessage(new ComponentBuilder("Is currently banned: ").color(ChatColor.GOLD).append("No").color(ChatColor.AQUA).create());
                 // Muted section
                 if (Muted) {
-                    sender.sendMessage(new ComponentBuilder("Is currently muted: ").color(ChatColor.GOLD).append("Yes").color(ChatColor.AQUA).event(mbanInfo).create());
+                    sender.sendMessage(new ComponentBuilder("Is currently muted: ").color(ChatColor.GOLD).append("Yes").color(ChatColor.AQUA).event(muteInfo).create());
                 } else sender.sendMessage(new ComponentBuilder("Is currently muted: ").color(ChatColor.GOLD).append("No").color(ChatColor.AQUA).create());*/
-            } else sender.sendMessage(prefix().append("No such player found!").color(ChatColor.RED).create());
+            } else sender.sendMessage(prefix().append("No info found for ").color(ChatColor.RED).append(args[0]).color(ChatColor.AQUA).create());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -132,7 +132,7 @@ public class NewLookupCommand extends Command {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
     }
 
-    private static void appendName(ComponentBuilder b, int rank, String name){
+    /*private static void appendName(ComponentBuilder b, int rank, String name){
         switch (rank){
             case (10): b.append("[Op] ").color(ChatColor.DARK_RED).bold(true).append(name).color(ChatColor.AQUA).bold(false);
             case (9): b.append("[Dev] ").color(ChatColor.DARK_PURPLE).bold(true).append(name).color(ChatColor.AQUA).bold(false);
@@ -146,5 +146,5 @@ public class NewLookupCommand extends Command {
             case (1): b.append("[VIP] ").color(ChatColor.GREEN).bold(true).append(name).color(ChatColor.WHITE);
             default: b.append(name).color(ChatColor.WHITE);
         }
-    }
+    }*/
 }

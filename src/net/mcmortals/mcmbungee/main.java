@@ -1,29 +1,25 @@
 package net.mcmortals.mcmbungee;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-
 import net.mcmortals.mcmbungee.Clans.CCommand;
 import net.mcmortals.mcmbungee.Commands.*;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
-import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
-import net.md_5.bungee.api.event.*;
+import net.md_5.bungee.api.event.ChatEvent;
+import net.md_5.bungee.api.event.PlayerDisconnectEvent;
+import net.md_5.bungee.api.event.PreLoginEvent;
+import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.event.EventHandler;
-import net.md_5.bungee.protocol.Protocol;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 
 public class main
         extends Plugin
@@ -49,6 +45,7 @@ public class main
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new TempbanCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new MuteCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnmuteCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new NewLookupCommand(this));
         ProxyServer.getInstance().getPluginManager().registerListener(this, this);
         prepare();
     }

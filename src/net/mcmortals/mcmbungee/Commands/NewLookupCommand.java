@@ -3,10 +3,7 @@ package net.mcmortals.mcmbungee.Commands;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.*;
 import net.md_5.bungee.api.plugin.Command;
 
 import java.sql.ResultSet;
@@ -37,32 +34,37 @@ public class NewLookupCommand extends Command {
             if (res.next()) {
                 boolean Banned = res.getInt("Banned")==1;
                 boolean Muted = res.getInt("Muted")==1;
-                int inf = 0; int bans = 0; int kicks = 0; int mutes = 0;
+                int bans = 0; int kicks = 0; int mutes = 0;
                 Statement ss = m.connect.createStatement();
                 ResultSet ress = ss.executeQuery("SELECT * FROM McMInfractions WHERE PlayerName='" + args[0] + "'");
                 while (ress.next()) {
                     if (ress.getString("Type").equals("Permanent ban") || ress.getString("Type").equals("Temporary ban")) bans++;
                     if (ress.getString("Type").equals("Kick")) kicks++;
                     if (ress.getString("Type").equals("Mute")) mutes++;
-                    inf++;
                 }
+                int inf = bans + kicks + mutes;
                 String fsl = new Date(res.getLong("FirstLogin")).toGMTString();
                 if (res.getLong("FirstLogin")==0) fsl= ChatColor.GRAY + "Unknown";
                 String lsl = new Date(res.getLong("LastLogin")).toGMTString();
                 if (res.getLong("LastLogin")==0) lsl= ChatColor.GRAY + "Unknown";
                 //---------------------------------------------------------------------------------------
-                HoverEvent banInfo = null;
+                HoverEvent banInfo = null;ClickEvent unBan = null;ClickEvent Ban = null;ClickEvent Kick = null;
                 if (Banned) {
-                TextComponent reason = new TextComponent("Reason: " + ChatColor.AQUA + res.getString("BanReason") + "\n"); reason.setColor(ChatColor.GOLD);
-                TextComponent until = (res.getLong("BanUntil")!=-1) ?
-                        new TextComponent("Until: " + ChatColor.AQUA  +(new Date(res.getLong("BanUntil")).toGMTString().replace("GMT","UTC")))
-                        : new TextComponent("Until: " + ChatColor.AQUA + "Permanent"); until.setColor(ChatColor.GOLD);
-                BaseComponent[] banReason = new BaseComponent[2];
-                banReason[0] = reason; banReason[1] = until;
-                banInfo = new HoverEvent(HoverEvent.Action.SHOW_TEXT, banReason);
+                    TextComponent reason = new TextComponent("Reason: " + ChatColor.AQUA + res.getString("BanReason") + "\n"); reason.setColor(ChatColor.GOLD);
+                    TextComponent until = (res.getLong("BanUntil")!=-1) ?
+                            new TextComponent("Until: " + ChatColor.AQUA  +(new Date(res.getLong("BanUntil")).toGMTString().replace("GMT","UTC")))
+                            : new TextComponent("Until: " + ChatColor.AQUA + "Permanent"); until.setColor(ChatColor.GOLD);
+                    BaseComponent[] banReason = new BaseComponent[2];
+                    banReason[0] = reason; banReason[1] = until;
+                    banInfo = new HoverEvent(HoverEvent.Action.SHOW_TEXT, banReason);
+                    unBan = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/unban "+args[0]);
+                }
+                else{
+                    Kick = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/kick "+args[0]);
+                    Ban = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/ban "+args[0]);
                 }
                 //---------------------------------------------------------------------------------------
-                HoverEvent mbanInfo = null;
+                /*HoverEvent mbanInfo = null;
                 if (Muted) {
                     TextComponent mreason = new TextComponent("Reason: " + ChatColor.AQUA + res.getString("MuteReason")+ "\n"); mreason.setColor(ChatColor.GOLD);
                     TextComponent muntil = (res.getLong("MuteUntil")!=-1) ?
@@ -71,7 +73,7 @@ public class NewLookupCommand extends Command {
                     BaseComponent[] mbanReason = new BaseComponent[2];
                     mbanReason[0] = mreason; mbanReason[1] = muntil;
                     mbanInfo = new HoverEvent(HoverEvent.Action.SHOW_TEXT, mbanReason);
-                }
+                }*/
                 //----------------------------------------------------------------------------------------
                 TextComponent ban = new TextComponent("Bans: " + ChatColor.AQUA + bans + "\n"); ban.setColor(ChatColor.GOLD);
                 TextComponent kick = new TextComponent("Kicks: " + ChatColor.AQUA + kicks + "\n"); kick.setColor(ChatColor.GOLD);
@@ -81,7 +83,7 @@ public class NewLookupCommand extends Command {
                 HoverEvent infractions = new HoverEvent(HoverEvent.Action.SHOW_TEXT, infractionsInfo);
                 //-----------------------------------------------------------------------------------------
                 ComponentBuilder header = prefix().append("Player lookup: ").color(ChatColor.GOLD).bold(true);
-                appendName(header,res.getInt("Rank"),res.getString("PlayerName"));
+                appendName(header,res.getInt("Rank"),args[0]);
                 sender.sendMessage(header.create());
                 sender.sendMessage(new ComponentBuilder("Rank: ").color(ChatColor.GOLD).append(McMCommand.getRank(res.getInt("Rank"))).create());
                 sender.sendMessage(new ComponentBuilder("Tokens: ").color(ChatColor.GOLD).append(""+res.getInt("Tokens")).color(ChatColor.AQUA).create());
@@ -91,14 +93,25 @@ public class NewLookupCommand extends Command {
                 // Infraction section
                 ComponentBuilder infraction = new ComponentBuilder("Infractions: " + ChatColor.AQUA + inf).color(ChatColor.GOLD);
                 if(inf != 0){infraction.event(infractions);} sender.sendMessage(infraction.create());
-                // Banned section
+                //Banned section
+                ComponentBuilder banStatus = new ComponentBuilder("Ban status: ").color(ChatColor.GOLD);
+                if(Banned){
+                    banStatus.append("Banned ").color(ChatColor.RED).event(banInfo);
+                    banStatus.append("[Unban]").color(ChatColor.GREEN).event(unBan);
+                }
+                else{
+                    banStatus.append("Not banned ").color(ChatColor.GREEN);
+                    banStatus.append("[Ban] ").color(ChatColor.RED).event(Ban);
+                    banStatus.append("[Kick]").color(ChatColor.YELLOW).event(Kick);
+                }
+                /*// Banned section
                 if (Banned) {
                     sender.sendMessage(new ComponentBuilder("Is currently banned: ").color(ChatColor.GOLD).append("Yes").color(ChatColor.AQUA).event(banInfo).create());
                 } else sender.sendMessage(new ComponentBuilder("Is currently banned: ").color(ChatColor.GOLD).append("No").color(ChatColor.AQUA).create());
                 // Muted section
                 if (Muted) {
                     sender.sendMessage(new ComponentBuilder("Is currently muted: ").color(ChatColor.GOLD).append("Yes").color(ChatColor.AQUA).event(mbanInfo).create());
-                } else sender.sendMessage(new ComponentBuilder("Is currently muted: ").color(ChatColor.GOLD).append("No").color(ChatColor.AQUA).create());
+                } else sender.sendMessage(new ComponentBuilder("Is currently muted: ").color(ChatColor.GOLD).append("No").color(ChatColor.AQUA).create());*/
             } else sender.sendMessage(prefix().append("No such player found!").color(ChatColor.RED).create());
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -105,10 +105,10 @@
       <file leaf-file-name="NewLookupCommand.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="81" selection-start="2319" selection-end="2319" vertical-scroll-proportion="0.5401338" vertical-offset="357" max-vertical-offset="2057">
+            <state line="87" column="97" selection-start="5686" selection-end="5686" vertical-scroll-proportion="0.6991342" vertical-offset="969" max-vertical-offset="2057">
               <folding>
-                <marker date="1398608343709" expanded="true" signature="1184:1240" placeholder="SELECT * FRO..McMPData..." />
-                <marker date="1398608343709" expanded="true" signature="1572:1635" placeholder="SELECT * FRO..McMInfractions..." />
+                <marker date="1398608678106" expanded="true" signature="1184:1240" placeholder="SELECT * FRO..McMPData..." />
+                <marker date="1398608678106" expanded="true" signature="1572:1635" placeholder="SELECT * FRO..McMInfractions..." />
               </folding>
             </state>
           </provider>
@@ -629,7 +629,7 @@
       <workItem from="1398587183325" duration="3872000" />
       <workItem from="1398605143616" duration="26000" />
       <workItem from="1398605193402" duration="670000" />
-      <workItem from="1398606000618" duration="2337000" />
+      <workItem from="1398606000618" duration="2931000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit&#10;">
       <created>1394724268007</created>
@@ -687,11 +687,15 @@
       <created>1398608231175</created>
       <updated>1398608231175</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fix&#10;">
+      <created>1398608348888</created>
+      <updated>1398608348888</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91415000" />
+    <option name="totallyTimeSpent" value="92009000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -710,7 +714,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21350078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21350078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -750,7 +754,8 @@
     <MESSAGE value="Banning and kicking complete (Not temp)" />
     <MESSAGE value="/s command added" />
     <MESSAGE value="Lookup Command Updated!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lookup Command Updated!" />
+    <MESSAGE value="Fix&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix&#10;" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -794,13 +799,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/TempbanCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="77" selection-start="2680" selection-end="2680" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="1720">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/BanCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="0" selection-start="568" selection-end="568" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1300">
@@ -1192,12 +1190,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/Documents/Bungee/BungeeCord.jar!/net/md_5/bungee/api/ChatColor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="104" selection-start="277" selection-end="277" vertical-scroll-proportion="0.17801048" vertical-offset="0" max-vertical-offset="629">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="81" selection-start="2319" selection-end="2319" vertical-scroll-proportion="0.5401338" vertical-offset="357" max-vertical-offset="2057">
+        <state line="87" column="97" selection-start="5686" selection-end="5686" vertical-scroll-proportion="0.6991342" vertical-offset="969" max-vertical-offset="2057">
           <folding>
-            <marker date="1398608343709" expanded="true" signature="1184:1240" placeholder="SELECT * FRO..McMPData..." />
-            <marker date="1398608343709" expanded="true" signature="1572:1635" placeholder="SELECT * FRO..McMInfractions..." />
+            <marker date="1398608678106" expanded="true" signature="1184:1240" placeholder="SELECT * FRO..McMPData..." />
+            <marker date="1398608678106" expanded="true" signature="1572:1635" placeholder="SELECT * FRO..McMInfractions..." />
           </folding>
         </state>
       </provider>

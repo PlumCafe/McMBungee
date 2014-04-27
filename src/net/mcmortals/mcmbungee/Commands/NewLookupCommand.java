@@ -46,10 +46,10 @@ public class NewLookupCommand extends Command {
                     if (ress.getString("Type").equals("Mute")) mutes++;
                     inf++;
                 }
-                String fsl = new Date(res.getLong("FirstLogin")).toGMTString();
-                if (res.getLong("FirstLogin")==0) fsl= ChatColor.GRAY + "Unknown";
-                String lsl = new Date(res.getLong("LastLogin")).toGMTString();
-                if (res.getLong("LastLogin")==0) lsl= ChatColor.GRAY + "Unknown";
+                String fsl = new Date(res.getLong("FirstLogin")).toGMTString().replace("GMT","UTC");
+                if (fsl.contains("1970")) fsl= ChatColor.GRAY + "Unknown";
+                String lsl = new Date(res.getLong("LastLogin")).toGMTString().replace("GMT","UTC");
+                if (fsl.contains("1970")) lsl= ChatColor.GRAY + "Unknown";
                 //---------------------------------------------------------------------------------------
                 HoverEvent banInfo = null;
                 if (Banned) {
@@ -93,12 +93,12 @@ public class NewLookupCommand extends Command {
                 if(inf != 0){infraction.event(infractions);} sender.sendMessage(infraction.create());
                 // Banned section
                 if (Banned) {
-                    sender.sendMessage(new ComponentBuilder("Is currently banned: ").color(ChatColor.GOLD).append("Yes").color(ChatColor.AQUA).event(banInfo).create());
-                } else sender.sendMessage(new ComponentBuilder("Is currently banned: ").color(ChatColor.GOLD).append("No").color(ChatColor.AQUA).create());
+                    sender.sendMessage(new ComponentBuilder("Is currently banned: " + ChatColor.AQUA + "Yes").color(ChatColor.GOLD).event(banInfo).create());
+                } else sender.sendMessage(new ComponentBuilder("Is currently banned: " + ChatColor.AQUA + "No").color(ChatColor.GOLD).create());
                 // Muted section
                 if (Muted) {
-                    sender.sendMessage(new ComponentBuilder("Is currently muted: ").color(ChatColor.GOLD).append("Yes").color(ChatColor.AQUA).event(mbanInfo).create());
-                } else sender.sendMessage(new ComponentBuilder("Is currently muted: ").color(ChatColor.GOLD).append("No").color(ChatColor.AQUA).create());
+                    sender.sendMessage(new ComponentBuilder("Is currently muted: " + ChatColor.AQUA + "Yes").color(ChatColor.GOLD).event(mbanInfo).create());
+                } else sender.sendMessage(new ComponentBuilder("Is currently muted: " + ChatColor.AQUA + "No").color(ChatColor.GOLD).create());
             } else sender.sendMessage(prefix().append("No such player found!").color(ChatColor.RED).create());
         } catch (Exception ex) {
             ex.printStackTrace();

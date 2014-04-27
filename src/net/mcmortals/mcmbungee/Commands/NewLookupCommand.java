@@ -47,7 +47,9 @@ public class NewLookupCommand extends Command {
                     inf++;
                 }
                 String fsl = new Date(res.getLong("FirstLogin")).toGMTString();
+                if (res.getLong("FirstLogin")==0) fsl= ChatColor.GRAY + "Unknown";
                 String lsl = new Date(res.getLong("LastLogin")).toGMTString();
+                if (res.getLong("LastLogin")==0) lsl= ChatColor.GRAY + "Unknown";
                 //---------------------------------------------------------------------------------------
                 HoverEvent banInfo = null;
                 if (Banned) {

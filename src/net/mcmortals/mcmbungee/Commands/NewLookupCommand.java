@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class NewLookupCommand extends Command {
 
-    main m = null;
+    private main m = null;
 
     public NewLookupCommand(main This) {
         super("lookup", "");
@@ -64,7 +64,7 @@ public class NewLookupCommand extends Command {
                     Ban = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/ban "+args[0]);
                 }
                 //---------------------------------------------------------------------------------------
-                /*HoverEvent muteInfo = null;
+                HoverEvent muteInfo = null;ClickEvent Mute = null;ClickEvent unMute = null;
                 if (Muted) {
                     TextComponent mreason = new TextComponent("Reason: " + ChatColor.AQUA + res.getString("MuteReason")+ "\n"); mreason.setColor(ChatColor.GOLD);
                     TextComponent muntil = (res.getLong("MuteUntil")!=-1) ?
@@ -73,7 +73,7 @@ public class NewLookupCommand extends Command {
                     BaseComponent[] muteReason = new BaseComponent[2];
                     muteReason[0] = mreason; muteReason[1] = muntil;
                     muteInfo = new HoverEvent(HoverEvent.Action.SHOW_TEXT, muteReason);
-                }*/
+                }
                 //----------------------------------------------------------------------------------------
                 TextComponent ban = new TextComponent("Bans: " + ChatColor.AQUA + bans + "\n"); ban.setColor(ChatColor.GOLD);
                 TextComponent kick = new TextComponent("Kicks: " + ChatColor.AQUA + kicks + "\n"); kick.setColor(ChatColor.GOLD);
@@ -104,6 +104,16 @@ public class NewLookupCommand extends Command {
                     banStatus.append("[Ban] ").color(ChatColor.RED).event(Ban);
                     banStatus.append("[Kick]").color(ChatColor.YELLOW).event(Kick);
                 }
+                // Muted section
+                ComponentBuilder muteStatus = new ComponentBuilder("Mute status: ").color(ChatColor.GOLD);
+                if(Muted){
+                    muteStatus.append("Muted ").color(ChatColor.RED).event(muteInfo);
+                    muteStatus.append("[Unmute]").color(ChatColor.GREEN).event(unMute);
+                }
+                else{
+                    muteStatus.append("Not Muted ").color(ChatColor.GREEN);
+                    muteStatus.append("[Mute]").color(ChatColor.RED).event(Mute);
+                }
                 /*// Banned section
                 if (Banned) {
                     sender.sendMessage(new ComponentBuilder("Is currently banned: ").color(ChatColor.GOLD).append("Yes").color(ChatColor.AQUA).event(banInfo).create());
@@ -118,23 +128,23 @@ public class NewLookupCommand extends Command {
         }
     }
 
-    public ComponentBuilder prefix() {
+    ComponentBuilder prefix() {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
     }
 
-    public static ComponentBuilder appendName(ComponentBuilder b, int rank, String name){
+    private static void appendName(ComponentBuilder b, int rank, String name){
         switch (rank){
-            case (10): return b.append("[Op] ").color(ChatColor.DARK_RED).bold(true).append(name).color(ChatColor.AQUA).bold(false);
-            case (9): return b.append("[Dev] ").color(ChatColor.DARK_PURPLE).bold(true).append(name).color(ChatColor.AQUA).bold(false);
-            case (8): return b.append("[Admin] ").color(ChatColor.RED).bold(true).append(name).color(ChatColor.AQUA);
-            case (7): return b.append("[Mod] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(ChatColor.WHITE);
-            case (6): return b.append("[Helper] ").color(ChatColor.BLUE).bold(true).append(name).color(ChatColor.WHITE);
-            case (5): return b.append("[Host] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(ChatColor.WHITE);
-            case (4): return b.append("[Builder] ").color(ChatColor.DARK_AQUA).bold(true).append(name).color(ChatColor.WHITE);
-            case (3): return b.append("[Legend] ").color(ChatColor.DARK_RED).bold(true).append(name).color(ChatColor.WHITE);
-            case (2): return b.append("[YT] ").color(ChatColor.GOLD).bold(true).append(name).color(ChatColor.WHITE);
-            case (1): return b.append("[VIP] ").color(ChatColor.GREEN).bold(true).append(name).color(ChatColor.WHITE);
-            default: return b.append(name).color(ChatColor.WHITE);
+            case (10): b.append("[Op] ").color(ChatColor.DARK_RED).bold(true).append(name).color(ChatColor.AQUA).bold(false);
+            case (9): b.append("[Dev] ").color(ChatColor.DARK_PURPLE).bold(true).append(name).color(ChatColor.AQUA).bold(false);
+            case (8): b.append("[Admin] ").color(ChatColor.RED).bold(true).append(name).color(ChatColor.AQUA);
+            case (7): b.append("[Mod] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(ChatColor.WHITE);
+            case (6): b.append("[Helper] ").color(ChatColor.BLUE).bold(true).append(name).color(ChatColor.WHITE);
+            case (5): b.append("[Host] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(ChatColor.WHITE);
+            case (4): b.append("[Builder] ").color(ChatColor.DARK_AQUA).bold(true).append(name).color(ChatColor.WHITE);
+            case (3): b.append("[Legend] ").color(ChatColor.DARK_RED).bold(true).append(name).color(ChatColor.WHITE);
+            case (2): b.append("[YT] ").color(ChatColor.GOLD).bold(true).append(name).color(ChatColor.WHITE);
+            case (1): b.append("[VIP] ").color(ChatColor.GREEN).bold(true).append(name).color(ChatColor.WHITE);
+            default: b.append(name).color(ChatColor.WHITE);
         }
     }
 }

@@ -37,11 +37,15 @@ public class NewLookupCommand extends Command {
                         Date fsl = new Date(res.getLong("FirstLogin"));
                         Date lsl = new Date(res.getLong("LastLogin"));
                         if (!fsl.toGMTString().contains("1970")) {
-                            sender.sendMessage("§6First join: §b" + fsl.toGMTString().replace("GMT", "UTC"));
-                        } else sender.sendMessage("§6First join: §7Unknown");
+                            sender.sendMessage(new ComponentBuilder("First join: ").color(ChatColor.GOLD).append(fsl.toGMTString()).color(ChatColor.AQUA).create());
+                            //sender.sendMessage("§6First join: §b" + fsl.toGMTString().replace("GMT", "UTC"));
+                        } else sender.sendMessage(new ComponentBuilder("First join: ").color(ChatColor.GOLD).append("Unknown").color(ChatColor.AQUA).create());
+                             //sender.sendMessage("§6First join: §7Unknown");
                         if (!lsl.toGMTString().contains("1970")) {
-                            sender.sendMessage("§6Last join: §b" + lsl.toGMTString().replace("GMT","UTC"));
-                        } else sender.sendMessage("§6Last join: §7Unknown");
+                            sender.sendMessage(new ComponentBuilder("Last join: ").color(ChatColor.GOLD).append(lsl.toGMTString()).color(ChatColor.AQUA).create());
+                            //sender.sendMessage("§6Last join: §b" + lsl.toGMTString().replace("GMT","UTC"));
+                        } else sender.sendMessage(new ComponentBuilder("Last join: ").color(ChatColor.GOLD).append("Unknown").color(ChatColor.AQUA).create());
+                               // sender.sendMessage("§6Last join: §7Unknown");
                         int inf = 0; int bans = 0; int kicks = 0; int mutes = 0;
                         Statement ss = m.connect.createStatement();
                         ResultSet ress = ss.executeQuery("SELECT * FROM McMInfractions WHERE PlayerName='" + args[0] + "'");
@@ -51,14 +55,23 @@ public class NewLookupCommand extends Command {
                             if (ress.getString("Type").equals("Mute")) mutes++;
                             inf++;
                         }
-                        sender.sendMessage("§6Total infractions: §b" + inf);
-                        sender.sendMessage("§6- Bans: §b" + bans);
-                        sender.sendMessage("§6- Kicks: §b" + kicks);
-                        sender.sendMessage("§6- Mutes: §b" + mutes);
-                        sender.sendMessage("§6Is banned: §b" + yesorno(res.getInt("Banned")));
+                        sender.sendMessage(new ComponentBuilder("Total Infractions: ").color(ChatColor.GOLD).append(inf+"").color(ChatColor.AQUA).create());
+                        //sender.sendMessage("§6Total infractions: §b" + inf);
+                        sender.sendMessage(new ComponentBuilder("- Bans: ").color(ChatColor.GOLD).append(bans+"").color(ChatColor.AQUA).create());
+                        //sender.sendMessage("§6- Bans: §b" + bans);
+                        sender.sendMessage(new ComponentBuilder("- Kicks: ").color(ChatColor.GOLD).append(kicks+"").color(ChatColor.AQUA).create());
+                        //sender.sendMessage("§6- Kicks: §b" + kicks);
+                        sender.sendMessage(new ComponentBuilder("- Mutes: ").color(ChatColor.GOLD).append(mutes+"").color(ChatColor.AQUA).create());
+                        //sender.sendMessage("§6- Mutes: §b" + mutes);
+                        sender.sendMessage(new ComponentBuilder("Is banned: ").color(ChatColor.GOLD).append((res.getInt("Banned")==1)?"Yes":"No").color(ChatColor.AQUA).create());
+                        //sender.sendMessage("§6Is banned: §b" + yesorno(res.getInt("Banned")));
                         if (res.getInt("Banned")==1) {
-                            sender.sendMessage("§6- Reason:§b" + res.getString("BanReason"));
-                            if (res.getLong("BanUntil")!=-1) sender.sendMessage("§6- Until: §b" + new Date(res.getLong("BanUntil")).toGMTString().replace("GMT","UTC"));
+                            sender.sendMessage(new ComponentBuilder("- Reason:").append(res.getString("BanReason")).color(ChatColor.AQUA).create());
+                            //sender.sendMessage("§6- Reason:§b" + res.getString("BanReason"));
+                            if (res.getLong("BanUntil")!=-1){
+                                sender.sendMessage(new ComponentBuilder("- Until: ").color(ChatColor.GOLD).append(new Date(res.getLong("BanUntil")).toGMTString().replace("GMT","UTC")).color(ChatColor.AQUA).create());
+                                //sender.sendMessage("§6- Until: §b" + new Date(res.getLong("BanUntil")).toGMTString().replace("GMT","UTC"));
+                            }
                         }
                         res.close();
                     } else sender.sendMessage(prefix().append("No such player found!").color(ChatColor.RED).create());
@@ -73,23 +86,17 @@ public class NewLookupCommand extends Command {
 
     public static ComponentBuilder appendName(ComponentBuilder b, int rank, String name){
         switch (rank){
-            case (10): return b.append("[Op] ").color(ChatColor.DARK_RED).bold(true).append(name).color(ChatColor.AQUA); break;
-            case (9): return b.append("[Dev] ").color(ChatColor.DARK_PURPLE).bold(true).append(name).color(ChatColor.AQUA); break;
-            case (8): return b.append("[Admin] ").color(ChatColor.RED).bold(true).append(name).color(ChatColor.AQUA); break;
-            case (7): return b.append("[Mod] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(ChatColor.WHITE); break;
-            case (6): return b.append("[Helper] ").color(ChatColor.BLUE).bold(true).append(name).color(ChatColor.WHITE); break;
-            case (5): return b.append("[Host] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(ChatColor.WHITE); break;
-            case (4): return b.append("[Builder] ").color(ChatColor.DARK_AQUA).bold(true).append(name).color(ChatColor.WHITE); break;
-            case (3): return b.append("[Legend] ").color(ChatColor.DARK_RED).bold(true).append(name).color(ChatColor.WHITE); break;
-            case (2): return b.append("[YT] ").color(ChatColor.GOLD).bold(true).append(name).color(ChatColor.WHITE); break;
-            case (1): return b.append("[VIP] ").color(ChatColor.GREEN).bold(true).append(name).color(ChatColor.WHITE); break;
-            default: return b.append(name).color(ChatColor.WHITE); break;
+            case (10): return b.append("[Op] ").color(ChatColor.DARK_RED).bold(true).append(name).color(ChatColor.AQUA);
+            case (9): return b.append("[Dev] ").color(ChatColor.DARK_PURPLE).bold(true).append(name).color(ChatColor.AQUA);
+            case (8): return b.append("[Admin] ").color(ChatColor.RED).bold(true).append(name).color(ChatColor.AQUA);
+            case (7): return b.append("[Mod] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(ChatColor.WHITE);
+            case (6): return b.append("[Helper] ").color(ChatColor.BLUE).bold(true).append(name).color(ChatColor.WHITE);
+            case (5): return b.append("[Host] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(ChatColor.WHITE);
+            case (4): return b.append("[Builder] ").color(ChatColor.DARK_AQUA).bold(true).append(name).color(ChatColor.WHITE);
+            case (3): return b.append("[Legend] ").color(ChatColor.DARK_RED).bold(true).append(name).color(ChatColor.WHITE);
+            case (2): return b.append("[YT] ").color(ChatColor.GOLD).bold(true).append(name).color(ChatColor.WHITE);
+            case (1): return b.append("[VIP] ").color(ChatColor.GREEN).bold(true).append(name).color(ChatColor.WHITE);
+            default: return b.append(name).color(ChatColor.WHITE);
         }
-        return null;
-    }
-
-    public String yesorno(int a) {
-        if (a==1) return "Yes";
-        return "No";
     }
 }

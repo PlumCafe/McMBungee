@@ -75,7 +75,7 @@
       <file leaf-file-name="NewLookupCommand.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="33" selection-start="3880" selection-end="3880" vertical-scroll-proportion="0.72153324" vertical-offset="620" max-vertical-offset="2400">
+            <state line="48" column="105" selection-start="2137" selection-end="2137" vertical-scroll-proportion="0.29666665" vertical-offset="693" max-vertical-offset="2180">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -560,7 +560,11 @@
       <created>1398601688456</created>
       <updated>1398601688456</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="/nlookup&#10;">
+      <created>1398604888119</created>
+      <updated>1398604888119</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1025,7 +1029,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="33" selection-start="3880" selection-end="3880" vertical-scroll-proportion="0.72153324" vertical-offset="620" max-vertical-offset="2400">
+        <state line="48" column="105" selection-start="2137" selection-end="2137" vertical-scroll-proportion="0.29666665" vertical-offset="693" max-vertical-offset="2180">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

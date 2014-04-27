@@ -37,8 +37,16 @@ public class NewLookupCommand extends Command {
             if (res.next()) {
                 int Banned = res.getInt("Banned");
                 int inf = 0; int bans = 0; int kicks = 0; int mutes = 0;
+                ResultSet ress = s.executeQuery("SELECT * FROM McMInfractions WHERE PlayerName='" + args[0] + "'");
+                while (ress.next()) {
+                    if (ress.getString("Type").equals("Permanent ban") || ress.getString("Type").equals("Temporary ban")) bans++;
+                    if (ress.getString("Type").equals("Kick")) kicks++;
+                    if (ress.getString("Type").equals("Mute")) mutes++;
+                    inf++;
+                }
                 String fsl = new Date(res.getLong("FirstLogin")).toGMTString();
                 String lsl = new Date(res.getLong("LastLogin")).toGMTString();
+                //---------------------------------------------------------------------------------------
                 TextComponent reason = new TextComponent(res.getString("BanReason")); reason.setColor(ChatColor.GOLD);
                 TextComponent until = (res.getLong("BanUntil")!=-1) ?
                         new TextComponent("Until: "+(new Date(res.getLong("BanUntil")).toGMTString().replace("GMT","UTC")))
@@ -46,7 +54,14 @@ public class NewLookupCommand extends Command {
                 BaseComponent[] banReason = new BaseComponent[2];
                 banReason[0] = reason; banReason[1] = until;
                 HoverEvent banInfo = new HoverEvent(HoverEvent.Action.SHOW_TEXT, banReason);
-
+                //----------------------------------------------------------------------------------------
+                TextComponent ban = new TextComponent("Bans: "+bans); ban.setColor(ChatColor.GOLD);
+                TextComponent kick = new TextComponent("Kicks: "+bans); kick.setColor(ChatColor.GOLD);
+                TextComponent mute = new TextComponent("Mutes: "+bans); mute.setColor(ChatColor.GOLD);
+                BaseComponent[] infractionsInfo = new BaseComponent[3];
+                infractionsInfo[0] = ban; infractionsInfo[1] = kick; infractionsInfo[2] = mute;
+                HoverEvent infractions = new HoverEvent(HoverEvent.Action.SHOW_TEXT, infractionsInfo);
+                //-----------------------------------------------------------------------------------------
                 ComponentBuilder header = prefix().append("Player lookup:").color(ChatColor.GOLD).bold(true).append(res.getString("PlayerName")).color(ChatColor.AQUA);
                 if(Banned == 1){
                     header.append(" [Banned]").color(ChatColor.DARK_RED).event(banInfo);
@@ -57,36 +72,10 @@ public class NewLookupCommand extends Command {
                 sender.sendMessage(new ComponentBuilder("Tournament points:").color(ChatColor.GOLD).append(""+res.getInt("TournPoints")).color(ChatColor.AQUA).create());
                 sender.sendMessage(new ComponentBuilder("First join: ").color(ChatColor.GOLD).append(fsl).color(ChatColor.AQUA).create());
                 sender.sendMessage(new ComponentBuilder("Last join: ").color(ChatColor.GOLD).append(lsl).color(ChatColor.AQUA).create());
-                //----------------------------------------------------------------------------------------------------------------------
-                //----------------------------------------------------------------------------------------------------------------------
-                //----------------------------------------------------------------------------------------------------------------------
-                //----------------------------------------------------------------------------------------------------------------------
-                ResultSet ress = s.executeQuery("SELECT * FROM McMInfractions WHERE PlayerName='" + args[0] + "'");
-                while (ress.next()) {
-                    if (ress.getString("Type").equals("Permanent ban") || ress.getString("Type").equals("Temporary ban")) bans++;
-                    if (ress.getString("Type").equals("Kick")) kicks++;
-                    if (ress.getString("Type").equals("Mute")) mutes++;
-                    inf++;
+                ComponentBuilder infraction = new ComponentBuilder("[Infractions "+inf+"]").color(ChatColor.RED).event(infractions);
+                if(inf != 0){
+                    sender.sendMessage(infraction.create());
                 }
-                sender.sendMessage(new ComponentBuilder("Total Infractions: ").color(ChatColor.GOLD).append(inf+"").color(ChatColor.AQUA).create());
-                //sender.sendMessage("§6Total infractions: §b" + inf);
-                sender.sendMessage(new ComponentBuilder("- Bans: ").color(ChatColor.GOLD).append(bans+"").color(ChatColor.AQUA).create());
-                //sender.sendMessage("§6- Bans: §b" + bans);
-                sender.sendMessage(new ComponentBuilder("- Kicks: ").color(ChatColor.GOLD).append(kicks+"").color(ChatColor.AQUA).create());
-                //sender.sendMessage("§6- Kicks: §b" + kicks);
-                sender.sendMessage(new ComponentBuilder("- Mutes: ").color(ChatColor.GOLD).append(mutes+"").color(ChatColor.AQUA).create());
-                //sender.sendMessage("§6- Mutes: §b" + mutes);
-                sender.sendMessage(new ComponentBuilder("Is banned: ").color(ChatColor.GOLD).append((res.getInt("Banned")==1)?"Yes":"No").color(ChatColor.AQUA).create());
-                //sender.sendMessage("§6Is banned: §b" + yesorno(res.getInt("Banned")));
-                if (res.getInt("Banned")==1) {
-                    sender.sendMessage(new ComponentBuilder("- Reason:").append(res.getString("BanReason")).color(ChatColor.AQUA).create());
-                    //sender.sendMessage("§6- Reason:§b" + res.getString("BanReason"));
-                    if (res.getLong("BanUntil")!=-1){
-                        sender.sendMessage(new ComponentBuilder("- Until: ").color(ChatColor.GOLD).append(new Date(res.getLong("BanUntil")).toGMTString().replace("GMT","UTC")).color(ChatColor.AQUA).create());
-                        //sender.sendMessage("§6- Until: §b" + new Date(res.getLong("BanUntil")).toGMTString().replace("GMT","UTC"));
-                    }
-                }
-                res.close();
             } else sender.sendMessage(prefix().append("No such player found!").color(ChatColor.RED).create());
         } catch (Exception ex) {
             ex.printStackTrace();

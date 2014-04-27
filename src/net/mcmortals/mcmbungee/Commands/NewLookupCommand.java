@@ -64,15 +64,15 @@ public class NewLookupCommand extends Command {
                     Ban = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/ban "+args[0]);
                 }
                 //---------------------------------------------------------------------------------------
-                /*HoverEvent mbanInfo = null;
+                /*HoverEvent muteInfo = null;
                 if (Muted) {
                     TextComponent mreason = new TextComponent("Reason: " + ChatColor.AQUA + res.getString("MuteReason")+ "\n"); mreason.setColor(ChatColor.GOLD);
                     TextComponent muntil = (res.getLong("MuteUntil")!=-1) ?
                             new TextComponent("Until: " + ChatColor.AQUA + (new Date(res.getLong("MuteUntil")).toGMTString().replace("GMT","UTC")))
                             : new TextComponent("Until: " + ChatColor.AQUA + "Permanent"); muntil.setColor(ChatColor.GOLD);
-                    BaseComponent[] mbanReason = new BaseComponent[2];
-                    mbanReason[0] = mreason; mbanReason[1] = muntil;
-                    mbanInfo = new HoverEvent(HoverEvent.Action.SHOW_TEXT, mbanReason);
+                    BaseComponent[] muteReason = new BaseComponent[2];
+                    muteReason[0] = mreason; muteReason[1] = muntil;
+                    muteInfo = new HoverEvent(HoverEvent.Action.SHOW_TEXT, muteReason);
                 }*/
                 //----------------------------------------------------------------------------------------
                 TextComponent ban = new TextComponent("Bans: " + ChatColor.AQUA + bans + "\n"); ban.setColor(ChatColor.GOLD);

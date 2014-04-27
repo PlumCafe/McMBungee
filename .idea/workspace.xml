@@ -7,7 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73c5036f-bd8a-495d-9c99-86e0030bd6c2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/main.java" afterPath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java" afterPath="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="McMBungee.iws" />
@@ -72,68 +72,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LookupCommand.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/LookupCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="14" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2180">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NewLookupCommand.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="NewLookupCommand.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="28" selection-start="7922" selection-end="7922" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1980">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CCommand.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Clans/CCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="264" column="9" selection-start="19653" selection-end="19653" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5640">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BanCommand.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/BanCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="4" selection-start="1290" selection-end="1290" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1120">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Hub.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Hub.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="17" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="460">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="103" selection-start="2618" selection-end="2618" vertical-scroll-proportion="0.6313416" vertical-offset="0" max-vertical-offset="4340">
+            <state line="63" column="33" selection-start="3880" selection-end="3880" vertical-scroll-proportion="0.72153324" vertical-offset="620" max-vertical-offset="2400">
               <folding>
-                <element signature="e#1043#1051#0" expanded="true" />
-                <element signature="e#1105#1113#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="McMCommand.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/McMCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="9" selection-start="6346" selection-end="6346" vertical-scroll-proportion="0.0" vertical-offset="2220" max-vertical-offset="2980">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -171,8 +116,8 @@
         <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/UnuteCommand.java" />
         <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/UnmuteCommand.java" />
         <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/LookupCommand.java" />
-        <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java" />
         <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/main.java" />
+        <option value="$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java" />
       </list>
     </option>
   </component>
@@ -611,7 +556,11 @@
       <created>1398600527975</created>
       <updated>1398600527975</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="/nlookup&#10;">
+      <created>1398601688456</created>
+      <updated>1398601688456</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -626,6 +575,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -637,17 +587,16 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.185836" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1315229" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39848813" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25549048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3987441" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
@@ -959,11 +908,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="36" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1105" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageMsg.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="55" column="16" selection-start="2456" selection-end="2485" vertical-scroll-proportion="0.0" vertical-offset="443" max-vertical-offset="1020">
@@ -1006,13 +950,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="21" selection-start="1743" selection-end="1743" vertical-scroll-proportion="0.7649044" vertical-offset="0" max-vertical-offset="889">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/KickCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="60" selection-start="1452" selection-end="1452" vertical-scroll-proportion="0.60088694" vertical-offset="18" max-vertical-offset="920">
@@ -1034,23 +971,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="28" selection-start="7922" selection-end="7922" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1980">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Clans/CCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="264" column="9" selection-start="19653" selection-end="19653" vertical-scroll-proportion="0.0" vertical-offset="4182" max-vertical-offset="4794">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/BanCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="4" selection-start="1290" selection-end="1290" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1120">
           <folding />
         </state>
       </provider>
@@ -1069,12 +992,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/Staff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="12" selection-start="1582" selection-end="1582" vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="860">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="103" selection-start="2618" selection-end="2618" vertical-scroll-proportion="0.6313416" vertical-offset="0" max-vertical-offset="4340">
+        <state line="111" column="17" selection-start="4929" selection-end="4929" vertical-scroll-proportion="0.0" vertical-offset="1668" max-vertical-offset="4340">
           <folding>
             <element signature="e#1043#1051#0" expanded="true" />
             <element signature="e#1105#1113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/MessageR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="41" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0" vertical-offset="248" max-vertical-offset="1300">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/BanCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="4" selection-start="1290" selection-end="1290" vertical-scroll-proportion="0.5862458" vertical-offset="0" max-vertical-offset="1120">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/mcmortals/mcmbungee/Commands/NewLookupCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="33" selection-start="3880" selection-end="3880" vertical-scroll-proportion="0.72153324" vertical-offset="620" max-vertical-offset="2400">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

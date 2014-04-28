@@ -7,7 +7,6 @@ import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
-import net.md_5.bungee.protocol.packet.Chat;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -39,7 +38,7 @@ public class CCommand extends Command {
                     if (!isInAClan((ProxiedPlayer) sender)) {
                         try {
                             Statement s = this.m.connect.createStatement();
-                            String jc = randomString(5);
+                            String jc = randomString();
                             s.executeUpdate("INSERT INTO McMClan (Name, Owner, JoinCode) VALUES ('" + args[1] +"', '" + sender.getName() +"', '" + jc + "')");
                             ResultSet res = s.executeQuery("SELECT * FROM McMClan WHERE Name='" + args[1] + "'");
                             if (res.next()) {
@@ -66,7 +65,13 @@ public class CCommand extends Command {
                                 sender.sendMessage(prefix().append("Clan owner: ").color(ChatColor.AQUA).append(own).color(ChatColor.GREEN).create());
                                 sender.sendMessage(prefix().append("Clan members: ").color(ChatColor.AQUA).create());
                                 ResultSet re = s.executeQuery("SELECT * FROM McMPData WHERE ClanID='" + getClan((ProxiedPlayer) sender) + "'");
-                                try {while (re.next()) { sender.sendMessage(prefix().append("> ").color(ChatColor.GOLD).bold(true).append(re.getString("PlayerName")).color(ChatColor.GREEN).bold(false).create()); } } catch (Exception ex) {}
+                                try {
+                                    while (re.next()) {
+                                        sender.sendMessage(prefix().append("> ").color(ChatColor.GOLD).bold(true).append(re.getString("PlayerName")).color(ChatColor.GREEN).bold(false).create());
+                                    }
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                }
                                 if (own.equals(sender.getName())) {
                                     sender.sendMessage(prefix().append(" ====== Owner info ====== ").color(ChatColor.RED).bold(false).create());
                                     sender.sendMessage(prefix().append("Join code: ").color(ChatColor.AQUA).append(jc).color(ChatColor.GREEN).create());
@@ -196,7 +201,7 @@ public class CCommand extends Command {
         } else sender.sendMessage(prefix().append("You cannot create a clan console!").color(ChatColor.RED).create());
     }
 
-    public ComponentBuilder prefix() {
+    ComponentBuilder prefix() {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("Clan").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
     }
 
@@ -223,11 +228,11 @@ public class CCommand extends Command {
         return -1;
     }
 
-    String randomString(final int len) {
+    String randomString() {
         String AB = "0123456789";
         Random rnd = new Random();
-        StringBuilder sb = new StringBuilder( len );
-        for( int i = 0; i < len; i++ )
+        StringBuilder sb = new StringBuilder(5);
+        for( int i = 0; i < 5; i++ )
             sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
         return sb.toString();
     }
@@ -239,18 +244,21 @@ public class CCommand extends Command {
             while (res.next()) {
                 try {
                     ProxyServer.getInstance().getPlayer(res.getString("PlayerName")).sendMessage(prefix().append(msg).create());
-                } catch (Exception ex) {}
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
-        } catch (Exception ex) {}
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
-    public String getPlayerName(String name, ChatColor cc) {
+    String getPlayerName(String name, ChatColor cc) {
         try {
-        int rank = 0;
         Statement s = m.connect.createStatement();
         ResultSet res = s.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + name + "'");
         if (!res.next()) return "§f" + cc + name + "§r";
-        rank = res.getInt("Rank");
+        int rank = res.getInt("Rank");
         if (rank==10) {
             return "§4§l[Op] §b"+ name + "§r";
         }
@@ -281,7 +289,9 @@ public class CCommand extends Command {
         if (rank==1) {
             return "§a[VIP] §f" + cc  + name + "§r";
         }
-        } catch (Exception ex) {}
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         return "§f" + cc  + name + "§r";
     }
 }

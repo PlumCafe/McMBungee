@@ -13,7 +13,7 @@ import java.util.Calendar;
 
 public class MuteCommand
         extends Command {
-    main m = new main();
+    private main m = new main();
 
     public MuteCommand(main This) {
         super("mute", "");
@@ -51,18 +51,20 @@ public class MuteCommand
                             ProxyServer.getInstance().getPlayer(args[0]).sendMessage("§4[§cMcM§4] §cYou have been muted! Reason:§6" + msg);
                             ProxyServer.getInstance().getPlayer(args[0]).sendMessage("§4[§cMcM§4] §cYour mute expires on: §6" +c.getTime().toGMTString().replace("GMT", "UTC"));
                             m.muted.add(args[0].toLowerCase());
-                        } catch (Exception ex) {}
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                     } else sender.sendMessage(prefix().append("No such player has ever joined!").color(ChatColor.RED).create());
                 } else sender.sendMessage(prefix().append("Usage: §b/mute [Player] [Time] [Reason]").color(ChatColor.RED).create());
             } else sender.sendMessage(prefix().append("You cannot do that!").color(ChatColor.RED).create());
         } catch (Exception ex) {ex.printStackTrace();}
     }
 
-    public ComponentBuilder prefix() {
+    ComponentBuilder prefix() {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
     }
 
-    public int textToSec(String m) {
+    int textToSec(String m) {
         try {
         if (m.substring(m.length()-1).equalsIgnoreCase("S")) {
             return Integer.parseInt(m.substring(0,m.length()-1));
@@ -73,7 +75,9 @@ public class MuteCommand
         } else if (m.substring(m.length()-1).equalsIgnoreCase("D")) {
             return Integer.parseInt(m.substring(0,m.length()-1))*3600*24;
         }
-        }catch (Exception ex) {}
+        }catch (Exception ex) {
+            ex.printStackTrace();
+        }
         return -1;
     } 
     

@@ -8,12 +8,11 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
-import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class KickCommand
         extends Command {
-    main m = new main();
+    private main m = new main();
 
     public KickCommand(main This) {
         super("kick", "");
@@ -37,13 +36,17 @@ public class KickCommand
                         statement.executeUpdate("INSERT INTO McMInfractions (PlayerName, Enforcer, Type, Reason) VALUES " +
                                 "('" + args[0] + "', '" + sender.getName() + "', '" + "Kick" + "', '" + msg + "')");
                         m.sendToStaff(ChatColor.AQUA + sender.getName() + " kicked " + args[0] + " for " + msg + ".");
-                    } catch (Exception ex) {}
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                 } else sender.sendMessage(prefix().append("Usage: §b/kick [Player] [Reason]").color(ChatColor.RED).create());
             } else sender.sendMessage(prefix().append("You cannot do that!").color(ChatColor.RED).create());
-        } catch (Exception ex) {}
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
-    public ComponentBuilder prefix() {
+    ComponentBuilder prefix() {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
     }
 }

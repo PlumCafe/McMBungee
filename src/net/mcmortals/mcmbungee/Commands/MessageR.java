@@ -1,18 +1,14 @@
 package net.mcmortals.mcmbungee.Commands;
 
-import java.util.HashMap;
-
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
 public class MessageR
         extends Command {
-    main m = new main();
+    private main m = new main();
 
     public MessageR(main This) {
         super("r", "");
@@ -27,7 +23,7 @@ public class MessageR
         if (args.length >= 1) {
             if (this.m.lstm.containsKey(sender)) {
                 try {
-                    CommandSender rec = (CommandSender) this.m.lstm.get(sender);
+                    CommandSender rec = this.m.lstm.get(sender);
                     if (rec.equals(sender)) {
                         sender.sendMessage(prefix().append("Cannot message yourself!").color(ChatColor.RED).create());
                     }
@@ -42,13 +38,13 @@ public class MessageR
                     } while (w < args.length);
                     rec.sendMessage(
                             new ComponentBuilder("From ").color(ChatColor.LIGHT_PURPLE).
-                                    append(this.m.getPlayerDisplay(sender, ChatColor.WHITE, false)).bold(false).
+                                    append(this.m.getPlayerDisplay(sender)).bold(false).
                                     append(":").color(ChatColor.LIGHT_PURPLE).
                                     append(msg).color(ChatColor.GRAY).create()
                     );
                     sender.sendMessage(
                             new ComponentBuilder("To ").color(ChatColor.LIGHT_PURPLE).
-                                    append(this.m.getPlayerDisplay(rec, ChatColor.WHITE, false)).bold(false).
+                                    append(this.m.getPlayerDisplay(rec)).bold(false).
                                     append(":").color(ChatColor.LIGHT_PURPLE).
                                     append(msg).color(ChatColor.GRAY).create()
                     );

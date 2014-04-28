@@ -3,17 +3,12 @@ package net.mcmortals.mcmbungee.Commands;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
-
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class SCommand
         extends Command {
-    main m = new main();
+    private main m = new main();
 
     public SCommand(main This) {
         super("s", "");
@@ -31,14 +26,14 @@ public class SCommand
                         w++;
                     } while (w < args.length);
                     if (m.hasPermission(sender,8)) {
-                        m.sendToStaff(m.getPlayerDisplay(sender,ChatColor.WHITE,false) + " §b§l>§f" + msg);
-                    } else m.sendToStaff(m.getPlayerDisplay(sender,ChatColor.WHITE,false) + " §f§l>§f" + msg);
+                        m.sendToStaff(m.getPlayerDisplay(sender) + " §b§l>§f" + msg);
+                    } else m.sendToStaff(m.getPlayerDisplay(sender) + " §f§l>§f" + msg);
                 } else sender.sendMessage(prefix().append("Usage: §b/s [Message]").color(ChatColor.RED).create());
             } else sender.sendMessage(prefix().append("You cannot do that!").color(ChatColor.RED).create());
         } catch (Exception ex) {ex.printStackTrace();}
     }
 
-    public ComponentBuilder prefix() {
+    ComponentBuilder prefix() {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
     }
 }

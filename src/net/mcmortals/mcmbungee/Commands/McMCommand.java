@@ -1,17 +1,17 @@
 package net.mcmortals.mcmbungee.Commands;
 
-import java.sql.ResultSet;
-import java.sql.Statement;
-
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.plugin.Command;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 public class McMCommand
         extends Command {
-    main m = new main();
+    private main m = new main();
 
     public McMCommand(main This) {
         super("mcm", "");
@@ -87,7 +87,7 @@ public class McMCommand
                         ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[1] + "'");
                         if (res.next()) {
                             statement.executeUpdate("UPDATE McMPData SET Rank='" + Integer.parseInt(args[2]) + "' WHERE PlayerName='" + args[1] + "'");
-                            this.m.sendToStaff(ChatColor.AQUA + "Set " + args[1] + "'s rank to " + getRank(Integer.valueOf(Integer.parseInt(args[2]))) + ChatColor.GREEN + "");
+                            this.m.sendToStaff(ChatColor.AQUA + "Set " + args[1] + "'s rank to " + getRank(Integer.parseInt(args[2])) + ChatColor.GREEN + "");
                         } else {
                             sender.sendMessage(prefix().append("No such players has ever joined!").color(ChatColor.RED).create());
                         }
@@ -137,7 +137,7 @@ public class McMCommand
         return "Normal";
     }
 
-    public ComponentBuilder prefix() {
+    ComponentBuilder prefix() {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
     }
 }

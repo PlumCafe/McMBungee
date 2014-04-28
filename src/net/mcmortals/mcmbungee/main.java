@@ -24,14 +24,14 @@ import java.util.HashMap;
 public class main
         extends Plugin
         implements Listener {
-    public HashMap<CommandSender, CommandSender> lstm = new HashMap();
-    public HashMap<String, Integer> rank = new HashMap();
+    public final HashMap<CommandSender, CommandSender> lstm = new HashMap<CommandSender, CommandSender>();
+    private final HashMap<String, Integer> rank = new HashMap<String, Integer>();
 
-    ArrayList<String> banNot = new ArrayList<String>();
-    public ArrayList<String> muted = new ArrayList<String>();
+    //private final ArrayList<String> banNot = new ArrayList<String>();
+    public final ArrayList<String> muted = new ArrayList<String>();
 
     public void onEnable() {
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Hub(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Hub());
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new MessageMsg(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new MessageR(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Staff(this));
@@ -52,7 +52,7 @@ public class main
 
     public Connection connect = null;
 
-    public void prepare() {
+    void prepare() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connect = DriverManager.getConnection("jdbc:mysql://mysql.hostbukkit.com/hostbukk_444?autoReconnect=true", "hostbukk_444", "#w(oEkobfco&");
@@ -61,13 +61,10 @@ public class main
         }
     }
 
-    public String getPlayerDisplay(CommandSender p, ChatColor cl, boolean a) {
+    public String getPlayerDisplay(CommandSender p) {
         if (!(p instanceof ProxiedPlayer)) return ChatColor.GRAY + "Console";
         try {
             String t = "";
-            if (a) {
-                t = "§l";
-            }
             if (hasPermission(p,10)) {
                 return "§4§l[Op] §b" + t +  p.getName() + "§r";
             }
@@ -78,27 +75,27 @@ public class main
                 return "§c§l[Admin] §b" + t + p.getName() + "§r";
             }
             if (hasPermission(p,7)) {
-                return "§2[Mod] §f" + cl+  t +   p.getName() + "§r";
+                return "§2[Mod] §f" + ChatColor.WHITE +  t +   p.getName() + "§r";
             }
             if (hasPermission(p,6)) {
-                return "§9[Helper] §f" + cl + t +  p.getName() + "§r";
+                return "§9[Helper] §f" + ChatColor.WHITE + t +  p.getName() + "§r";
             }
             if (hasPermission(p,5)) {
-                return "§2[Host] " + cl+  t + p.getName() + "§r";
+                return "§2[Host] " + ChatColor.WHITE +  t + p.getName() + "§r";
             }
             if (hasPermission(p,4)) {
-                return "§3[Builder] §f" + cl + t +  p.getName() + "§r";
+                return "§3[Builder] §f" + ChatColor.WHITE + t +  p.getName() + "§r";
             }
             if (hasPermission(p,3)) {
-                return "§4[Legend] §f" + cl + t +  p.getName() + "§r";
+                return "§4[Legend] §f" + ChatColor.WHITE + t +  p.getName() + "§r";
             }
             if (hasPermission(p,2)) {
-                return "§6[YT] §f"+ cl + t +  p.getName() + "§r";
+                return "§6[YT] §f"+ ChatColor.WHITE + t +  p.getName() + "§r";
             }
             if (hasPermission(p,1)) {
-                return "§a[VIP] §f" + cl + t + p.getName() + "§r";
+                return "§a[VIP] §f" + ChatColor.WHITE + t + p.getName() + "§r";
             }
-            return "§7" + cl + t + p.getName() + "§r";
+            return "§7" + ChatColor.WHITE + t + p.getName() + "§r";
         } catch (Exception ex) {
             ex.printStackTrace();}
         return null;
@@ -109,11 +106,9 @@ public class main
             return true;
         }
         try {
-            if ((Integer) this.rank.get(p.getName()) >= i) {
-                return true;
-            }
-            return false;
+            return this.rank.get(p.getName()) >= i;
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
         return false;
     }
@@ -146,7 +141,7 @@ public class main
                     if (res.getLong("BanUntil")> Calendar.getInstance().getTimeInMillis()) {
                         e.getConnection().disconnect("§cYou have been temporarily banned from the server!§r\n §cReason:§6" + res.getString("BanReason") + "\n§cBanned until: §6" + new Date(res.getLong("BanUntil")).toGMTString().replace("GMT", "UTC") +"\n§6Appeal on http://www.mcmortals.net!");
                     } else {
-                        banNot.add(PlayerName);
+                        //banNot.add(PlayerName);
                         statement.executeUpdate("UPDATE McMPData SET Banned=0 WHERE PlayerName='" + PlayerName + "'");
                         statement.executeUpdate("UPDATE McMPData SET BanReason=null WHERE PlayerName='" + PlayerName + "'");
                         statement.executeUpdate("UPDATE McMPData SET BanUntil=0 WHERE PlayerName='" + PlayerName + "'");
@@ -176,7 +171,7 @@ public class main
     @EventHandler
     public void disconnect(PlayerDisconnectEvent e) {
         if (hasPermission(e.getPlayer(), 3)) {
-            sendToStaff(ChatColor.YELLOW + getPlayerDisplay(e.getPlayer(), ChatColor.WHITE, false) + ChatColor.AQUA + " disconnected!");
+            sendToStaff(ChatColor.YELLOW + getPlayerDisplay(e.getPlayer()) + ChatColor.AQUA + " disconnected!");
         }
     }
 
@@ -188,7 +183,9 @@ public class main
                 if (res.next()) {
                     e.getResponse().setDescription("§4§lMCMortals §c|| §bPvP Madness\n§aWelcome back, §l" + res.getString("PlayerName") + "§a, to the realm of PvP!"); return;
                 }
-        } catch (Exception ex) {}
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         e.getResponse().setDescription("§4§lMCMortals §c|| §bPvP Madness\n§aWelcome to the realm of PvP!");
     }
 
@@ -205,20 +202,18 @@ public class main
                             Long time = res.getLong("MuteUntil");
                             if (time>Calendar.getInstance().getTimeInMillis()) {
                                 ((ProxiedPlayer) e.getSender()).sendMessage("§4[§cMcM§4] §cYou are muted until: §6" + new Date(time).toGMTString().replace("GMT","UTC"));
-                                e.setCancelled(true); return;
+                                e.setCancelled(true);
                             } else if (res.getLong("MuteUntil")==-1) {
                                 ((ProxiedPlayer) e.getSender()).sendMessage("§4[§cMcM§4] §cYou are muted!");
-                                e.setCancelled(true); return;
+                                e.setCancelled(true);
                             } else {
                                 s.executeUpdate("UPDATE McMPData SET Muted=0 WHERE PlayerName='" + name + "'");
                                 s.executeUpdate("UPDATE McMPData SET MuteReason=null WHERE PlayerName='" + name + "'");
                                 s.executeUpdate("UPDATE McMPData SET MuteUntil=0 WHERE PlayerName='" + name + "'");
                                 muted.remove(name.toLowerCase());
-                                return;
                             }
                         } else {
                             muted.remove(name.toLowerCase());
-                            return;
                         }
                     }
                 } catch (Exception ex) {

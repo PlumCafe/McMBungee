@@ -10,9 +10,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Date;
 
-public class LookupCommand extends Command {
+class LookupCommand extends Command {
 
-    main m = null;
+    private main m = null;
 
     public LookupCommand(main This) {
         super("lookup", "","lp");
@@ -26,7 +26,7 @@ public class LookupCommand extends Command {
                     Statement s = m.connect.createStatement();
                     ResultSet res = s.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[0] +"'") ;
                     if (res.next()) {
-                        sender.sendMessage("§4[§cMcM§4] §6§lPlayer lookup: §f" + getPlayerName(res.getString("PlayerName"),ChatColor.WHITE,res.getInt("Rank")));
+                        sender.sendMessage("§4[§cMcM§4] §6§lPlayer lookup: §f" + getPlayerName(res.getString("PlayerName"), res.getInt("Rank")));
                         sender.sendMessage("§6Rank: " + McMCommand.getRank(res.getInt("Rank")));
                         sender.sendMessage("§6Tokens: §b" + res.getInt("Tokens"));
                         sender.sendMessage("§6Tournament points: §b" + res.getInt("TournPoints"));
@@ -63,11 +63,11 @@ public class LookupCommand extends Command {
         } else sender.sendMessage(prefix().append("You cannot do that!").color(ChatColor.RED).create());
     }
 
-    public ComponentBuilder prefix() {
+    ComponentBuilder prefix() {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
     }
 
-    public static String getPlayerName(String name, ChatColor cc, Integer rank) {
+    private static String getPlayerName(String name, Integer rank) {
         try {
             if (rank==10) {
                 return "§4§l[Op] §b"+ name + "§r";
@@ -79,31 +79,33 @@ public class LookupCommand extends Command {
                 return "§c§l[Admin] §b" + name + "§r";
             }
             if (rank==7) {
-                return "§2[Mod] §f" + cc + name + "§r";
+                return "§2[Mod] §f" + ChatColor.WHITE + name + "§r";
             }
             if (rank==6) {
-                return "§9[Helper] §f" + cc  + name + "§r";
+                return "§9[Helper] §f" + ChatColor.WHITE + name + "§r";
             }
             if (rank==5) {
-                return "§2[Host] §f" + cc  + name + "§r";
+                return "§2[Host] §f" + ChatColor.WHITE + name + "§r";
             }
             if (rank==4) {
-                return "§3[Builder] §f" + cc  + name + "§r";
+                return "§3[Builder] §f" + ChatColor.WHITE + name + "§r";
             }
             if (rank==3) {
-                return "§4[Legend] §f" + cc  + name + "§r";
+                return "§4[Legend] §f" + ChatColor.WHITE + name + "§r";
             }
             if (rank==2) {
-                return "§6[YT] §f" + cc  + name + "§r";
+                return "§6[YT] §f" + ChatColor.WHITE + name + "§r";
             }
             if (rank==1) {
-                return "§a[VIP] §f" + cc  + name + "§r";
+                return "§a[VIP] §f" + ChatColor.WHITE + name + "§r";
             }
-        } catch (Exception ex) {}
-        return "§f" + cc  + name + "§r";
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return "§f" + ChatColor.WHITE + name + "§r";
     }
 
-    public String yesorno(int a) {
+    String yesorno(int a) {
         if (a==1) return "Yes";
         return "No";
     }

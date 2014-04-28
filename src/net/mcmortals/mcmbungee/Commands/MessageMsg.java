@@ -1,20 +1,16 @@
 package net.mcmortals.mcmbungee.Commands;
 
-import java.awt.*;
-import java.util.HashMap;
-
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
-import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
 public class MessageMsg
         extends Command {
-    main m = new main();
+    private main m = new main();
 
     public MessageMsg(main This) {
         super("msg", "", "tell", "w");
@@ -43,13 +39,13 @@ public class MessageMsg
                 } while (w < args.length);
                 rec.sendMessage(
                         new ComponentBuilder("From ").color(ChatColor.LIGHT_PURPLE).
-                        append(this.m.getPlayerDisplay(sender, ChatColor.WHITE, false)).bold(false).
+                        append(this.m.getPlayerDisplay(sender)).bold(false).
                         append(":").color(ChatColor.LIGHT_PURPLE).
                         append(msg).color(ChatColor.GRAY).create()
                 );
                 sender.sendMessage(
                         new ComponentBuilder("To ").color(ChatColor.LIGHT_PURPLE).
-                                append(this.m.getPlayerDisplay(rec, ChatColor.WHITE, false)).bold(false).
+                                append(this.m.getPlayerDisplay(rec)).bold(false).
                                 append(":").color(ChatColor.LIGHT_PURPLE).
                                 append(msg).color(ChatColor.GRAY).create()
                 );

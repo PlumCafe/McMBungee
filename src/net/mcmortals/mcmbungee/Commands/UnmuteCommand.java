@@ -11,7 +11,7 @@ import java.sql.Statement;
 
 public class UnmuteCommand
         extends Command {
-    main m = new main();
+    private main m = new main();
 
     public UnmuteCommand(main This) {
         super("unmute", "");
@@ -38,7 +38,7 @@ public class UnmuteCommand
         } catch (Exception ex) {ex.printStackTrace();}
     }
 
-    public ComponentBuilder prefix() {
+    ComponentBuilder prefix() {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
     }
 }

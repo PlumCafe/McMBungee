@@ -1,5 +1,5 @@
 name: McMBungee
-version: 1
-description: McMBungee
-author: Bocktrow
+version: 1.0
+description: Core BungeeCord Plugin for McMortals
+authors: [Bocktrow, Red_Epicness]
 main: net.mcmortals.mcmbungee.main

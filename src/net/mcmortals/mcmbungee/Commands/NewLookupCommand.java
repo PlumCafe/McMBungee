@@ -67,11 +67,11 @@ public class NewLookupCommand extends Command {
                 //------------------------------MUTE EVENTS------------------------------------
                 HoverEvent muteInfo = null; ClickEvent Mute = null, unMute = null;
                 if (Muted) {
-                    TextComponent mreason = new TextComponent("Reason: " + ChatColor.AQUA + res.getString("MuteReason")+ "\n"); mreason.setColor(ChatColor.GOLD);
-                    TextComponent muntil = (res.getLong("MuteUntil")!=-1) ?
+                    TextComponent reason = new TextComponent("Reason: " + ChatColor.AQUA + res.getString("MuteReason")+ "\n"); reason.setColor(ChatColor.GOLD);
+                    TextComponent until = (res.getLong("MuteUntil")!=-1) ?
                             new TextComponent("Until: " + ChatColor.AQUA + (new Date(res.getLong("MuteUntil")).toGMTString().replace("GMT","UTC")))
-                            : new TextComponent("Until: " + ChatColor.AQUA + "Permanent"); muntil.setColor(ChatColor.GOLD);
-                    BaseComponent[] muteReason = {mreason, muntil};
+                            : new TextComponent("Until: " + ChatColor.AQUA + "Permanent"); until.setColor(ChatColor.GOLD);
+                    BaseComponent[] muteReason = {reason, until};
                     muteInfo = new HoverEvent(HoverEvent.Action.SHOW_TEXT, muteReason);
                     unMute = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/unmute "+args[0]);
                 }

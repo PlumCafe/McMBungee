@@ -124,7 +124,7 @@ public class NewLookupCommand extends Command {
     }
 
     ComponentBuilder prefix() {
-        return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
+        return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ");
     }
 
     /*private static void appendName(ComponentBuilder b, int rank, String name){

@@ -237,28 +237,37 @@ public class main
         boolean Bold = false;
         boolean Underlined = false;
         boolean Striketrough = false;
+        boolean Skipnext = false;
         for(int a = 0; a < toConvert.length(); a++){
             if(toConvert.charAt(a) != '§'){
                 toAppend += toConvert.charAt(a);
             }
             else{
-                switch(toConvert.charAt(a)){
-                    case ('0'): PendingColor = ChatColor.BLACK; break;
-                    case ('1'): PendingColor = ChatColor.BLACK; break;
-                    case ('2'): PendingColor = ChatColor.BLACK; break;
-                    case ('3'): PendingColor = ChatColor.BLACK; break;
-                    case ('4'): PendingColor = ChatColor.BLACK; break;
-                    case ('5'): PendingColor = ChatColor.BLACK; break;
-                    case ('6'): PendingColor = ChatColor.BLACK; break;
-                    case ('7'): PendingColor = ChatColor.BLACK; break;
-                    case ('8'): PendingColor = ChatColor.BLACK; break;
-                    case ('9'): PendingColor = ChatColor.BLACK; break;
-                    case ('a'): PendingColor = ChatColor.BLACK; break;
-                    case ('b'): PendingColor = ChatColor.BLACK; break;
-                    case ('c'): PendingColor = ChatColor.BLACK; break;
-                    case ('d'): PendingColor = ChatColor.BLACK; break;
-                    case ('e'): PendingColor = ChatColor.BLACK; break;
-                    case ('f'): PendingColor = ChatColor.BLACK; break;
+                switch(toConvert.charAt(a+1)){
+                    case ('k'): Obfuscated = true; break;
+                    case ('l'): Bold = true; break;
+                    case ('m'): Striketrough = true; break;
+                    case ('n'): Underlined = true; break;
+                    case ('o'): Italic = true; break;
+                    case ('r'): break;//SPECIAL
+                }
+                switch(toConvert.charAt(a+1)){
+                    case ('0'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.BLACK; break;
+                    case ('1'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.DARK_BLUE; break;
+                    case ('2'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.DARK_GREEN; break;
+                    case ('3'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.DARK_AQUA; break;
+                    case ('4'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.DARK_RED; break;
+                    case ('5'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.DARK_PURPLE; break;
+                    case ('6'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.GOLD; break;
+                    case ('7'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.GRAY; break;
+                    case ('8'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.DARK_GRAY; break;
+                    case ('9'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.BLUE; break;
+                    case ('a'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.GREEN; break;
+                    case ('b'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.AQUA; break;
+                    case ('c'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.RED; break;
+                    case ('d'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.LIGHT_PURPLE; break;
+                    case ('e'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.YELLOW; break;
+                    case ('f'): converted.append(toAppend).color(PendingColor); Skipnext = true; PendingColor = ChatColor.WHITE; break;
                 }
             }
         }

@@ -5,6 +5,7 @@ import net.mcmortals.mcmbungee.Commands.*;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.ChatEvent;
@@ -222,4 +223,46 @@ public class main
             }
         }
     }
+    //----------------------------------NOT FINISHED-------------------------------
+    public BaseComponent[] fromLegacyText(String... text){
+        String toConvert = "";
+        for(String a : text){
+            toConvert += a;
+        }
+        ComponentBuilder converted = new ComponentBuilder("");
+        String toAppend = "";
+        ChatColor PendingColor = null;
+        boolean Italic = false;
+        boolean Obfuscated = false;
+        boolean Bold = false;
+        boolean Underlined = false;
+        boolean Striketrough = false;
+        for(int a = 0; a < toConvert.length(); a++){
+            if(toConvert.charAt(a) != '§'){
+                toAppend += toConvert.charAt(a);
+            }
+            else{
+                switch(toConvert.charAt(a)){
+                    case ('0'): PendingColor = ChatColor.BLACK; break;
+                    case ('1'): PendingColor = ChatColor.BLACK; break;
+                    case ('2'): PendingColor = ChatColor.BLACK; break;
+                    case ('3'): PendingColor = ChatColor.BLACK; break;
+                    case ('4'): PendingColor = ChatColor.BLACK; break;
+                    case ('5'): PendingColor = ChatColor.BLACK; break;
+                    case ('6'): PendingColor = ChatColor.BLACK; break;
+                    case ('7'): PendingColor = ChatColor.BLACK; break;
+                    case ('8'): PendingColor = ChatColor.BLACK; break;
+                    case ('9'): PendingColor = ChatColor.BLACK; break;
+                    case ('a'): PendingColor = ChatColor.BLACK; break;
+                    case ('b'): PendingColor = ChatColor.BLACK; break;
+                    case ('c'): PendingColor = ChatColor.BLACK; break;
+                    case ('d'): PendingColor = ChatColor.BLACK; break;
+                    case ('e'): PendingColor = ChatColor.BLACK; break;
+                    case ('f'): PendingColor = ChatColor.BLACK; break;
+                }
+            }
+        }
+
+    }
+
 }

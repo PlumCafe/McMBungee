@@ -155,19 +155,8 @@ public class main
             statement.executeUpdate("INSERT INTO McMPData (PlayerName, IPAddress, UUID, FirstLogin, LastLogin) VALUES ('" + PlayerName + "', '" + e.getConnection().getAddress().getAddress().getHostAddress() + "', '...', " + now + ", " + now +")");
             this.rank.put(PlayerName, 0);
         }
+        sendToStaff(ChatColor.YELLOW + NewLookupCommand.getPlayerName(PlayerName,ChatColor.YELLOW,rank.get(PlayerName)) + ChatColor.AQUA + " joined!");
     }
-
-    //@EventHandler
-    //public void onLogin(PostLoginEvent e) {
-        //if (rank.get(e.getPlayer().getName())>=2) {
-            //sendToStaff(ChatColor.YELLOW + LookupCommand.getPlayerName(e.getPlayer().getName(),ChatColor.YELLOW,rank.get(e.getPlayer().getName())) + ChatColor.AQUA + " joined!");
-        //}
-        //if (banNot.contains(e.getPlayer().getName())) {
-            //banNot.remove(e.getPlayer().getName());
-            //e.getPlayer().sendMessage("§4[§cMc4M§] §cYour temporary ban expired! Remember to follow the rules!");
-        //}
-
-    //}
 
     @EventHandler
     public void disconnect(PlayerDisconnectEvent e) {

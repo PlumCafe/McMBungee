@@ -127,19 +127,22 @@ public class NewLookupCommand extends Command {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ");
     }
 
-    /*private static void appendName(ComponentBuilder b, int rank, String name){
+    public static String getPlayerName( String name, ChatColor cl, int rank){
+        ComponentBuilder b = null;
+        if (cl==null) cl=ChatColor.WHITE;
         switch (rank){
-            case (10): b.append("[Op] ").color(ChatColor.DARK_RED).bold(true).append(name).color(ChatColor.AQUA).bold(false);
-            case (9): b.append("[Dev] ").color(ChatColor.DARK_PURPLE).bold(true).append(name).color(ChatColor.AQUA).bold(false);
-            case (8): b.append("[Admin] ").color(ChatColor.RED).bold(true).append(name).color(ChatColor.AQUA);
-            case (7): b.append("[Mod] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(ChatColor.WHITE);
-            case (6): b.append("[Helper] ").color(ChatColor.BLUE).bold(true).append(name).color(ChatColor.WHITE);
-            case (5): b.append("[Host] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(ChatColor.WHITE);
-            case (4): b.append("[Builder] ").color(ChatColor.DARK_AQUA).bold(true).append(name).color(ChatColor.WHITE);
-            case (3): b.append("[Legend] ").color(ChatColor.DARK_RED).bold(true).append(name).color(ChatColor.WHITE);
-            case (2): b.append("[YT] ").color(ChatColor.GOLD).bold(true).append(name).color(ChatColor.WHITE);
-            case (1): b.append("[VIP] ").color(ChatColor.GREEN).bold(true).append(name).color(ChatColor.WHITE);
-            default: b.append(name).color(ChatColor.WHITE);
+            case (10): b = new ComponentBuilder("[Op] ").color(ChatColor.DARK_RED).bold(true).append(name).color(ChatColor.AQUA).bold(false);
+            case (9): b = new ComponentBuilder("[Dev] ").color(ChatColor.DARK_PURPLE).bold(true).append(name).color(ChatColor.AQUA).bold(false);
+            case (8): b = new ComponentBuilder("[Admin] ").color(ChatColor.RED).bold(true).append(name).color(ChatColor.AQUA);
+            case (7): b = new ComponentBuilder("[Mod] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(cl);
+            case (6): b = new ComponentBuilder("[Helper] ").color(ChatColor.BLUE).bold(true).append(name).color(cl);
+            case (5): b = new ComponentBuilder("[Host] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(cl);
+            case (4): b = new ComponentBuilder("[Builder] ").color(ChatColor.DARK_AQUA).bold(true).append(name).color(cl);
+            case (3): b = new ComponentBuilder("[Legend] ").color(ChatColor.DARK_RED).bold(true).append(name).color(cl);
+            case (2): b = new ComponentBuilder("[YT] ").color(ChatColor.GOLD).bold(true).append(name).color(cl);
+            case (1): b = new ComponentBuilder("[VIP] ").color(ChatColor.GREEN).bold(true).append(name).color(cl);
+            default: b = new ComponentBuilder(name).color(cl);
         }
-    }*/
+        return b.toString();
+    }
 }

@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="McMBungee:jar">
-    <output-path>$USER_HOME$/Documents/Bungee/plugins</output-path>
-    <root id="archive" name="McMBungeecord.jar">
-      <element id="module-output" name="McMBungeecord" />
-    </root>
-  </artifact>
-</component>

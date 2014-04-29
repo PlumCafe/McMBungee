@@ -239,6 +239,7 @@ public class main
         boolean Striketrough = false;
         boolean Skipnext = false;
         for(int a = 0; a < toConvert.length(); a++){
+            if(Skipnext) break;
             if(toConvert.charAt(a) != '§'){
                 toAppend += toConvert.charAt(a);
             }

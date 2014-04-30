@@ -161,7 +161,7 @@ public class main
         BungeeCord.getInstance().getScheduler().schedule(this, new Runnable() {
             @Override
             public void run() {
-                sendToStaff(ChatColor.YELLOW + NewLookupCommand.getPlayerName(PlayerName, ChatColor.YELLOW, rank.get(PlayerName)) + ChatColor.AQUA + " joined!");
+                sendToStaff(ChatColor.YELLOW + NewLookupCommand.getPlayerName(PlayerName, ChatColor.WHITE, rank.get(PlayerName)) + ChatColor.AQUA + " joined!");
             }
         },500, TimeUnit.MILLISECONDS);
 

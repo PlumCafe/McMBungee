@@ -30,7 +30,7 @@ public class NewLookupCommand extends Command {
             return;
         }
         try {
-            DatabasePlayer dp = new DatabasePlayer(args[1], m.connect);
+            DatabasePlayer dp = new DatabasePlayer(args[0], m.connect);
             if (dp.exists()) {
                 boolean Banned = dp.isBanned();
                 boolean Muted = dp.isMuted();
@@ -52,7 +52,7 @@ public class NewLookupCommand extends Command {
                 //-------------------------------BAN EVENTS------------------------------------
                 HoverEvent banInfo = null; ClickEvent unBan = null;
                 if (Banned) {
-                    TextComponent reason = new TextComponent("Reason: " + ChatColor.AQUA + dp.getBanReason() + "\n"); reason.setColor(ChatColor.GOLD);
+                    TextComponent reason = new TextComponent("Reason:" + ChatColor.AQUA + dp.getBanReason() + "\n"); reason.setColor(ChatColor.GOLD);
                     long untill = dp.getBanEnd();
                     TextComponent until = (untill!=-1) ?
                             new TextComponent("Until: " + ChatColor.AQUA  +(new Date(untill).toGMTString().replace("GMT","UTC")))
@@ -65,7 +65,7 @@ public class NewLookupCommand extends Command {
                 //------------------------------MUTE EVENTS------------------------------------
                 HoverEvent muteInfo = null; ClickEvent unMute = null;
                 if (Muted) {
-                    TextComponent reason = new TextComponent("Reason: " + ChatColor.AQUA + dp.getMuteReason()+ "\n"); reason.setColor(ChatColor.GOLD);
+                    TextComponent reason = new TextComponent("Reason:" + ChatColor.AQUA + dp.getMuteReason()+ "\n"); reason.setColor(ChatColor.GOLD);
                     long untill = dp.getMuteEnd();
                     TextComponent until = (untill!=-1) ?
                             new TextComponent("Until: " + ChatColor.AQUA + (new Date(untill).toGMTString().replace("GMT","UTC")))
@@ -101,6 +101,7 @@ public class NewLookupCommand extends Command {
                 else{
                     banStatus.append("Not banned ").color(ChatColor.GREEN);
                 }
+                sender.sendMessage(banStatus.create());
                 // Muted section
                 ComponentBuilder muteStatus = new ComponentBuilder("Mute status: ").color(ChatColor.GOLD);
                 if(Muted){
@@ -108,8 +109,9 @@ public class NewLookupCommand extends Command {
                     muteStatus.append("[Unmute]").color(ChatColor.DARK_GREEN).event(unMute);
                 }
                 else{
-                    muteStatus.append("Not Muted ").color(ChatColor.GREEN);
+                    muteStatus.append("Not muted ").color(ChatColor.GREEN);
                 }
+                sender.sendMessage(muteStatus.create());
             } else sender.sendMessage(prefix().append("No info found for ").color(ChatColor.RED).append(args[0]).color(ChatColor.AQUA).create());
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -123,13 +125,13 @@ public class NewLookupCommand extends Command {
     public static String getPlayerName(String name, ChatColor t, int rank){
         if (t==null) t=ChatColor.WHITE;
             if ((rank==10)) {
-                return "§4§l[Op] §b" + t +  name + "§r";
+                return "§4§l[Op] §b"  +  name + "§r";
             }
             if ((rank==9)) {
-                return "§5§l[Dev] §b" + t + name + "§r";
+                return "§5§l[Dev] §b"+ name + "§r";
             }
             if ((rank==8)) {
-                return "§c§l[Admin] §b" + t + name + "§r";
+                return "§c§l[Admin] §b" + name + "§r";
             }
             if ((rank==7)) {
                 return "§2[Mod] §f" + ChatColor.WHITE +  t +   name + "§r";

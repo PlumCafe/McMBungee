@@ -15,6 +15,7 @@ public class Hub
         if ((sender instanceof ProxiedPlayer)) {
             ProxiedPlayer p = (ProxiedPlayer) sender;
             p.connect(ProxyServer.getInstance().getServerInfo("hub"));
+
         }
     }
 }

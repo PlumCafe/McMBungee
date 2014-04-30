@@ -23,6 +23,12 @@ public class DatabasePlayer {
 
     }
 
+    public boolean exists() {
+        try{
+            return McMPData.next();
+        } catch (Exception ex) {return false;}
+    }
+
     public int getRank(){
         try{
             return McMPData.getInt("Rank");

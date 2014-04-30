@@ -2,6 +2,7 @@ package net.mcmortals.mcmbungee;
 
 import net.mcmortals.mcmbungee.Clans.CCommand;
 import net.mcmortals.mcmbungee.Commands.*;
+import net.mcmortals.mcmbungee.DatabaseUtility.DatabasePlayer;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -126,21 +127,21 @@ public class main
     @EventHandler
     public void connect(PreLoginEvent e) throws SQLException {
         String PlayerName = e.getConnection().getName();
-        Statement statement = this.connect.createStatement();
-        ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + PlayerName + "'");
+        Statement statement = connect.createStatement();
+        DatabasePlayer dp = new DatabasePlayer(e.getConnection().getName(),connect);
         Calendar c=Calendar.getInstance();
         c.setTime(new Date());
         long now = Calendar.getInstance().getTimeInMillis();
-        if (res.next()) {
-            int rank = res.getInt("Rank");
-            if (res.getInt("Muted")==1) muted.add(PlayerName.toLowerCase());
-            if (res.getInt("Banned")==1) {
-                if (res.getLong("BanUntil")==-1) {
-                    e.getConnection().disconnect("§cYou have been banned from the server!§r\n §cReason:§6" + res.getString("BanReason") + "\n§6Appeal on http://www.mcmortals.net!");
+        if (dp.exists()) {
+            int rank = dp.getRank();
+            if (dp.isMuted()) muted.add(PlayerName.toLowerCase());
+            if (dp.isBanned()) {
+                if (dp.getBanEnd()==-1) {
+                    e.getConnection().disconnect("§cYou have been banned from the server!§r\n §cReason:§6" + dp.getBanReason() + "\n§6Appeal on http://www.mcmortals.net!");
                     return;
                 } else {
-                    if (res.getLong("BanUntil")> Calendar.getInstance().getTimeInMillis()) {
-                        e.getConnection().disconnect("§cYou have been temporarily banned from the server!§r\n §cReason:§6" + res.getString("BanReason") + "\n§cBanned until: §6" + new Date(res.getLong("BanUntil")).toGMTString().replace("GMT", "UTC") +"\n§6Appeal on http://www.mcmortals.net!");
+                    if (dp.getBanEnd()> Calendar.getInstance().getTimeInMillis()) {
+                        e.getConnection().disconnect("§cYou have been temporarily banned from the server!§r\n §cReason:§6" + dp.getBanReason() + "\n§cBanned until: §6" + new Date(dp.getBanEnd()).toGMTString().replace("GMT", "UTC") +"\n§6Appeal on http://www.mcmortals.net!");
                     } else {
                         //banNot.add(PlayerName);
                         statement.executeUpdate("UPDATE McMPData SET Banned=0 WHERE PlayerName='" + PlayerName + "'");

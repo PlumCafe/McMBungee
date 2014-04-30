@@ -49,7 +49,7 @@ public class NewLookupCommand extends Command {
                 String lsl = new Date(res.getLong("LastLogin")).toGMTString();
                 if (res.getLong("LastLogin")==0) lsl= ChatColor.GRAY + "Unknown";
                 //-------------------------------BAN EVENTS------------------------------------
-                HoverEvent banInfo = null; ClickEvent unBan = null, Ban = null, Kick = null;
+                HoverEvent banInfo = null; ClickEvent unBan = null;
                 if (Banned) {
                     TextComponent reason = new TextComponent("Reason: " + ChatColor.AQUA + res.getString("BanReason") + "\n"); reason.setColor(ChatColor.GOLD);
                     TextComponent until = (res.getLong("BanUntil")!=-1) ?
@@ -60,12 +60,8 @@ public class NewLookupCommand extends Command {
                     banInfo = new HoverEvent(HoverEvent.Action.SHOW_TEXT, banReason);
                     unBan = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/unban "+args[0]);
                 }
-                else{
-                    Kick = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/kick "+args[0]);
-                    Ban = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/ban "+args[0]);
-                }
                 //------------------------------MUTE EVENTS------------------------------------
-                HoverEvent muteInfo = null; ClickEvent Mute = null, unMute = null;
+                HoverEvent muteInfo = null; ClickEvent unMute = null;
                 if (Muted) {
                     TextComponent reason = new TextComponent("Reason: " + ChatColor.AQUA + res.getString("MuteReason")+ "\n"); reason.setColor(ChatColor.GOLD);
                     TextComponent until = (res.getLong("MuteUntil")!=-1) ?
@@ -74,9 +70,6 @@ public class NewLookupCommand extends Command {
                     BaseComponent[] muteReason = {reason, until};
                     muteInfo = new HoverEvent(HoverEvent.Action.SHOW_TEXT, muteReason);
                     unMute = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/unmute "+args[0]);
-                }
-                else{
-                    Mute = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "mute "+args[0]+" 1d Unknown");
                 }
                 //------------------------------INFRACTIONS EVENTS-----------------------------
                 TextComponent ban = new TextComponent("Bans: " + ChatColor.AQUA + bans + "\n"); ban.setColor(ChatColor.GOLD);
@@ -100,22 +93,19 @@ public class NewLookupCommand extends Command {
                 ComponentBuilder banStatus = new ComponentBuilder("Ban status: ").color(ChatColor.GOLD);
                 if(Banned){
                     banStatus.append("Banned ").color(ChatColor.RED).event(banInfo);
-                    banStatus.append("[Unban]").color(ChatColor.GREEN).event(unBan);
+                    banStatus.append("[Unban]").color(ChatColor.DARK_GREEN).event(unBan);
                 }
                 else{
                     banStatus.append("Not banned ").color(ChatColor.GREEN);
-                    banStatus.append("[Ban] ").color(ChatColor.RED).event(Ban);
-                    banStatus.append("[Kick]").color(ChatColor.YELLOW).event(Kick);
                 }
                 // Muted section
                 ComponentBuilder muteStatus = new ComponentBuilder("Mute status: ").color(ChatColor.GOLD);
                 if(Muted){
                     muteStatus.append("Muted ").color(ChatColor.RED).event(muteInfo);
-                    muteStatus.append("[Unmute]").color(ChatColor.GREEN).event(unMute);
+                    muteStatus.append("[Unmute]").color(ChatColor.DARK_GREEN).event(unMute);
                 }
                 else{
                     muteStatus.append("Not Muted ").color(ChatColor.GREEN);
-                    muteStatus.append("[Mute]").color(ChatColor.RED).event(Mute);
                 }
             } else sender.sendMessage(prefix().append("No info found for ").color(ChatColor.RED).append(args[0]).color(ChatColor.AQUA).create());
         } catch (Exception ex) {

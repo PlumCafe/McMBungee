@@ -11,7 +11,7 @@ public class DatabasePlayer {
     //private Statement s;
     private ResultSet McMPData;
 
-    DatabasePlayer(String name, Connection c){
+    public DatabasePlayer(String name, Connection c){
         //this.name = name;
         try{
             Statement s = c.createStatement();

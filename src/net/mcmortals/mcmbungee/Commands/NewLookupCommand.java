@@ -1,5 +1,6 @@
 package net.mcmortals.mcmbungee.Commands;
 
+import net.mcmortals.mcmbungee.DatabaseUtility.DatabasePlayer;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
@@ -29,13 +30,13 @@ public class NewLookupCommand extends Command {
             return;
         }
         try {
-            Statement s = m.connect.createStatement();
-            ResultSet res = s.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[0] +"'") ;
-            if (res.next()) {
-                boolean Banned = res.getInt("Banned") == 1;
-                boolean Muted = res.getInt("Muted") == 1;
+            DatabasePlayer dp = new DatabasePlayer(args[1], m.connect);
+            if (dp.exists()) {
+                boolean Banned = dp.isBanned();
+                boolean Muted = dp.isMuted();
                 int bans = 0; int kicks = 0; int mutes = 0;
                 //-------------------------------INFRACTIONS COUNTER---------------------------
+                Statement s = m.connect.createStatement();
                 ResultSet res1 = s.executeQuery("SELECT * FROM McMInfractions WHERE PlayerName='" + args[0] + "'");
                 while (res1.next()) {
                     if (res1.getString("Type").contains("ban")) bans++;
@@ -44,16 +45,17 @@ public class NewLookupCommand extends Command {
                 }
                 int inf = bans + kicks + mutes;
                 //-------------------------------DATE STRINGS----------------------------------
-                String fsl = new Date(res.getLong("FirstLogin")).toGMTString();
-                if (res.getLong("FirstLogin")==0) fsl= ChatColor.GRAY + "Unknown";
-                String lsl = new Date(res.getLong("LastLogin")).toGMTString();
-                if (res.getLong("LastLogin")==0) lsl= ChatColor.GRAY + "Unknown";
+                String fsl = new Date(dp.getFirstLogin()).toGMTString();
+                if (dp.getFirstLogin()==0) fsl= ChatColor.GRAY + "Unknown";
+                String lsl = new Date(dp.getLastLogin()).toGMTString();
+                if (dp.getLastLogin()==0) lsl= ChatColor.GRAY + "Unknown";
                 //-------------------------------BAN EVENTS------------------------------------
                 HoverEvent banInfo = null; ClickEvent unBan = null;
                 if (Banned) {
-                    TextComponent reason = new TextComponent("Reason: " + ChatColor.AQUA + res.getString("BanReason") + "\n"); reason.setColor(ChatColor.GOLD);
-                    TextComponent until = (res.getLong("BanUntil")!=-1) ?
-                            new TextComponent("Until: " + ChatColor.AQUA  +(new Date(res.getLong("BanUntil")).toGMTString().replace("GMT","UTC")))
+                    TextComponent reason = new TextComponent("Reason: " + ChatColor.AQUA + dp.getBanReason() + "\n"); reason.setColor(ChatColor.GOLD);
+                    long untill = dp.getBanEnd();
+                    TextComponent until = (untill!=-1) ?
+                            new TextComponent("Until: " + ChatColor.AQUA  +(new Date(untill).toGMTString().replace("GMT","UTC")))
                             : new TextComponent("Until: " + ChatColor.AQUA + "Permanent"); until.setColor(ChatColor.GOLD);
                     BaseComponent[] banReason = new BaseComponent[2];
                     banReason[0] = reason; banReason[1] = until;
@@ -63,9 +65,10 @@ public class NewLookupCommand extends Command {
                 //------------------------------MUTE EVENTS------------------------------------
                 HoverEvent muteInfo = null; ClickEvent unMute = null;
                 if (Muted) {
-                    TextComponent reason = new TextComponent("Reason: " + ChatColor.AQUA + res.getString("MuteReason")+ "\n"); reason.setColor(ChatColor.GOLD);
-                    TextComponent until = (res.getLong("MuteUntil")!=-1) ?
-                            new TextComponent("Until: " + ChatColor.AQUA + (new Date(res.getLong("MuteUntil")).toGMTString().replace("GMT","UTC")))
+                    TextComponent reason = new TextComponent("Reason: " + ChatColor.AQUA + dp.getMuteReason()+ "\n"); reason.setColor(ChatColor.GOLD);
+                    long untill = dp.getMuteEnd();
+                    TextComponent until = (untill!=-1) ?
+                            new TextComponent("Until: " + ChatColor.AQUA + (new Date(untill).toGMTString().replace("GMT","UTC")))
                             : new TextComponent("Until: " + ChatColor.AQUA + "Permanent"); until.setColor(ChatColor.GOLD);
                     BaseComponent[] muteReason = {reason, until};
                     muteInfo = new HoverEvent(HoverEvent.Action.SHOW_TEXT, muteReason);
@@ -81,9 +84,9 @@ public class NewLookupCommand extends Command {
                 //ComponentBuilder header = prefix().append("Player lookup: ").color(ChatColor.GOLD).bold(true).append(args[0]);
                 //appendName(header,res.getInt("Rank"),args[0]);
                 sender.sendMessage(prefix().append("Player lookup: ").color(ChatColor.GOLD).bold(true).append(args[0]).create());
-                sender.sendMessage(new ComponentBuilder("Rank: ").color(ChatColor.GOLD).append(McMCommand.getRank(res.getInt("Rank"))).create());
-                sender.sendMessage(new ComponentBuilder("Tokens: ").color(ChatColor.GOLD).append(""+res.getInt("Tokens")).color(ChatColor.AQUA).create());
-                sender.sendMessage(new ComponentBuilder("Tournament points: ").color(ChatColor.GOLD).append(""+res.getInt("TournPoints")).color(ChatColor.AQUA).create());
+                sender.sendMessage(new ComponentBuilder("Rank: ").color(ChatColor.GOLD).append(McMCommand.getRank(dp.getRank())).create());
+                sender.sendMessage(new ComponentBuilder("Tokens: ").color(ChatColor.GOLD).append(""+ dp.getTokens()).color(ChatColor.AQUA).create());
+                sender.sendMessage(new ComponentBuilder("Tournament points: ").color(ChatColor.GOLD).append(""+ dp.getTournamentPoints()).color(ChatColor.AQUA).create());
                 sender.sendMessage(new ComponentBuilder("First join: ").color(ChatColor.GOLD).append(fsl).color(ChatColor.AQUA).create());
                 sender.sendMessage(new ComponentBuilder("Last join: ").color(ChatColor.GOLD).append(lsl).color(ChatColor.AQUA).create());
                 // Infraction section

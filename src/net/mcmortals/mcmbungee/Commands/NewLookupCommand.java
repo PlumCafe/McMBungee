@@ -120,22 +120,38 @@ public class NewLookupCommand extends Command {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ");
     }
 
-    public static String getPlayerName( String name, ChatColor cl, int rank){
-        ComponentBuilder b = null;
-        if (cl==null) cl=ChatColor.WHITE;
-        switch (rank){
-            case (10): b = new ComponentBuilder("[Op] ").color(ChatColor.DARK_RED).bold(true).append(name).color(ChatColor.AQUA).bold(false);
-            case (9): b = new ComponentBuilder("[Dev] ").color(ChatColor.DARK_PURPLE).bold(true).append(name).color(ChatColor.AQUA).bold(false);
-            case (8): b = new ComponentBuilder("[Admin] ").color(ChatColor.RED).bold(true).append(name).color(ChatColor.AQUA);
-            case (7): b = new ComponentBuilder("[Mod] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(cl);
-            case (6): b = new ComponentBuilder("[Helper] ").color(ChatColor.BLUE).bold(true).append(name).color(cl);
-            case (5): b = new ComponentBuilder("[Host] ").color(ChatColor.DARK_GREEN).bold(true).append(name).color(cl);
-            case (4): b = new ComponentBuilder("[Builder] ").color(ChatColor.DARK_AQUA).bold(true).append(name).color(cl);
-            case (3): b = new ComponentBuilder("[Legend] ").color(ChatColor.DARK_RED).bold(true).append(name).color(cl);
-            case (2): b = new ComponentBuilder("[YT] ").color(ChatColor.GOLD).bold(true).append(name).color(cl);
-            case (1): b = new ComponentBuilder("[VIP] ").color(ChatColor.GREEN).bold(true).append(name).color(cl);
-            default: b = new ComponentBuilder(name).color(cl);
-        }
-        return b.toString();
+    public static String getPlayerName(String name, ChatColor t, int rank){
+        if (t==null) t=ChatColor.WHITE;
+            if ((rank==10)) {
+                return "§4§l[Op] §b" + t +  name + "§r";
+            }
+            if ((rank==9)) {
+                return "§5§l[Dev] §b" + t + name + "§r";
+            }
+            if ((rank==8)) {
+                return "§c§l[Admin] §b" + t + name + "§r";
+            }
+            if ((rank==7)) {
+                return "§2[Mod] §f" + ChatColor.WHITE +  t +   name + "§r";
+            }
+            if ((rank==6)) {
+                return "§9[Helper] §f" + ChatColor.WHITE + t +  name + "§r";
+            }
+            if ((rank==5)) {
+                return "§2[Host] " + ChatColor.WHITE +  t + name + "§r";
+            }
+            if ((rank==4)) {
+                return "§3[Builder] §f" + ChatColor.WHITE + t +  name + "§r";
+            }
+            if ((rank==3)) {
+                return "§4[Legend] §f" + ChatColor.WHITE + t +  name + "§r";
+            }
+            if ((rank==2)) {
+                return "§6[YT] §f"+ ChatColor.WHITE + t +  name + "§r";
+            }
+            if ((rank==1)) {
+                return "§a[VIP] §f" + ChatColor.WHITE + t + name + "§r";
+            }
+        return t + name + "§r";
     }
 }

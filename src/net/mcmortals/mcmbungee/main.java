@@ -3,6 +3,7 @@ package net.mcmortals.mcmbungee;
 import net.mcmortals.mcmbungee.Clans.CCommand;
 import net.mcmortals.mcmbungee.Commands.*;
 import net.mcmortals.mcmbungee.DatabaseUtility.DatabasePlayer;
+import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 public class main
         extends Plugin
@@ -126,7 +128,7 @@ public class main
 
     @EventHandler
     public void connect(PreLoginEvent e) throws SQLException {
-        String PlayerName = e.getConnection().getName();
+        final String PlayerName = e.getConnection().getName();
         Statement statement = connect.createStatement();
         DatabasePlayer dp = new DatabasePlayer(e.getConnection().getName(),connect);
         Calendar c=Calendar.getInstance();
@@ -156,7 +158,13 @@ public class main
             statement.executeUpdate("INSERT INTO McMPData (PlayerName, IPAddress, UUID, FirstLogin, LastLogin) VALUES ('" + PlayerName + "', '" + e.getConnection().getAddress().getAddress().getHostAddress() + "', '...', " + now + ", " + now +")");
             this.rank.put(PlayerName, 0);
         }
-        sendToStaff(ChatColor.YELLOW + NewLookupCommand.getPlayerName(PlayerName,ChatColor.YELLOW,rank.get(PlayerName)) + ChatColor.AQUA + " joined!");
+        BungeeCord.getInstance().getScheduler().schedule(this, new Runnable() {
+            @Override
+            public void run() {
+                sendToStaff(ChatColor.YELLOW + NewLookupCommand.getPlayerName(PlayerName, ChatColor.YELLOW, rank.get(PlayerName)) + ChatColor.AQUA + " joined!");
+            }
+        },500, TimeUnit.MILLISECONDS);
+
     }
 
     @EventHandler

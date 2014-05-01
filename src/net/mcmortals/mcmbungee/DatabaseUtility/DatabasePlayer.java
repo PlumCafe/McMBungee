@@ -26,7 +26,10 @@ public class DatabasePlayer {
     public boolean exists() {
         try{
             return McMPData.next();
-        } catch (Exception ex) {return false;}
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public int getRank(){

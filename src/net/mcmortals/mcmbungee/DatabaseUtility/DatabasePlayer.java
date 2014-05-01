@@ -25,7 +25,7 @@ public class DatabasePlayer {
 
     public boolean exists() {
         try{
-            return McMPData.next();
+            return !McMPData.isBeforeFirst();
         } catch (SQLException e) {
             e.printStackTrace();
             return false;

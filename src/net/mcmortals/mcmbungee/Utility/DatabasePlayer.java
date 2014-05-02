@@ -1,4 +1,4 @@
-package net.mcmortals.mcmbungee.DatabaseUtility;
+package net.mcmortals.mcmbungee.Utility;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

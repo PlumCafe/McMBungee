@@ -1,6 +1,6 @@
 package net.mcmortals.mcmbungee.Commands;
 
-import net.mcmortals.mcmbungee.DatabaseUtility.DatabasePlayer;
+import net.mcmortals.mcmbungee.Utility.DatabasePlayer;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;

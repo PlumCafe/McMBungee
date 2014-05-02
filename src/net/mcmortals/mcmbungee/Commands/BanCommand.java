@@ -1,10 +1,10 @@
 package net.mcmortals.mcmbungee.Commands;
 
+import net.mcmortals.mcmbungee.Utility.Utility;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
-import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.plugin.Command;
 
 import java.sql.ResultSet;
@@ -27,7 +27,7 @@ public class BanCommand
                     ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[0]+ "'");
                     if (res.next()) {
                         if (res.getInt("Banned")==1) {
-                            sender.sendMessage(prefix().append("This player is already banned!").color(ChatColor.RED).create()); return;
+                            sender.sendMessage(Utility.prefix().append("This player is already banned!").color(ChatColor.RED).create()); return;
                         }
                         int w = 1;
                         String msg = "";
@@ -46,15 +46,9 @@ public class BanCommand
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    } else sender.sendMessage(prefix().append("No such player has ever joined!").color(ChatColor.RED).create());
-                } else sender.sendMessage(prefix().append("Usage: §b/ban [Player] [Reason]").color(ChatColor.RED).create());
-            } else sender.sendMessage(prefix().append("You cannot do that!").color(ChatColor.RED).create());
+                    } else sender.sendMessage(Utility.prefix().append("No such player has ever joined!").color(ChatColor.RED).create());
+                } else sender.sendMessage(Utility.prefix().append("Usage: §b/ban [Player] [Reason]").color(ChatColor.RED).create());
+            } else sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create());
         } catch (Exception ex) {ex.printStackTrace();}
     }
-
-    ComponentBuilder prefix() {
-        return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
-    }
-
-
 }

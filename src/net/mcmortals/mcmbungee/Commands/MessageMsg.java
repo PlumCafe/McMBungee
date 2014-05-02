@@ -1,5 +1,6 @@
 package net.mcmortals.mcmbungee.Commands;
 
+import net.mcmortals.mcmbungee.Utility.Utility;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
@@ -17,19 +18,16 @@ public class MessageMsg
         this.m = This;
     }
 
-    ComponentBuilder prefix() {
-        return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
-    }
 
     public void execute(CommandSender sender, String[] args) {
         if (args.length >= 2) {
             try {
                 ProxiedPlayer rec = ProxyServer.getInstance().getPlayer(args[0]);
                 if (rec.equals(sender)) {
-                    sender.sendMessage(prefix().append("Cannot message yourself!").color(ChatColor.RED).create());
+                    sender.sendMessage(Utility.prefix().append("Cannot message yourself!").color(ChatColor.RED).create());
                 }
                 if ((sender.hasPermission("mcm.yt") & !sender.hasPermission("mcm.helper"))) {
-                    sender.sendMessage(prefix().append("You cannot directly message ").color(ChatColor.RED).append("You").color(ChatColor.WHITE).append("Tubers.").color(ChatColor.RED).create());
+                    sender.sendMessage(Utility.prefix().append("You cannot directly message ").color(ChatColor.RED).append("You").color(ChatColor.WHITE).append("Tubers.").color(ChatColor.RED).create());
                 }
                 int w = 1;
                 String msg = "";
@@ -51,10 +49,10 @@ public class MessageMsg
                 );
                 this.m.lstm.put(rec, sender);
             } catch (Exception ex) {
-                sender.sendMessage(prefix().append("That player is offline!").color(ChatColor.RED).create());
+                sender.sendMessage(Utility.prefix().append("That player is offline!").color(ChatColor.RED).create());
             }
         } else {
-            sender.sendMessage(prefix().append("Usage: ").color(ChatColor.RED).append("/msg [Receiver] [Message]").color(ChatColor.AQUA).create());
+            sender.sendMessage(Utility.prefix().append("Usage: ").color(ChatColor.RED).append("/msg [Receiver] [Message]").color(ChatColor.AQUA).create());
         }
     }
 }

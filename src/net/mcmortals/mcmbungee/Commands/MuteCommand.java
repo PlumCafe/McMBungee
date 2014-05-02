@@ -1,10 +1,10 @@
 package net.mcmortals.mcmbungee.Commands;
 
+import net.mcmortals.mcmbungee.Utility.Utility;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
-import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.plugin.Command;
 
 import java.sql.ResultSet;
@@ -28,10 +28,10 @@ public class MuteCommand
                     ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[0]+ "'");
                     if (res.next()) {
                         if (res.getInt("Muted")==1) {
-                            sender.sendMessage(prefix().append("This player is already muted!").color(ChatColor.RED).create()); return;
+                            sender.sendMessage(Utility.prefix().append("This player is already muted!").color(ChatColor.RED).create()); return;
                         }
                         if (textToSec(args[1])==-1) {
-                            sender.sendMessage(prefix().append("Incorrect time input!").color(ChatColor.RED).create()); return;
+                            sender.sendMessage(Utility.prefix().append("Incorrect time input!").color(ChatColor.RED).create()); return;
                         }
                         Calendar c= Calendar.getInstance();
                         c.add(Calendar.SECOND, textToSec(args[1]));
@@ -54,14 +54,10 @@ public class MuteCommand
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
-                    } else sender.sendMessage(prefix().append("No such player has ever joined!").color(ChatColor.RED).create());
-                } else sender.sendMessage(prefix().append("Usage: §b/mute [Player] [Time] [Reason]").color(ChatColor.RED).create());
-            } else sender.sendMessage(prefix().append("You cannot do that!").color(ChatColor.RED).create());
+                    } else sender.sendMessage(Utility.prefix().append("No such player has ever joined!").color(ChatColor.RED).create());
+                } else sender.sendMessage(Utility.prefix().append("Usage: §b/mute [Player] [Time] [Reason]").color(ChatColor.RED).create());
+            } else sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create());
         } catch (Exception ex) {ex.printStackTrace();}
-    }
-
-    ComponentBuilder prefix() {
-        return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
     }
 
     int textToSec(String m) {

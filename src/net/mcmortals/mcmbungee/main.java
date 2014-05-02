@@ -2,7 +2,7 @@ package net.mcmortals.mcmbungee;
 
 import net.mcmortals.mcmbungee.Clans.CCommand;
 import net.mcmortals.mcmbungee.Commands.*;
-import net.mcmortals.mcmbungee.DatabaseUtility.DatabasePlayer;
+import net.mcmortals.mcmbungee.Utility.DatabasePlayer;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;

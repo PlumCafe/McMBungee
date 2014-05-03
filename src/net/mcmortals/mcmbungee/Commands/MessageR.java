@@ -27,9 +27,6 @@ public class MessageR
                     if (rec.equals(sender)) {
                         sender.sendMessage(prefix().append("Cannot message yourself!").color(ChatColor.RED).create());
                     }
-                    if ((sender.hasPermission("mcm.yt") & !sender.hasPermission("mcm.helper"))) {
-                        sender.sendMessage(prefix().append("You cannot directly message ").color(ChatColor.RED).append("You").color(ChatColor.WHITE).append("Tubers.").color(ChatColor.RED).create());
-                    }
                     int w = 0;
                     String msg = "";
                     do {

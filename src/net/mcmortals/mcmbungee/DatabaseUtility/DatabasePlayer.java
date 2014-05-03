@@ -10,6 +10,7 @@ public class DatabasePlayer {
     //private final String name;
     //private Statement s;
     private ResultSet McMPData;
+    private boolean exists = false;
 
     public DatabasePlayer(String name, Connection c){
         //this.name = name;
@@ -17,6 +18,7 @@ public class DatabasePlayer {
             Statement s = c.createStatement();
             //this.s = c.createStatement();
             McMPData = s.executeQuery("SELECT * FROM McMPData WHERE PlayerName='"+name+"'");
+            exists = McMPData.next();
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -24,12 +26,7 @@ public class DatabasePlayer {
     }
 
     public boolean exists() {
-        try{
-            return !McMPData.isBeforeFirst();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+        return exists;
     }
 
     public int getRank(){

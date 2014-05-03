@@ -30,7 +30,7 @@ public class Ban extends Command {
                 return;
             }
             //Argument Length Check
-            if (args.length>=2) {
+            if (!(args.length >= 2)) {
                 sender.sendMessage(Utility.prefix().append("Usage: §b/ban [Player] [Reason]").color(ChatColor.RED).create());
                 return;
             }

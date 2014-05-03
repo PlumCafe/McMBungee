@@ -54,7 +54,7 @@ public class main extends Plugin implements Listener {
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new MuteCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnmuteCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new NewLookupCommand(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new InfrCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Infractions(this));
         ProxyServer.getInstance().getPluginManager().registerListener(this, this);
         prepare();
     }

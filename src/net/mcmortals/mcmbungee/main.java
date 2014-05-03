@@ -18,6 +18,8 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.event.EventHandler;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,6 +52,7 @@ public class main
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new MuteCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnmuteCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new NewLookupCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new InfrCommand(this));
         ProxyServer.getInstance().getPluginManager().registerListener(this, this);
         prepare();
     }
@@ -129,7 +132,7 @@ public class main
     @EventHandler
     public void connect(PreLoginEvent e) throws Exception {
         final String PlayerName = e.getConnection().getName();
-        String UUID = UUIDFetcher.getUUIDOf(PlayerName).toString().replace("-","");
+        String UUID = UUIDFetcher.getUUIDOf(PlayerName).toString().replace("-", "");
         Statement statement = connect.createStatement();
         DatabasePlayer dp = new DatabasePlayer(e.getConnection().getName(),connect);
         Calendar c=Calendar.getInstance();
@@ -155,7 +158,6 @@ public class main
             }
             this.rank.put(PlayerName, rank);
             statement.executeUpdate("UPDATE McMPData SET LastLogin=" + now + " WHERE PlayerName='" + PlayerName + "'");
-            statement.executeUpdate("UPDATE McMPData SET UUID=" + UUID + " WHERE PlayerName='" + PlayerName + "'");
         } else {
             statement.executeUpdate("INSERT INTO McMPData (PlayerName, IPAddress, UUID, FirstLogin, LastLogin) VALUES ('" + PlayerName + "', '" + e.getConnection().getAddress().getAddress().getHostAddress() + "', '" + UUID + "', " + now + ", " + now +")");
             this.rank.put(PlayerName, 0);
@@ -178,17 +180,12 @@ public class main
     }
 
     @EventHandler
-    public void motd(ProxyPingEvent e) {
-        try {
-            Statement statement = this.connect.createStatement();
-            ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE IPAddress='" + e.getConnection().getAddress().getAddress().getHostAddress() + "'");
-                if (res.next()) {
-                    e.getResponse().setDescription("§4§lMCMortals §c|| §bPvP Madness\n§aWelcome back, §l" + res.getString("PlayerName") + "§a, to the realm of PvP!"); return;
-                }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        e.getResponse().setDescription("§4§lMCMortals §c|| §bPvP Madness\n§aWelcome to the realm of PvP!");
+    public void motd(ProxyPingEvent e) throws Exception{
+        BufferedReader reader = new BufferedReader(new FileReader("motd.txt"));
+        e.getResponse().setDescription("§4§lMCMortals §c|| §bPvP Madness\n" + reader.readLine().replace("&","§"));
+        //e.getResponse().setDescription("PMC6499928e909e3eaf89a71fb56b624e74");
+        e.getResponse().getPlayers().setSample(null);
+        e.getResponse().getPlayers().setOnline(ProxyServer.getInstance().getOnlineCount());
     }
 
     @EventHandler

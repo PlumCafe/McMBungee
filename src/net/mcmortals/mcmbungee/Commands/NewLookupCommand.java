@@ -1,5 +1,6 @@
 package net.mcmortals.mcmbungee.Commands;
 
+import net.mcmortals.mcmbungee.Utility.Database;
 import net.mcmortals.mcmbungee.Utility.DatabasePlayer;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
@@ -13,7 +14,7 @@ import java.util.Date;
 
 public class NewLookupCommand extends Command {
 
-    private main m = null;
+    private main m = new main();
 
     public NewLookupCommand(main This) {
         super("lookup", "");
@@ -30,7 +31,7 @@ public class NewLookupCommand extends Command {
             return;
         }
         try {
-            DatabasePlayer dp = new DatabasePlayer(args[0], m.connect);
+            DatabasePlayer dp = new Database(m).getPlayer(args[0]);
             if (dp.exists()) {
                 boolean Banned = dp.isBanned();
                 boolean Muted = dp.isMuted();

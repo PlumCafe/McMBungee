@@ -2,6 +2,7 @@ package net.mcmortals.mcmbungee;
 
 import net.mcmortals.mcmbungee.Clans.CCommand;
 import net.mcmortals.mcmbungee.Commands.*;
+import net.mcmortals.mcmbungee.Utility.Database;
 import net.mcmortals.mcmbungee.Utility.DatabasePlayer;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.ChatColor;
@@ -20,19 +21,20 @@ import net.md_5.bungee.event.EventHandler;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-public class main
-        extends Plugin
-        implements Listener {
+public class main extends Plugin implements Listener {
+
     public final HashMap<CommandSender, CommandSender> lstm = new HashMap<CommandSender, CommandSender>();
     private final HashMap<String, Integer> rank = new HashMap<String, Integer>();
-
     //private final ArrayList<String> banNot = new ArrayList<String>();
     public final ArrayList<String> muted = new ArrayList<String>();
 
@@ -134,7 +136,7 @@ public class main
         final String PlayerName = e.getConnection().getName();
         String UUID = UUIDFetcher.getUUIDOf(PlayerName).toString().replace("-", "");
         Statement statement = connect.createStatement();
-        DatabasePlayer dp = new DatabasePlayer(e.getConnection().getName(),connect);
+        DatabasePlayer dp = new Database(this).getPlayer(e.getConnection().getName());
         Calendar c=Calendar.getInstance();
         c.setTime(new Date());
         long now = Calendar.getInstance().getTimeInMillis();

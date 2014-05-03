@@ -7,16 +7,15 @@ import java.sql.Statement;
 
 public class DatabasePlayer {
 
-    //private final String name;
-    //private Statement s;
+    private final String name;
+    private Statement s;
     private ResultSet McMPData;
     private boolean exists = false;
 
-    public DatabasePlayer(String name, Connection c){
-        //this.name = name;
+    DatabasePlayer(String name, Connection c){
+        this.name = name;
         try{
-            Statement s = c.createStatement();
-            //this.s = c.createStatement();
+            this.s = c.createStatement();
             McMPData = s.executeQuery("SELECT * FROM McMPData WHERE PlayerName='"+name+"'");
             exists = McMPData.next();
         }catch(SQLException e){
@@ -125,6 +124,16 @@ public class DatabasePlayer {
         }catch(SQLException e){
             e.printStackTrace();
             return 0;
+        }
+    }
+
+    public void ban(String reason, long until){
+        try{
+            s.executeUpdate("UPDATE McMPData SET Banned=1 WHERE PlayerName='" + name + "'");
+            s.executeUpdate("UPDATE McMPData SET BanReason='" + reason + "' WHERE PlayerName='" + name + "'");
+            s.executeUpdate("UPDATE McMPData SET BanUntil=" + until + " WHERE PlayerName='" + name+ "'");
+        }catch(SQLException e){
+            e.printStackTrace();
         }
     }
 }

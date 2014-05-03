@@ -1,5 +1,6 @@
 package net.mcmortals.mcmbungee.Commands;
 
+import net.mcmortals.mcmbungee.Utility.Database;
 import net.mcmortals.mcmbungee.Utility.DatabasePlayer;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
@@ -29,7 +30,7 @@ public class InfrCommand extends Command {
             return;
         }
         try {
-            DatabasePlayer dp = new DatabasePlayer(args[0], m.connect);
+            DatabasePlayer dp = new Database(m).getPlayer(args[0]);
             if (dp.exists()) {
                 int bans = 0; int kicks = 0; int mutes = 0;
                 sender.sendMessage(prefix().append("Infractions for: ").color(ChatColor.GOLD).bold(true).append(args[0]).create());

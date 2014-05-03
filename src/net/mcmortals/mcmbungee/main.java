@@ -43,7 +43,7 @@ public class main
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Staff(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new McMCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new CCommand(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new BanCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Ban());
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnbanCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new KickCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new SCommand(this));

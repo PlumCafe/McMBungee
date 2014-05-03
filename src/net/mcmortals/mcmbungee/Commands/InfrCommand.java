@@ -1,15 +1,14 @@
 package net.mcmortals.mcmbungee.Commands;
 
-import net.mcmortals.mcmbungee.DatabaseUtility.DatabasePlayer;
+import net.mcmortals.mcmbungee.Utility.DatabasePlayer;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.chat.*;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.plugin.Command;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Date;
 
 public class InfrCommand extends Command {
 

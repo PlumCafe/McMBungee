@@ -47,7 +47,7 @@ public class main extends Plugin implements Listener {
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new CCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Ban());
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnbanCommand(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new KickCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Kick(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new SCommand(this));
         //ProxyServer.getInstance().getPluginManager().registerCommand(this, new LookupCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new TempbanCommand(this));

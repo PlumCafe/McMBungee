@@ -127,8 +127,9 @@ public class main
     }
 
     @EventHandler
-    public void connect(PreLoginEvent e) throws SQLException {
+    public void connect(PreLoginEvent e) throws Exception {
         final String PlayerName = e.getConnection().getName();
+        String UUID = UUIDFetcher.getUUIDOf(PlayerName).toString().replace("-","");
         Statement statement = connect.createStatement();
         DatabasePlayer dp = new DatabasePlayer(e.getConnection().getName(),connect);
         Calendar c=Calendar.getInstance();
@@ -154,10 +155,12 @@ public class main
             }
             this.rank.put(PlayerName, rank);
             statement.executeUpdate("UPDATE McMPData SET LastLogin=" + now + " WHERE PlayerName='" + PlayerName + "'");
+            statement.executeUpdate("UPDATE McMPData SET UUID=" + UUID + " WHERE PlayerName='" + PlayerName + "'");
         } else {
-            statement.executeUpdate("INSERT INTO McMPData (PlayerName, IPAddress, UUID, FirstLogin, LastLogin) VALUES ('" + PlayerName + "', '" + e.getConnection().getAddress().getAddress().getHostAddress() + "', '...', " + now + ", " + now +")");
+            statement.executeUpdate("INSERT INTO McMPData (PlayerName, IPAddress, UUID, FirstLogin, LastLogin) VALUES ('" + PlayerName + "', '" + e.getConnection().getAddress().getAddress().getHostAddress() + "', '" + UUID + "', " + now + ", " + now +")");
             this.rank.put(PlayerName, 0);
         }
+        if (rank.get(PlayerName)<=1) return;
         BungeeCord.getInstance().getScheduler().schedule(this, new Runnable() {
             @Override
             public void run() {

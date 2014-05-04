@@ -16,9 +16,8 @@ public class Kick
         extends Command {
     private main m = new main();
 
-    public Kick(main This) {
+    public Kick() {
         super("kick", "");
-        this.m = This;
     }
 
     public void execute(CommandSender sender, String[] args) {

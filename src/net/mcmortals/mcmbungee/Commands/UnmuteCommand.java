@@ -13,9 +13,8 @@ public class UnmuteCommand
         extends Command {
     private main m = new main();
 
-    public UnmuteCommand(main This) {
+    public UnmuteCommand() {
         super("unmute", "");
-        this.m = This;
     }
 
     public void execute(CommandSender sender, String[] args) {

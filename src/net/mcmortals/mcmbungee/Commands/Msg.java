@@ -13,9 +13,8 @@ public class Msg
         extends Command {
     private main m = new main();
 
-    public Msg(main This) {
+    public Msg() {
         super("msg", "", "tell", "w");
-        this.m = This;
     }
 
     public void execute(CommandSender sender, String[] args) {

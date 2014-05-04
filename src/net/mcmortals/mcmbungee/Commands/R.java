@@ -11,9 +11,8 @@ public class R
         extends Command {
     private main m = new main();
 
-    public R(main This) {
+    public R() {
         super("r", "");
-        this.m = This;
     }
 
     public void execute(CommandSender sender, String[] args) {

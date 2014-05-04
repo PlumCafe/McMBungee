@@ -13,9 +13,8 @@ public class McMCommand
         extends Command {
     private main m = new main();
 
-    public McMCommand(main This) {
+    public McMCommand() {
         super("mcm", "");
-        this.m = This;
     }
 
     public void execute(CommandSender sender, String[] args) {

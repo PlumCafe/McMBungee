@@ -14,10 +14,10 @@ import java.util.Random;
 
 public class Clan extends Command {
 
-    private main m = null;
-    public Clan(main This) {
+    private main m = new main();
+
+    public Clan() {
         super("clan", "", "c", "clans");
-        m = This;
     }
 
     public void execute(CommandSender sender, String[] args) {

@@ -15,9 +15,8 @@ public class MuteCommand
         extends Command {
     private main m = new main();
 
-    public MuteCommand(main This) {
+    public MuteCommand() {
         super("mute", "");
-        this.m = This;
     }
 
     public void execute(CommandSender sender, String[] args) {

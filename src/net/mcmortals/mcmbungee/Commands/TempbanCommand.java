@@ -15,9 +15,8 @@ public class TempbanCommand
         extends Command {
     private main m = new main();
 
-    public TempbanCommand(main This) {
+    public TempbanCommand() {
         super("tempban", "", "tban");
-        this.m = This;
     }
 
     public void execute(CommandSender sender, String[] args) {

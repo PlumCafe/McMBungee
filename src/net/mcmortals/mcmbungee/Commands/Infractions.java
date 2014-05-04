@@ -14,11 +14,10 @@ import java.sql.Statement;
 
 public class Infractions extends Command {
 
-    private main m = null;
+    private main m = new main();
 
-    public Infractions(main This) {
+    public Infractions() {
         super("infractions", "", "infr");
-        m = This;
     }
 
     public void execute(CommandSender sender, String[] args) {

@@ -1,9 +1,11 @@
 package net.mcmortals.mcmbungee.Commands;
 
+import net.mcmortals.mcmbungee.Utility.Utility;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
@@ -12,24 +14,21 @@ import java.sql.Statement;
 
 public class Staff
         extends Command {
-    private main m = null;
+    private main m = new main();
 
-    public Staff(main This) {
+    public Staff() {
         super("staff", "");
-        this.m = This;
     }
 
     public void execute(CommandSender sender, String[] args) {
-        sender.sendMessage(prefix() + ChatColor.GOLD + "" + ChatColor.BOLD + "Online staff:");
+        //Send Online Staff :O
+        sender.sendMessage(Utility.prefix().append("Online Staff:").color(ChatColor.GOLD).bold(true).create());
         for (ProxiedPlayer p : ProxyServer.getInstance().getPlayers()) {
             if (hasPermission(p)) {
-                sender.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "> " + this.m.getPlayerDisplay(p) + ChatColor.GRAY + "" + ChatColor.ITALIC + " (Connected to " + p.getServer().getInfo().getName() + ")");
+                sender.sendMessage(new ComponentBuilder("> ").color(ChatColor.GOLD).bold(true).append(this.m.getPlayerDisplay(p))
+                        .append(" (Connected to " + p.getServer().getInfo().getName() + ")").color(ChatColor.GRAY).italic(true).create());
             }
         }
-    }
-
-    String prefix() {
-        return ChatColor.DARK_RED + "[" + ChatColor.RED + "McM" + ChatColor.DARK_RED + "]";
     }
 
     Boolean hasPermission(ProxiedPlayer p) {

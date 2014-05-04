@@ -16,9 +16,8 @@ public class NewLookupCommand extends Command {
 
     private main m = new main();
 
-    public NewLookupCommand(main This) {
+    public NewLookupCommand() {
         super("lookup", "");
-        m = This;
     }
 
     public void execute(CommandSender sender, String[] args) {

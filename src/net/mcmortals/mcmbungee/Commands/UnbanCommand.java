@@ -13,9 +13,8 @@ public class UnbanCommand
         extends Command {
     private main m = new main();
 
-    public UnbanCommand(main This) {
+    public UnbanCommand() {
         super("unban", "", "pardon");
-        this.m = This;
     }
 
     public void execute(CommandSender sender, String[] args) {

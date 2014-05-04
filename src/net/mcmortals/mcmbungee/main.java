@@ -40,8 +40,8 @@ public class main extends Plugin implements Listener {
 
     public void onEnable() {
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Hub());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new MessageMsg(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new MessageR(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Msg(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new R(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Staff(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new McMCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Clan(this));

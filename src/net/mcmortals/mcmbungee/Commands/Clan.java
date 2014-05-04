@@ -12,10 +12,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Random;
 
-public class CCommand extends Command {
+public class Clan extends Command {
 
     private main m = null;
-    public CCommand(main This) {
+    public Clan(main This) {
         super("clan", "", "c", "clans");
         m = This;
     }

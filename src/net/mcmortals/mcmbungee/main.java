@@ -1,6 +1,6 @@
 package net.mcmortals.mcmbungee;
 
-import net.mcmortals.mcmbungee.Commands.CCommand;
+import net.mcmortals.mcmbungee.Commands.Clan;
 import net.mcmortals.mcmbungee.Commands.*;
 import net.mcmortals.mcmbungee.Utility.Database;
 import net.mcmortals.mcmbungee.Utility.DatabasePlayer;
@@ -44,7 +44,7 @@ public class main extends Plugin implements Listener {
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new MessageR(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Staff(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new McMCommand(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new CCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Clan(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Ban());
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnbanCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Kick(this));

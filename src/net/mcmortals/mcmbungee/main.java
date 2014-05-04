@@ -1,6 +1,6 @@
 package net.mcmortals.mcmbungee;
 
-import net.mcmortals.mcmbungee.Clans.CCommand;
+import net.mcmortals.mcmbungee.Commands.CCommand;
 import net.mcmortals.mcmbungee.Commands.*;
 import net.mcmortals.mcmbungee.Utility.Database;
 import net.mcmortals.mcmbungee.Utility.DatabasePlayer;

@@ -10,11 +10,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Date;
 
-class LookupCommand extends Command {
+class OldLookup extends Command {
 
     private main m = null;
 
-    public LookupCommand(main This) {
+    public OldLookup(main This) {
         super("lookup", "","lp");
         m = This;
     }

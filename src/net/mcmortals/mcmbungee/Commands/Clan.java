@@ -1,7 +1,6 @@
 package net.mcmortals.mcmbungee.Commands;
 
 import net.mcmortals.mcmbungee.Utility.Utility;
-import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -13,8 +12,6 @@ import java.sql.Statement;
 import java.util.Random;
 
 public class Clan extends Command {
-
-    private main m = new main();
 
     public Clan() {
         super("clan", "", "c", "clans");
@@ -49,7 +46,7 @@ public class Clan extends Command {
                 return;
             }
             try {
-                Statement s = this.m.connect.createStatement();
+                Statement s = Utility.getConnection().createStatement();
                 String jc = randomString();
                 //Register A Clan
                 s.executeUpdate("INSERT INTO McMClan (Name, Owner, JoinCode) VALUES ('" + args[1] +"', '" + sender.getName() +"', '" + jc + "')");
@@ -75,7 +72,7 @@ public class Clan extends Command {
                 return;
             }
             try {
-                Statement s = this.m.connect.createStatement();
+                Statement s = Utility.getConnection().createStatement();
                 ResultSet res = s.executeQuery("SELECT * FROM McMClan WHERE ID='" + getClan((ProxiedPlayer) sender) + "'");
                 if (res.isBeforeFirst()) {
                     String name = res.getString("Name");
@@ -115,7 +112,7 @@ public class Clan extends Command {
                 sender.sendMessage(Utility.prefix().append("You are not in a clan!").color(ChatColor.RED).create());
             }
             try {
-                Statement s = this.m.connect.createStatement();
+                Statement s = Utility.getConnection().createStatement();
                 ResultSet res = s.executeQuery("SELECT * FROM McMClan WHERE ID='" + getClan((ProxiedPlayer) sender) + "'");
                 if (res.isBeforeFirst()) {
                     res.next();
@@ -150,7 +147,7 @@ public class Clan extends Command {
                 sender.sendMessage(Utility.prefix().append("You are not in a clan!").color(ChatColor.RED).create());
             }
             try {
-                Statement s = this.m.connect.createStatement();
+                Statement s = Utility.getConnection().createStatement();
                 ResultSet res = s.executeQuery("SELECT * FROM McMClan WHERE ID='" + getClan((ProxiedPlayer) sender) + "'");
                 if (res.isBeforeFirst()) {
                     res.next();
@@ -183,7 +180,7 @@ public class Clan extends Command {
                 sender.sendMessage(Utility.prefix().append("You are not in a clan!").color(ChatColor.RED).create());
             }
             try {
-                Statement s = this.m.connect.createStatement();
+                Statement s = Utility.getConnection().createStatement();
                 ResultSet res = s.executeQuery("SELECT * FROM McMClan WHERE ID='" + getClan((ProxiedPlayer) sender) + "'");
                 if (res.next()) {
                     int id = res.getInt("ID");
@@ -222,7 +219,7 @@ public class Clan extends Command {
                 sender.sendMessage(Utility.prefix().append("You are not in a clan!").color(ChatColor.RED).create());
             }
             try {
-                Statement s = this.m.connect.createStatement();
+                Statement s = Utility.getConnection().createStatement();
                 ResultSet res = s.executeQuery("SELECT * FROM McMClan WHERE ID='" + getClan((ProxiedPlayer) sender) + "'");
                 if (res.next()) {
                     int id = res.getInt("ID");
@@ -262,7 +259,7 @@ public class Clan extends Command {
                 sender.sendMessage(Utility.prefix().append("You are already in a clan!").color(ChatColor.RED).create());
             }
             try {
-                Statement s = this.m.connect.createStatement();
+                Statement s = Utility.getConnection().createStatement();
                 ResultSet res = s.executeQuery("SELECT * FROM McMClan WHERE JoinCode='" + args[1] + "'");
                 if (res.next()){
                     //Alert Clan
@@ -283,7 +280,7 @@ public class Clan extends Command {
 
     boolean isInAClan(ProxiedPlayer p) {
         try {
-            Statement statement = this.m.connect.createStatement();
+            Statement statement = Utility.getConnection().createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + p.getName() + "'");
             if (res.next()) {
                 return res.getInt("ClanID")!=-1;
@@ -294,7 +291,7 @@ public class Clan extends Command {
 
     Integer getClan(ProxiedPlayer p) {
         try {
-            Statement statement = this.m.connect.createStatement();
+            Statement statement = Utility.getConnection().createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + p.getName() + "'");
             if (res.next()) {
                 return res.getInt("ClanID");
@@ -315,7 +312,7 @@ public class Clan extends Command {
 
     void sendClanMessage(Integer cid, String msg) {
         try {
-            Statement statement = this.m.connect.createStatement();
+            Statement statement = Utility.getConnection().createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE ClanID=" + cid);
             while (res.next()) {
                 try {
@@ -331,7 +328,7 @@ public class Clan extends Command {
 
     String getPlayerName(String name, ChatColor cc) {
         try {
-        Statement s = m.connect.createStatement();
+        Statement s = Utility.getConnection().createStatement();
         ResultSet res = s.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + name + "'");
         if (!res.next()) return "§f" + cc + name + "§r";
         int rank = res.getInt("Rank");

@@ -12,12 +12,13 @@ import net.md_5.bungee.api.plugin.Command;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Kick
-        extends Command {
-    private main m = new main();
+public class Kick extends Command {
 
-    public Kick() {
+    private main m;
+
+    public Kick(main main) {
         super("kick", "");
+        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {
@@ -50,7 +51,7 @@ public class Kick
         }
         try {
             //Register an Infraction
-            Statement statement = m.connect.createStatement();
+            Statement statement = Utility.getConnection().createStatement();
             statement.executeUpdate("INSERT INTO McMInfractions (PlayerName, Enforcer, Type, Reason) VALUES " +
                     "('" + args[0] + "', '" + sender.getName() + "', '" + "Kick" + "', '" + msg + "')");
             //Alert Staff

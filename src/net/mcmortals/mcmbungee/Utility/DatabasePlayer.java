@@ -1,6 +1,5 @@
 package net.mcmortals.mcmbungee.Utility;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,11 +11,11 @@ public class DatabasePlayer {
     private ResultSet McMPData;
     private boolean exists = false;
 
-    DatabasePlayer(String name, Connection c){
+    DatabasePlayer(String name){
         this.name = name;
         try{
-            this.s = c.createStatement();
-            McMPData = s.executeQuery("SELECT * FROM McMPData WHERE PlayerName='"+name+"'");
+            this.s = Utility.getConnection().createStatement();
+            McMPData = s.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + name + "'");
             exists = McMPData.next();
         }catch(SQLException e){
             e.printStackTrace();

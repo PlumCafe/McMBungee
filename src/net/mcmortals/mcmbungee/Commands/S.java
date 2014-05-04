@@ -6,12 +6,13 @@ import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.plugin.Command;
 
-public class S
-        extends Command {
-    private main m = new main();
+public class S extends Command {
 
-    public S() {
+    private main m;
+
+    public S(main main) {
         super("s", "");
+        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {

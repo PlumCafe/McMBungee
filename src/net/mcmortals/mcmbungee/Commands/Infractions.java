@@ -14,10 +14,11 @@ import java.sql.Statement;
 
 public class Infractions extends Command {
 
-    private main m = new main();
+    private main m;
 
-    public Infractions() {
+    public Infractions(main main) {
         super("infractions", "", "infr");
+        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {
@@ -31,7 +32,7 @@ public class Infractions extends Command {
             sender.sendMessage(Utility.prefix().append("Usage: ").color(ChatColor.RED).append("/infr [Player]").color(ChatColor.AQUA).create());
             return;
         }
-        DatabasePlayer dp = new Database(m).getPlayer(args[0]);
+        DatabasePlayer dp = Database.getPlayer(args[0]);
         //Has Infractions Check
         if (!dp.exists()) {
             sender.sendMessage(Utility.prefix().append("No infractions found for ").color(ChatColor.RED).append(args[0]).color(ChatColor.AQUA).create());
@@ -39,7 +40,7 @@ public class Infractions extends Command {
         } 
         try {
             sender.sendMessage(Utility.prefix().append("Infractions for: ").color(ChatColor.GOLD).bold(true).append(args[0]).create());
-            Statement s = m.connect.createStatement();
+            Statement s = Utility.getConnection().createStatement();
             ResultSet res1 = s.executeQuery("SELECT * FROM McMInfractions WHERE PlayerName='" + args[0] + "'");
             while (res1.next()) {
                 sender.sendMessage(new ComponentBuilder(res1.getString("Type") + ": ").color(ChatColor.RED).bold(true).append("Reason: ").color(ChatColor.AQUA).bold(false).append(res1.getString("Reason")).color(ChatColor.GOLD).create());

@@ -2,6 +2,7 @@ package net.mcmortals.mcmbungee.Commands;
 
 import net.mcmortals.mcmbungee.Utility.Database;
 import net.mcmortals.mcmbungee.Utility.DatabasePlayer;
+import net.mcmortals.mcmbungee.Utility.Utility;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
@@ -14,10 +15,11 @@ import java.util.Date;
 
 public class NewLookupCommand extends Command {
 
-    private main m = new main();
+    private main m;
 
-    public NewLookupCommand() {
+    public NewLookupCommand(main main) {
         super("lookup", "");
+        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {
@@ -30,13 +32,13 @@ public class NewLookupCommand extends Command {
             return;
         }
         try {
-            DatabasePlayer dp = new Database(m).getPlayer(args[0]);
+            DatabasePlayer dp = Database.getPlayer(args[0]);
             if (dp.exists()) {
                 boolean Banned = dp.isBanned();
                 boolean Muted = dp.isMuted();
                 int bans = 0; int kicks = 0; int mutes = 0;
                 //-------------------------------INFRACTIONS COUNTER---------------------------
-                Statement s = m.connect.createStatement();
+                Statement s = Utility.getConnection().createStatement();
                 ResultSet res1 = s.executeQuery("SELECT * FROM McMInfractions WHERE PlayerName='" + args[0] + "'");
                 while (res1.next()) {
                     if (res1.getString("Type").contains("ban")) bans++;

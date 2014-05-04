@@ -9,12 +9,13 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
-public class Msg
-        extends Command {
-    private main m = new main();
+public class Msg extends Command {
 
-    public Msg() {
+    private main m;
+
+    public Msg(main main) {
         super("msg", "", "tell", "w");
+        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {

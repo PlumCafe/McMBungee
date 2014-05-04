@@ -1,9 +1,9 @@
 package net.mcmortals.mcmbungee;
 
-import net.mcmortals.mcmbungee.Commands.Clan;
 import net.mcmortals.mcmbungee.Commands.*;
 import net.mcmortals.mcmbungee.Utility.Database;
 import net.mcmortals.mcmbungee.Utility.DatabasePlayer;
+import net.mcmortals.mcmbungee.Utility.Utility;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
@@ -21,8 +21,6 @@ import net.md_5.bungee.event.EventHandler;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -46,7 +44,7 @@ public class main extends Plugin implements Listener {
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new McMCommand());
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Clan());
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Ban());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnbanCommand());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnbanCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Kick());
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new S());
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new TempbanCommand());
@@ -55,10 +53,11 @@ public class main extends Plugin implements Listener {
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new NewLookupCommand());
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Infractions());
         ProxyServer.getInstance().getPluginManager().registerListener(this, this);
-        prepare();
+        Utility.prepareConnection();
+        //prepare();
     }
 
-    public Connection connect = null;
+    /*public Connection connect = null;
 
     void prepare() {
         try {
@@ -67,7 +66,7 @@ public class main extends Plugin implements Listener {
         } catch (Exception e) {
             ProxyServer.getInstance().getLogger().severe("Cannot connect to MySQL!");
         }
-    }
+    }*/
 
     public String getPlayerDisplay(CommandSender p) {
         if (!(p instanceof ProxiedPlayer)) return ChatColor.GRAY + "Console";
@@ -134,7 +133,7 @@ public class main extends Plugin implements Listener {
     public void connect(PreLoginEvent e) throws Exception {
         final String PlayerName = e.getConnection().getName();
         String UUID = UUIDFetcher.getUUIDOf(PlayerName).toString().replace("-", "");
-        Statement statement = connect.createStatement();
+        Statement statement = Utility.getConnection().createStatement();
         DatabasePlayer dp = new Database(this).getPlayer(e.getConnection().getName());
         Calendar c=Calendar.getInstance();
         c.setTime(new Date());
@@ -195,7 +194,7 @@ public class main extends Plugin implements Listener {
         if (!e.isCommand() || e.getMessage().startsWith("/msg") || e.getMessage().startsWith("/tell") || e.getMessage().startsWith("/w") || e.getMessage().startsWith("/me")) {
             if (muted.contains(name.toLowerCase())) {
                 try {
-                    Statement s = connect.createStatement();
+                    Statement s = Utility.getConnection().createStatement();
                     ResultSet res = s.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + name + "'");
                     if (res.next()) {
                         if (res.getInt("Muted")==1) {

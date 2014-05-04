@@ -1,7 +1,6 @@
 package net.mcmortals.mcmbungee.Commands;
 
 import net.mcmortals.mcmbungee.Utility.Database;
-import net.mcmortals.mcmbungee.Utility.DatabasePlayer;
 import net.mcmortals.mcmbungee.Utility.Utility;
 import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
@@ -34,7 +33,7 @@ public class Ban extends Command {
                 sender.sendMessage(Utility.prefix().append("Usage: §b/ban [Player] [Reason]").color(ChatColor.RED).create());
                 return;
             }
-            Statement statement = this.m.connect.createStatement();
+            Statement statement = Utility.getConnection().createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[0]+ "'");
             //Has Joined Check
             if (!res.isBeforeFirst()) {
@@ -54,7 +53,7 @@ public class Ban extends Command {
                 w++;
             } while (w < args.length);
             //Ban Player
-            DatabasePlayer p = new Database(m).getPlayer(args[0]); p.ban(msg, -1);
+            Database.getPlayer(args[0]).ban(msg, -1);
             //Alert Staff
             m.sendToStaff(ChatColor.AQUA + sender.getName() + " banned " + args[0] + " for" + msg + ".");
             //Register An Infraction

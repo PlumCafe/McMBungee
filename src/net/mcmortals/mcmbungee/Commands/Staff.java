@@ -12,12 +12,13 @@ import net.md_5.bungee.api.plugin.Command;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class Staff
-        extends Command {
-    private main m = new main();
+public class Staff extends Command {
 
-    public Staff() {
+    private main m;
+
+    public Staff(main main) {
         super("staff", "");
+        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {
@@ -33,7 +34,7 @@ public class Staff
 
     Boolean hasPermission(ProxiedPlayer p) {
         try {
-            Statement statement = this.m.connect.createStatement();
+            Statement statement = Utility.getConnection().createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + p.getName() + "'");
             return (res.next()) && (res.getInt("Rank") >= 4);
         } catch (Exception ex) {

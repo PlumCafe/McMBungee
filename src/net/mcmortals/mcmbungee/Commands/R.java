@@ -7,12 +7,13 @@ import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.plugin.Command;
 
-public class R
-        extends Command {
-    private main m = new main();
+public class R extends Command {
 
-    public R() {
+    private main m;
+
+    public R(main main) {
         super("r", "");
+        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {

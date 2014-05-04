@@ -9,19 +9,20 @@ import net.md_5.bungee.api.plugin.Command;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class UnmuteCommand
-        extends Command {
-    private main m = new main();
+public class UnmuteCommand extends Command {
 
-    public UnmuteCommand() {
+    private main m;
+
+    public UnmuteCommand(main main) {
         super("unmute", "");
+        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {
         try {
             if (m.hasPermission(sender,6)) {
                 if (args.length==1) {
-                    Statement statement = this.m.connect.createStatement();
+                    Statement statement = Utility.getConnection().createStatement();
                     ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[0]+ "'");
                     if (res.next()) {
                         if (res.getInt("Muted")!=1) {

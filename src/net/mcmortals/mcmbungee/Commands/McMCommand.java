@@ -9,12 +9,13 @@ import net.md_5.bungee.api.plugin.Command;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class McMCommand
-        extends Command {
-    private main m = new main();
+public class McMCommand extends Command {
 
-    public McMCommand() {
+    private main m;
+
+    public McMCommand(main main) {
         super("mcm", "");
+        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {
@@ -24,7 +25,7 @@ public class McMCommand
             if (m.hasPermission(sender, 7)) {
                 if (args.length == 3) {
                     try {
-                        Statement statement = this.m.connect.createStatement();
+                        Statement statement = Utility.getConnection().createStatement();
                         ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[1] + "'");
                         if (res.next()) {
                             statement.executeUpdate("UPDATE McMPData SET Tokens='" + (res.getInt("Tokens") + Integer.parseInt(args[2])) + "' WHERE PlayerName='" + args[1] + "'");
@@ -43,7 +44,7 @@ public class McMCommand
             }
             if (args.length == 3) {
                 try {
-                    Statement statement = this.m.connect.createStatement();
+                    Statement statement = Utility.getConnection().createStatement();
                     ResultSet res = statement.executeQuery("SELECT * FROM MCMPlayers WHERE PlayerName='" + args[1] + "'");
                     if (res.next()) {
                         statement.executeUpdate("UPDATE MCMPlayers SET Tokens='" + (res.getInt("Tokens") + Integer.parseInt(args[2])) + "' WHERE PlayerName='" + args[1] + "'");
@@ -61,7 +62,7 @@ public class McMCommand
             if (m.hasPermission(sender, 7)) {
                 if (args.length == 3) {
                     try {
-                        Statement statement = this.m.connect.createStatement();
+                        Statement statement = Utility.getConnection().createStatement();
                         ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[1] + "'");
                         if (res.next()) {
                             statement.executeUpdate("UPDATE McMPData SET Tokens='" + Integer.parseInt(args[2]) + "' WHERE PlayerName='" + args[1] + "'");
@@ -82,7 +83,7 @@ public class McMCommand
             if (m.hasPermission(sender, 9)) {
                 if (args.length == 3) {
                     try {
-                        Statement statement = this.m.connect.createStatement();
+                        Statement statement = Utility.getConnection().createStatement();
                         ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[1] + "'");
                         if (res.next()) {
                             statement.executeUpdate("UPDATE McMPData SET Rank='" + Integer.parseInt(args[2]) + "' WHERE PlayerName='" + args[1] + "'");

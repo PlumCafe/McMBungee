@@ -11,19 +11,20 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Calendar;
 
-public class TempbanCommand
-        extends Command {
-    private main m = new main();
+public class TempbanCommand extends Command {
 
-    public TempbanCommand() {
+    private main m;
+
+    public TempbanCommand(main main) {
         super("tempban", "", "tban");
+        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {
         try {
             if (m.hasPermission(sender,7)) {
                 if (args.length>=3) {
-                    Statement statement = this.m.connect.createStatement();
+                    Statement statement = Utility.getConnection().createStatement();
                     ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[0]+ "'");
                     if (res.next()) {
                         if (res.getInt("Banned")==1) {

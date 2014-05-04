@@ -22,7 +22,7 @@ public class McMCommand extends Command {
         if (args.length == 0) {
             sender.sendMessage(Utility.prefix().append("MCMortals created by Bocktrow and Red_Epicness!").color(ChatColor.GREEN).create());
         } else if (args[0].equalsIgnoreCase("addtokens")) {
-            if (m.hasPermission(sender, 7)) {
+            if (Utility.hasPermission(sender, 7)) {
                 if (args.length == 3) {
                     try {
                         Statement statement = Utility.getConnection().createStatement();
@@ -59,7 +59,7 @@ public class McMCommand extends Command {
                 sender.sendMessage(Utility.prefix().append("Usage: §b/mcm addtokens [Player] [Tokens]").color(ChatColor.RED).create());
             }
         } else if (args[0].equalsIgnoreCase("settokens")) {
-            if (m.hasPermission(sender, 7)) {
+            if (Utility.hasPermission(sender, 7)) {
                 if (args.length == 3) {
                     try {
                         Statement statement = Utility.getConnection().createStatement();
@@ -80,7 +80,7 @@ public class McMCommand extends Command {
                 sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create());
             }
         } else if (args[0].equalsIgnoreCase("setrank")) {
-            if (m.hasPermission(sender, 9)) {
+            if (Utility.hasPermission(sender, 9)) {
                 if (args.length == 3) {
                     try {
                         Statement statement = Utility.getConnection().createStatement();

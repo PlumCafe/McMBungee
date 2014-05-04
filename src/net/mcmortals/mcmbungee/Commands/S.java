@@ -17,7 +17,7 @@ public class S extends Command {
 
     public void execute(CommandSender sender, String[] args) {
         //Permissions Check
-        if (m.hasPermission(sender,6)) {
+        if (Utility.hasPermission(sender,6)) {
             sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create());
         }
         //Argument Length Check
@@ -32,7 +32,7 @@ public class S extends Command {
             w++;
         } while (w < args.length);
         //Send Message
-        if (m.hasPermission(sender,8)) {
+        if (Utility.hasPermission(sender,8)) {
             m.sendToStaff(m.getPlayerDisplay(sender) + " §b§l>§f" + msg);
         }
         else m.sendToStaff(m.getPlayerDisplay(sender) + " §f§l>§f" + msg);

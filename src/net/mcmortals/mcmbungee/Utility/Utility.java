@@ -1,8 +1,10 @@
 package net.mcmortals.mcmbungee.Utility;
 
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,6 +28,18 @@ public class Utility {
 
     public static Connection getConnection() {
         return connection;
+    }
+
+    public static Boolean hasPermission(CommandSender p, Integer i) {
+        if (!(p instanceof ProxiedPlayer)) {
+            return true;
+        }
+        try {
+            return Database.getPlayer(p.getName()).getRank() >= i;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 
 }

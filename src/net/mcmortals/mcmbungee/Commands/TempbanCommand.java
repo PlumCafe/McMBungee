@@ -22,7 +22,7 @@ public class TempbanCommand extends Command {
 
     public void execute(CommandSender sender, String[] args) {
         try {
-            if (m.hasPermission(sender,7)) {
+            if (Utility.hasPermission(sender,7)) {
                 if (args.length>=3) {
                     Statement statement = Utility.getConnection().createStatement();
                     ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[0]+ "'");
@@ -48,7 +48,8 @@ public class TempbanCommand extends Command {
                         "('" + args[0] + "', '" + sender.getName() + "', '" + "Temporary ban" + "', '" + args[1] + "', '" + msg + "')");
                         m.sendToStaff(ChatColor.AQUA + sender.getName() + " banned " + args[0] + " for " + args[1] + " for" + msg + ".");
                         try {
-                            ProxyServer.getInstance().getPlayer(args[0]).disconnect("§cYou have been temporarily banned from the server!§r\n §cReason:§6" + msg + "\n§cBanned until: §6" + c.getTime().toGMTString().replace("GMT", "UTC") +"\n§6Appeal on http://www.mcmortals.net!");
+                            ProxyServer.getInstance().getPlayer(args[0]).disconnect("§cYou have been temporarily banned from the server!§r\n §cReason:§6"
+                                    + msg + "\n§cBanned until: §6" + c.getTime().toGMTString().replace("GMT", "UTC") +"\n§6Appeal on http://www.mcmortals.net!");
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }

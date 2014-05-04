@@ -43,63 +43,51 @@ public class main extends Plugin implements Listener {
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Staff(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new McMCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Clan());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Ban());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Ban(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnbanCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Kick(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new S(this);
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new S(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new TempbanCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new MuteCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnmuteCommand(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new NewLookupCommand(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Infractions(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new NewLookupCommand());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Infractions());
         ProxyServer.getInstance().getPluginManager().registerListener(this, this);
         Utility.prepareConnection();
-        //prepare();
     }
-
-    /*public Connection connect = null;
-
-    void prepare() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connect = DriverManager.getConnection("jdbc:mysql://mysql.hostbukkit.com/hostbukk_444?autoReconnect=true", "hostbukk_444", "#w(oEkobfco&");
-        } catch (Exception e) {
-            ProxyServer.getInstance().getLogger().severe("Cannot connect to MySQL!");
-        }
-    }*/
 
     public String getPlayerDisplay(CommandSender p) {
         if (!(p instanceof ProxiedPlayer)) return ChatColor.GRAY + "Console";
         try {
             String t = "";
-            if (hasPermission(p,10)) {
+            if (Utility.hasPermission(p,10)) {
                 return "§4§l[Op] §b" + t +  p.getName() + "§r";
             }
-            if (hasPermission(p,9)) {
+            if (Utility.hasPermission(p,9)) {
                 return "§5§l[Dev] §b" + t + p.getName() + "§r";
             }
-            if (hasPermission(p,8)) {
+            if (Utility.hasPermission(p,8)) {
                 return "§c§l[Admin] §b" + t + p.getName() + "§r";
             }
-            if (hasPermission(p,7)) {
+            if (Utility.hasPermission(p,7)) {
                 return "§2[Mod] §f" + ChatColor.WHITE +  t +   p.getName() + "§r";
             }
-            if (hasPermission(p,6)) {
+            if (Utility.hasPermission(p,6)) {
                 return "§9[Helper] §f" + ChatColor.WHITE + t +  p.getName() + "§r";
             }
-            if (hasPermission(p,5)) {
+            if (Utility.hasPermission(p,5)) {
                 return "§2[Host] " + ChatColor.WHITE +  t + p.getName() + "§r";
             }
-            if (hasPermission(p,4)) {
+            if (Utility.hasPermission(p,4)) {
                 return "§3[Builder] §f" + ChatColor.WHITE + t +  p.getName() + "§r";
             }
-            if (hasPermission(p,3)) {
+            if (Utility.hasPermission(p,3)) {
                 return "§4[Legend] §f" + ChatColor.WHITE + t +  p.getName() + "§r";
             }
-            if (hasPermission(p,2)) {
+            if (Utility.hasPermission(p,2)) {
                 return "§6[YT] §f"+ ChatColor.WHITE + t +  p.getName() + "§r";
             }
-            if (hasPermission(p,1)) {
+            if (Utility.hasPermission(p,1)) {
                 return "§a[VIP] §f" + ChatColor.WHITE + t + p.getName() + "§r";
             }
             return "§7" + ChatColor.WHITE + t + p.getName() + "§r";
@@ -108,21 +96,9 @@ public class main extends Plugin implements Listener {
         return null;
     }
 
-    public Boolean hasPermission(CommandSender p, Integer i) {
-        if (!(p instanceof ProxiedPlayer)) {
-            return true;
-        }
-        try {
-            return this.rank.get(p.getName()) >= i;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return false;
-    }
-
     public void sendToStaff(String msg) {
         for (ProxiedPlayer p : ProxyServer.getInstance().getPlayers()) {
-            if (hasPermission(p, 5)) {
+            if (Utility.hasPermission(p, 5)) {
                 ProxyServer.getInstance().getConsole().sendMessage(new ComponentBuilder("[Staff] ").color(ChatColor.GOLD).append("").color(ChatColor.RESET).append(msg).create());
                 p.sendMessage(new ComponentBuilder("[Staff] ").color(ChatColor.GOLD).append("").color(ChatColor.RESET).append(msg).create());
             }
@@ -134,7 +110,7 @@ public class main extends Plugin implements Listener {
         final String PlayerName = e.getConnection().getName();
         String UUID = UUIDFetcher.getUUIDOf(PlayerName).toString().replace("-", "");
         Statement statement = Utility.getConnection().createStatement();
-        DatabasePlayer dp = new Database(this).getPlayer(e.getConnection().getName());
+        DatabasePlayer dp = Database.getPlayer(e.getConnection().getName());
         Calendar c=Calendar.getInstance();
         c.setTime(new Date());
         long now = Calendar.getInstance().getTimeInMillis();
@@ -174,7 +150,7 @@ public class main extends Plugin implements Listener {
 
     @EventHandler
     public void disconnect(PlayerDisconnectEvent e) {
-        if (hasPermission(e.getPlayer(), 3)) {
+        if (Utility.hasPermission(e.getPlayer(), 3)) {
             sendToStaff(ChatColor.YELLOW + getPlayerDisplay(e.getPlayer()) + ChatColor.AQUA + " disconnected!");
         }
     }

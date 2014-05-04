@@ -23,7 +23,7 @@ public class Kick extends Command {
 
     public void execute(CommandSender sender, String[] args) {
         //Permissions Check
-        if (m.hasPermission(sender,6)) {
+        if (Utility.hasPermission(sender,6)) {
             sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create());
             return;
         }

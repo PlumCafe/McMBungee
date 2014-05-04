@@ -3,7 +3,6 @@ package net.mcmortals.mcmbungee.Commands;
 import net.mcmortals.mcmbungee.Utility.Database;
 import net.mcmortals.mcmbungee.Utility.DatabasePlayer;
 import net.mcmortals.mcmbungee.Utility.Utility;
-import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.*;
@@ -15,15 +14,12 @@ import java.util.Date;
 
 public class NewLookupCommand extends Command {
 
-    private main m;
-
-    public NewLookupCommand(main main) {
+    public NewLookupCommand() {
         super("lookup", "");
-        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {
-        if (!m.hasPermission(sender, 6)) {
+        if (!Utility.hasPermission(sender, 6)) {
             sender.sendMessage(prefix().append("You cannot do that!").color(ChatColor.RED).create());
             return;
         }

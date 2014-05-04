@@ -20,7 +20,7 @@ public class UnmuteCommand extends Command {
 
     public void execute(CommandSender sender, String[] args) {
         try {
-            if (m.hasPermission(sender,6)) {
+            if (Utility.hasPermission(sender,6)) {
                 if (args.length==1) {
                     Statement statement = Utility.getConnection().createStatement();
                     ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[0]+ "'");

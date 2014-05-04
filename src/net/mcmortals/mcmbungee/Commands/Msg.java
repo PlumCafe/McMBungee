@@ -30,7 +30,7 @@ public class Msg extends Command {
                 sender.sendMessage(Utility.prefix().append("Cannot message yourself!").color(ChatColor.RED).create());
             }
             //Can Msg YT Check
-            if (m.hasPermission(sender,2) && !m.hasPermission(sender,6)) {
+            if (Utility.hasPermission(sender,2) && !Utility.hasPermission(sender,6)) {
                 sender.sendMessage(Utility.prefix().append("You cannot directly message ").color(ChatColor.RED)
                         .append("You").color(ChatColor.WHITE).append("Tubers.").color(ChatColor.RED).create());
             }

@@ -15,16 +15,17 @@ import java.sql.Statement;
 
 public class Ban extends Command {
 
-    private main m = new main();
+    private main m;
 
-    public Ban() {
+    public Ban(main main) {
         super("ban", "");
+        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {
         try {
             //Permissions Check
-            if (!m.hasPermission(sender,7)) {
+            if (!Utility.hasPermission(sender,7)) {
                 sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create());
                 return;
             }

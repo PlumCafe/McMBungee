@@ -38,20 +38,20 @@ public class main extends Plugin implements Listener {
 
     public void onEnable() {
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Hub());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Msg());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new R());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Staff());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new McMCommand());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Msg(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new R(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Staff(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new McMCommand(this));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Clan());
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Ban());
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnbanCommand(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Kick());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new S());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new TempbanCommand());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new MuteCommand());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnmuteCommand());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new NewLookupCommand());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Infractions());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Kick(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new S(this);
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new TempbanCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new MuteCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnmuteCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new NewLookupCommand(this));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Infractions(this));
         ProxyServer.getInstance().getPluginManager().registerListener(this, this);
         Utility.prepareConnection();
         //prepare();

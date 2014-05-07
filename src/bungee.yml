@@ -1,4 +1,5 @@
 name: McMBungeecord
+version: 1.0.0
 description: McMBungeecord
 author: Bocktrow, Red_Epicness
 main: net.mcmortals.mcmbungee.main

@@ -29,7 +29,9 @@ public class DatabasePlayer {
 
     public int getRank(){
         try{
-            return McMPData.getInt("Rank");
+            int r = Utility.getRank(name);
+            if (r==-1) return McMPData.getInt("Rank");
+            return r;
         }catch(SQLException e){
             e.printStackTrace();
             return 0;

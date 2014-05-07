@@ -19,6 +19,7 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.event.EventHandler;
 
+import javax.rmi.CORBA.Util;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.ResultSet;
@@ -31,8 +32,6 @@ import java.util.concurrent.TimeUnit;
 
 public class main extends Plugin implements Listener {
 
-    public final HashMap<CommandSender, CommandSender> lstm = new HashMap<CommandSender, CommandSender>();
-    private final HashMap<String, Integer> rank = new HashMap<String, Integer>();
     //private final ArrayList<String> banNot = new ArrayList<String>();
     public final ArrayList<String> muted = new ArrayList<String>();
 
@@ -132,17 +131,17 @@ public class main extends Plugin implements Listener {
                     }
                 }
             }
-            this.rank.put(PlayerName, rank);
+            Utility.setRank(PlayerName, rank);
             statement.executeUpdate("UPDATE McMPData SET LastLogin=" + now + " WHERE PlayerName='" + PlayerName + "'");
         } else {
             statement.executeUpdate("INSERT INTO McMPData (PlayerName, IPAddress, UUID, FirstLogin, LastLogin) VALUES ('" + PlayerName + "', '" + e.getConnection().getAddress().getAddress().getHostAddress() + "', '" + UUID + "', " + now + ", " + now +")");
-            this.rank.put(PlayerName, 0);
+            Utility.setRank(PlayerName, 0);
         }
-        if (rank.get(PlayerName)<=1) return;
+        if (Utility.getRank(PlayerName)<=1) return;
         BungeeCord.getInstance().getScheduler().schedule(this, new Runnable() {
             @Override
             public void run() {
-                sendToStaff(ChatColor.YELLOW + NewLookupCommand.getPlayerName(PlayerName, ChatColor.WHITE, rank.get(PlayerName)) + ChatColor.AQUA + " joined!");
+                sendToStaff(ChatColor.YELLOW + NewLookupCommand.getPlayerName(PlayerName, ChatColor.WHITE, Utility.getRank(PlayerName)) + ChatColor.AQUA + " joined!");
             }
         },500, TimeUnit.MILLISECONDS);
 

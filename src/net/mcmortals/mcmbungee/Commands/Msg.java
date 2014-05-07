@@ -20,7 +20,7 @@ public class Msg extends Command {
 
     public void execute(CommandSender sender, String[] args) {
         //Argument Length Check
-        if (args.length >= 2) {
+        if (!(args.length >= 2)) {
             sender.sendMessage(Utility.prefix().append("Usage: ").color(ChatColor.RED).append("/msg [Receiver] [Message]").color(ChatColor.AQUA).create());
         }
         try {
@@ -52,7 +52,7 @@ public class Msg extends Command {
                     append(":").color(ChatColor.LIGHT_PURPLE).
                     append(msg).color(ChatColor.GRAY).create());
             //Add To Reply List
-            this.m.lstm.put(rec, sender);
+            Utility.replies.put(rec, sender);
         } catch (Exception ex) {
             sender.sendMessage(Utility.prefix().append("That player is offline!").color(ChatColor.RED).create());
         }

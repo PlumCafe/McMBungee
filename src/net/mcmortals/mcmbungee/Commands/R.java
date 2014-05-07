@@ -18,15 +18,15 @@ public class R extends Command {
 
     public void execute(CommandSender sender, String[] args) {
         //Argument Length Check
-        if (args.length >= 1) {
-            sender.sendMessage(Utility.prefix().append("Usage: ").color(ChatColor.RED).append("/r [Message]").color(ChatColor.AQUA).create());
+        if (!(args.length >= 1)) {
+            sender.sendMessage(Utility.prefix().append("Usage: ").color(ChatColor.RED).append("/r [Message]").color(ChatColor.AQUA).create()); return;
         }
         //Has Anyone To Reply Check
-        if (this.m.lstm.containsKey(sender)) {
-            sender.sendMessage(Utility.prefix().append("Nobody to reply to!").color(ChatColor.RED).create());
+        if (!Utility.replies.containsKey(sender)) {
+            sender.sendMessage(Utility.prefix().append("Nobody to reply to!").color(ChatColor.RED).create()); return;
         }
         try {
-            CommandSender rec = this.m.lstm.get(sender);
+            CommandSender rec = Utility.replies.get(sender);
             //Combine Message
             int w = 0;
             String msg = "";

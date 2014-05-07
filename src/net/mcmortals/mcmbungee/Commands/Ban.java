@@ -26,25 +26,21 @@ public class Ban extends Command {
         try {
             //Permissions Check
             if (!Utility.hasPermission(sender,7)) {
-                sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create());
-                return;
+                sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create()); return;
             }
             //Argument Length Check
             if (!(args.length >= 2)) {
-                sender.sendMessage(Utility.prefix().append("Usage: §b/ban [Player] [Reason]").color(ChatColor.RED).create());
-                return;
+                sender.sendMessage(Utility.prefix().append("Usage: §b/ban [Player] [Reason]").color(ChatColor.RED).create()); return;
             }
             Statement statement = Utility.getConnection().createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[0]+ "'");
             //Has Joined Check
             if (!res.isBeforeFirst()) {
-                sender.sendMessage(Utility.prefix().append("No such player has ever joined!").color(ChatColor.RED).create());
-                return;
+                sender.sendMessage(Utility.prefix().append("No such player has ever joined!").color(ChatColor.RED).create()); return;
             }
             //Is Banned Check
             if (res.getInt("Banned")==1) {
-                sender.sendMessage(Utility.prefix().append("This player is already banned!").color(ChatColor.RED).create());
-                return;
+                sender.sendMessage(Utility.prefix().append("This player is already banned!").color(ChatColor.RED).create()); return;
             }
             //Combine Message
             int w = 1;

@@ -17,12 +17,12 @@ public class S extends Command {
 
     public void execute(CommandSender sender, String[] args) {
         //Permissions Check
-        if (Utility.hasPermission(sender,6)) {
-            sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create());
+        if (!Utility.hasPermission(sender,6)) {
+            sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create()); return;
         }
         //Argument Length Check
-        if (args.length>=1) {
-            sender.sendMessage(Utility.prefix().append("Usage: §b/s [Message]").color(ChatColor.RED).create());
+        if (!(args.length>=1)) {
+            sender.sendMessage(Utility.prefix().append("Usage: §b/s [Message]").color(ChatColor.RED).create()); return;
         }
         //Combine Message
         int w = 0;
@@ -31,10 +31,6 @@ public class S extends Command {
             msg = msg + " " + args[w];
             w++;
         } while (w < args.length);
-        //Send Message
-        if (Utility.hasPermission(sender,8)) {
             m.sendToStaff(m.getPlayerDisplay(sender) + " §b§l>§f" + msg);
-        }
-        else m.sendToStaff(m.getPlayerDisplay(sender) + " §f§l>§f" + msg);
     }
 }

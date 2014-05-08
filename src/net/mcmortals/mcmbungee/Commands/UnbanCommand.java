@@ -21,12 +21,12 @@ public class UnbanCommand extends Command {
     public void execute(CommandSender sender, String[] args) {
         try {
             //Permissions Check
-            if (Utility.hasPermission(sender,6)) {
-                sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create());
+            if (!Utility.hasPermission(sender,6)) {
+                sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create()); return;
             }
             //Argument Length Check
-            if (args.length==1) {
-                sender.sendMessage(Utility.prefix().append("Usage: /unban [Player]").color(ChatColor.RED).create());
+            if (args.length!=1) {
+                sender.sendMessage(Utility.prefix().append("Usage: /unban [Player]").color(ChatColor.RED).create()); return;
             }
             Statement statement = Utility.getConnection().createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + args[0]+ "'");

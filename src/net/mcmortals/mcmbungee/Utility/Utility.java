@@ -8,10 +8,13 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.HashMap;
 
 public class Utility {
 
     private static Connection connection;
+    private static HashMap<String, Integer> rank = new HashMap<String, Integer>();
+    public static HashMap<CommandSender, CommandSender> replies = new HashMap<CommandSender, CommandSender>();
 
     public static ComponentBuilder prefix() {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
@@ -35,11 +38,19 @@ public class Utility {
             return true;
         }
         try {
-            return Database.getPlayer(p.getName()).getRank() >= i;
+            return rank.get(p.getName()) >= i;
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         return false;
     }
 
+    public static void setRank(String playerName, int rankk) {
+        rank.put(playerName,rankk);
+    }
+
+    public static Integer getRank(String playerName) {
+        if (!rank.containsKey(playerName)) return -1;
+        return rank.get(playerName);
+    }
 }

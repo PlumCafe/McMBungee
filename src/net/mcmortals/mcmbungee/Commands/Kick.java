@@ -23,14 +23,12 @@ public class Kick extends Command {
 
     public void execute(CommandSender sender, String[] args) {
         //Permissions Check
-        if (Utility.hasPermission(sender,6)) {
-            sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create());
-            return;
+        if (!Utility.hasPermission(sender,6)) {
+            sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create()); return;
         }
         //Argument Length Check
-        if (args.length>=2) {
-            sender.sendMessage(Utility.prefix().append("Usage: §b/kick [Player] [Reason]").color(ChatColor.RED).create());
-            return;
+        if (!(args.length>=2)) {
+            sender.sendMessage(Utility.prefix().append("Usage: §b/kick [Player] [Reason]").color(ChatColor.RED).create()); return;
         }
         String msg = "";
         try {

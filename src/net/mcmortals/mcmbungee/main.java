@@ -4,9 +4,7 @@ import net.mcmortals.mcmbungee.Commands.*;
 import net.mcmortals.mcmbungee.Utility.Database;
 import net.mcmortals.mcmbungee.Utility.DatabasePlayer;
 import net.mcmortals.mcmbungee.Utility.Utility;
-import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -19,138 +17,78 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.event.EventHandler;
 
-import javax.rmi.CORBA.Util;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
 public class main extends Plugin implements Listener {
 
-    //private final ArrayList<String> banNot = new ArrayList<String>();
-    public final ArrayList<String> muted = new ArrayList<String>();
-
+    @Override
     public void onEnable() {
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Hub());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Msg(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new R(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Staff(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new McMCommand(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Clan());
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Ban(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnbanCommand(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Kick(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new S(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new TempbanCommand(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new MuteCommand(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new UnmuteCommand(this));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new NewLookupCommand());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Msg());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new R());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Staff());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Mcm());
+        //ProxyServer.getInstance().getPluginManager().registerCommand(this, new Clan());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Ban());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Unban());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Kick());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new S());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Tempban());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Mute());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Unmute());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new Lookup());
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new Infractions());
         ProxyServer.getInstance().getPluginManager().registerListener(this, this);
-        Utility.prepareConnection();
-    }
-
-    public String getPlayerDisplay(CommandSender p) {
-        if (!(p instanceof ProxiedPlayer)) return ChatColor.GRAY + "Console";
-        try {
-            String t = "";
-            if (Utility.hasPermission(p,10)) {
-                return "§4§l[Op] §b" + t +  p.getName() + "§r";
-            }
-            if (Utility.hasPermission(p,9)) {
-                return "§5§l[Dev] §b" + t + p.getName() + "§r";
-            }
-            if (Utility.hasPermission(p,8)) {
-                return "§c§l[Admin] §b" + t + p.getName() + "§r";
-            }
-            if (Utility.hasPermission(p,7)) {
-                return "§2[Mod] §f" + ChatColor.WHITE +  t +   p.getName() + "§r";
-            }
-            if (Utility.hasPermission(p,6)) {
-                return "§9[Helper] §f" + ChatColor.WHITE + t +  p.getName() + "§r";
-            }
-            if (Utility.hasPermission(p,5)) {
-                return "§2[Host] " + ChatColor.WHITE +  t + p.getName() + "§r";
-            }
-            if (Utility.hasPermission(p,4)) {
-                return "§3[Builder] §f" + ChatColor.WHITE + t +  p.getName() + "§r";
-            }
-            if (Utility.hasPermission(p,3)) {
-                return "§4[Legend] §f" + ChatColor.WHITE + t +  p.getName() + "§r";
-            }
-            if (Utility.hasPermission(p,2)) {
-                return "§6[YT] §f"+ ChatColor.WHITE + t +  p.getName() + "§r";
-            }
-            if (Utility.hasPermission(p,1)) {
-                return "§a[VIP] §f" + ChatColor.WHITE + t + p.getName() + "§r";
-            }
-            return "§7" + ChatColor.WHITE + t + p.getName() + "§r";
-        } catch (Exception ex) {
-            ex.printStackTrace();}
-        return null;
-    }
-
-    public void sendToStaff(String msg) {
-        for (ProxiedPlayer p : ProxyServer.getInstance().getPlayers()) {
-            if (Utility.hasPermission(p, 5)) {
-                ProxyServer.getInstance().getConsole().sendMessage(new ComponentBuilder("[Staff] ").color(ChatColor.GOLD).append("").color(ChatColor.RESET).append(msg).create());
-                p.sendMessage(new ComponentBuilder("[Staff] ").color(ChatColor.GOLD).append("").color(ChatColor.RESET).append(msg).create());
-            }
-        }
+        Utility.prepareConnection(this);
     }
 
     @EventHandler
     public void connect(PreLoginEvent e) throws Exception {
         final String PlayerName = e.getConnection().getName();
         String UUID = UUIDFetcher.getUUIDOf(PlayerName).toString().replace("-", "");
-        Statement statement = Utility.getConnection().createStatement();
-        DatabasePlayer dp = Database.getPlayer(e.getConnection().getName());
-        Calendar c=Calendar.getInstance();
-        c.setTime(new Date());
+        DatabasePlayer player = Database.getPlayer(PlayerName);
         long now = Calendar.getInstance().getTimeInMillis();
-        if (dp.exists()) {
-            int rank = dp.getRank();
-            if (dp.isMuted()) muted.add(PlayerName.toLowerCase());
-            if (dp.isBanned()) {
-                if (dp.getBanEnd()==-1) {
-                    e.getConnection().disconnect("§cYou have been banned from the server!§r\n §cReason:§6" + dp.getBanReason() + "\n§6Appeal on http://www.mcmortals.net!");
-                    return;
-                } else {
-                    if (dp.getBanEnd()> Calendar.getInstance().getTimeInMillis()) {
-                        e.getConnection().disconnect("§cYou have been temporarily banned from the server!§r\n §cReason:§6" + dp.getBanReason() + "\n§cBanned until: §6" + new Date(dp.getBanEnd()).toGMTString().replace("GMT", "UTC") +"\n§6Appeal on http://www.mcmortals.net!");
-                    } else {
-                        //banNot.add(PlayerName);
-                        statement.executeUpdate("UPDATE McMPData SET Banned=0 WHERE PlayerName='" + PlayerName + "'");
-                        statement.executeUpdate("UPDATE McMPData SET BanReason=null WHERE PlayerName='" + PlayerName + "'");
-                        statement.executeUpdate("UPDATE McMPData SET BanUntil=0 WHERE PlayerName='" + PlayerName + "'");
-                    }
-                }
-            }
-            Utility.setRank(PlayerName, rank);
-            statement.executeUpdate("UPDATE McMPData SET LastLogin=" + now + " WHERE PlayerName='" + PlayerName + "'");
-        } else {
-            statement.executeUpdate("INSERT INTO McMPData (PlayerName, IPAddress, UUID, FirstLogin, LastLogin) VALUES ('" + PlayerName + "', '" + e.getConnection().getAddress().getAddress().getHostAddress() + "', '" + UUID + "', " + now + ", " + now +")");
+        if (!player.exists()) {
+            Statement statement = Utility.getConnection().createStatement();
+            statement.executeUpdate("INSERT INTO McMPData (PlayerName, IPAddress, UUID, FirstLogin, LastLogin) VALUES ('" +
+                    PlayerName + "', '" + e.getConnection().getAddress().getAddress().getHostAddress() + "', '" + UUID + "', " + now + ", " + now +")");
             Utility.setRank(PlayerName, 0);
+            return;
         }
-        if (Utility.getRank(PlayerName)<=1) return;
-        BungeeCord.getInstance().getScheduler().schedule(this, new Runnable() {
-            @Override
-            public void run() {
-                sendToStaff(ChatColor.YELLOW + NewLookupCommand.getPlayerName(PlayerName, ChatColor.WHITE, Utility.getRank(PlayerName)) + ChatColor.AQUA + " joined!");
+        if (player.isMuted()){
+            if(Calendar.getInstance().getTimeInMillis() > player.getMuteEnd()){
+                player.unmute();
             }
-        },500, TimeUnit.MILLISECONDS);
-
+        }
+        if (player.isBanned()) {
+            if (player.getBanEnd()==-1) {
+                e.getConnection().disconnect("§cYou have been banned from the server!§r\n §cReason:§6" + player.getBanReason() + "\n§6Appeal on http://www.mcmortals.net!");
+                return;
+            }
+            if (player.getBanEnd() > Calendar.getInstance().getTimeInMillis()) {
+                e.getConnection().disconnect("§cYou have been temporarily banned from the server!§r\n §cReason:§6" + player.getBanReason() +
+                        "\n§cBanned until: §6" + new Date(player.getBanEnd()).toGMTString().replace("GMT", "UTC") +"\n§6Appeal on http://www.mcmortals.net!");
+                return;
+            }
+            player.unban();
+        }
+        Utility.setRank(PlayerName, player.getRank());
+        player.setLastLogin();
+        if (Utility.getRank(PlayerName) <= 1){
+            return;
+        }
+        Utility.sendToStaff(ChatColor.YELLOW + Utility.getPlayerName(PlayerName, Utility.getRank(PlayerName)) + ChatColor.AQUA + " joined!");
     }
 
     @EventHandler
     public void disconnect(PlayerDisconnectEvent e) {
+        Database.removeCachedPlayer(e.getPlayer().getName());
         if (Utility.hasPermission(e.getPlayer(), 3)) {
-            sendToStaff(ChatColor.YELLOW + getPlayerDisplay(e.getPlayer()) + ChatColor.AQUA + " disconnected!");
+            Utility.sendToStaff(ChatColor.YELLOW + Utility.getPlayerDisplay(e.getPlayer()) + ChatColor.AQUA + " disconnected!");
         }
     }
 
@@ -166,36 +104,28 @@ public class main extends Plugin implements Listener {
     @EventHandler
     public void onChat(ChatEvent e) {
         String name = ((ProxiedPlayer) e.getSender()).getName();
-        if (!e.isCommand() || e.getMessage().startsWith("/msg") || e.getMessage().startsWith("/tell") || e.getMessage().startsWith("/w") || e.getMessage().startsWith("/me")) {
-            if (muted.contains(name.toLowerCase())) {
-                try {
-                    Statement s = Utility.getConnection().createStatement();
-                    ResultSet res = s.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + name + "'");
-                    if (res.next()) {
-                        if (res.getInt("Muted")==1) {
-                            Long time = res.getLong("MuteUntil");
-                            if (time>Calendar.getInstance().getTimeInMillis()) {
-                                ((ProxiedPlayer) e.getSender()).sendMessage("§4[§cMcM§4] §cYou are muted until: §6" + new Date(time).toGMTString().replace("GMT","UTC"));
-                                e.setCancelled(true);
-                            } else if (res.getLong("MuteUntil")==-1) {
-                                ((ProxiedPlayer) e.getSender()).sendMessage("§4[§cMcM§4] §cYou are muted!");
-                                e.setCancelled(true);
-                            } else {
-                                s.executeUpdate("UPDATE McMPData SET Muted=0 WHERE PlayerName='" + name + "'");
-                                s.executeUpdate("UPDATE McMPData SET MuteReason=null WHERE PlayerName='" + name + "'");
-                                s.executeUpdate("UPDATE McMPData SET MuteUntil=0 WHERE PlayerName='" + name + "'");
-                                muted.remove(name.toLowerCase());
-                            }
-                        } else {
-                            muted.remove(name.toLowerCase());
-                        }
-                    }
-                } catch (Exception ex) {
-                    e.setCancelled(true);
-                }
-            }
+        if (e.isCommand() || !e.getMessage().startsWith("/msg") || !e.getMessage().startsWith("/tell")
+                || !e.getMessage().startsWith("/w") || !e.getMessage().startsWith("/me")) {
+            return;
         }
+        DatabasePlayer player = Database.getPlayer(name);
+        if (!player.isMuted()) {
+            return;
+        }
+        if (player.getMuteEnd() > Calendar.getInstance().getTimeInMillis()) {
+            ((ProxiedPlayer) e.getSender()).sendMessage("§4[§cMcM§4] §cYou are muted until: §6" + new Date(player.getMuteEnd()).toGMTString().replace("GMT","UTC"));
+            e.setCancelled(true);
+            return;
+        }
+        if (player.getMuteEnd()==-1) {
+            ((ProxiedPlayer) e.getSender()).sendMessage("§4[§cMcM§4] §cYou are muted!");
+            e.setCancelled(true);
+            return;
+        }
+        player.unmute();
     }
+
+
     //----------------------------------NOT FINISHED-------------------------------
     public BaseComponent[] fromLegacyText(String... text){
         String toConvert = "";

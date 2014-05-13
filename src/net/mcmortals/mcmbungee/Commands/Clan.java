@@ -1,5 +1,7 @@
 package net.mcmortals.mcmbungee.Commands;
 
+import net.mcmortals.mcmbungee.Utility.Database;
+import net.mcmortals.mcmbungee.Utility.DatabasePlayer;
 import net.mcmortals.mcmbungee.Utility.Utility;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
@@ -327,44 +329,19 @@ public class Clan extends Command {
     }
 
     String getPlayerName(String name, ChatColor cc) {
-        try {
-        Statement s = Utility.getConnection().createStatement();
-        ResultSet res = s.executeQuery("SELECT * FROM McMPData WHERE PlayerName='" + name + "'");
-        if (!res.next()) return "§f" + cc + name + "§r";
-        int rank = res.getInt("Rank");
-        if (rank==10) {
-            return "§4§l[Op] §b"+ name + "§r";
+        DatabasePlayer player = Database.getPlayer(name);
+        switch (player.getRank()){
+            case (10): return "§4§l[Op] §b"+ name + "§r";
+            case (9): return "§5§l[Dev] §b" + name + "§r";
+            case (8): return "§c§l[Admin] §b" + name + "§r";
+            case (7): return "§2[Mod] §f" + cc + name + "§r";
+            case (6): return "§9[Helper] §f" + cc  + name + "§r";
+            case (5): return "§2[Host] §f" + cc  + name + "§r";
+            case (4): return "§3[Builder] §f" + cc  + name + "§r";
+            case (3): return "§4[Legend] §f" + cc  + name + "§r";
+            case (2): return "§6[YT] §f" + cc  + name + "§r";
+            case (1): return "§a[VIP] §f" + cc  + name + "§r";
+            default: return "§f" + cc  + name + "§r";
         }
-        if (rank==9) {
-            return "§5§l[Dev] §b" + name + "§r";
-        }
-        if (rank==8) {
-            return "§c§l[Admin] §b" + name + "§r";
-        }
-        if (rank==7) {
-            return "§2[Mod] §f" + cc + name + "§r";
-        }
-        if (rank==6) {
-            return "§9[Helper] §f" + cc  + name + "§r";
-        }
-        if (rank==5) {
-            return "§2[Host] §f" + cc  + name + "§r";
-        }
-        if (rank==4) {
-            return "§3[Builder] §f" + cc  + name + "§r";
-        }
-        if (rank==3) {
-            return "§4[Legend] §f" + cc  + name + "§r";
-        }
-        if (rank==2) {
-            return "§6[YT] §f" + cc  + name + "§r";
-        }
-        if (rank==1) {
-            return "§a[VIP] §f" + cc  + name + "§r";
-        }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return "§f" + cc  + name + "§r";
     }
 }

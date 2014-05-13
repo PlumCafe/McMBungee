@@ -1,18 +1,14 @@
 package net.mcmortals.mcmbungee.Commands;
 
 import net.mcmortals.mcmbungee.Utility.Utility;
-import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.plugin.Command;
 
 public class S extends Command {
 
-    private main m;
-
-    public S(main main) {
+    public S() {
         super("s", "");
-        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {
@@ -31,6 +27,6 @@ public class S extends Command {
             msg = msg + " " + args[w];
             w++;
         } while (w < args.length);
-            m.sendToStaff(m.getPlayerDisplay(sender) + " §b§l>§f" + msg);
+            Utility.sendToStaff(Utility.getPlayerDisplay(sender) + " §b§l>§f" + msg);
     }
 }

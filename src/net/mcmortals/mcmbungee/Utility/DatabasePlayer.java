@@ -3,6 +3,7 @@ package net.mcmortals.mcmbungee.Utility;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 
 public class DatabasePlayer {
 
@@ -23,6 +24,10 @@ public class DatabasePlayer {
 
     }
 
+    String getName(){
+        return name;
+    }
+
     public boolean exists() {
         return exists;
     }
@@ -34,7 +39,15 @@ public class DatabasePlayer {
             return r;
         }catch(SQLException e){
             e.printStackTrace();
-            return 0;
+            return -1;
+        }
+    }
+
+    public void setRank(int id){
+        try{
+            Utility.getConnection().createStatement().executeUpdate("UPDATE McMPData SET Rank='" + id + "' WHERE PlayerName='" + name + "'");
+        }catch(SQLException e){
+            e.printStackTrace();
         }
     }
 
@@ -101,6 +114,22 @@ public class DatabasePlayer {
         }
     }
 
+    public void setTokens(int amount){
+        try{
+            Utility.getConnection().createStatement().executeUpdate("UPDATE McMPData SET Tokens='" + amount + "' WHERE PlayerName='" + name + "'");
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void addTokens(int amount){
+        try{
+            Utility.getConnection().createStatement().executeUpdate("UPDATE McMPData SET Tokens='" + getTokens() + amount + "' WHERE PlayerName='" + name + "'");
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     public int getTournamentPoints(){
         try{
             return McMPData.getInt("TournPoints");
@@ -133,6 +162,48 @@ public class DatabasePlayer {
             s.executeUpdate("UPDATE McMPData SET Banned=1 WHERE PlayerName='" + name + "'");
             s.executeUpdate("UPDATE McMPData SET BanReason='" + reason + "' WHERE PlayerName='" + name + "'");
             s.executeUpdate("UPDATE McMPData SET BanUntil=" + until + " WHERE PlayerName='" + name+ "'");
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void unban(){
+        try {
+            Statement statement = Utility.getConnection().createStatement();
+            statement.executeUpdate("UPDATE McMPData SET Banned=0 WHERE PlayerName='" + name + "'");
+            statement.executeUpdate("UPDATE McMPData SET BanReason=null WHERE PlayerName='" + name + "'");
+            statement.executeUpdate("UPDATE McMPData SET BanUntil=0 WHERE PlayerName='" + name + "'");
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void mute(String reason, long until){
+        try{
+            s.executeUpdate("UPDATE McMPData SET Muted=1 WHERE PlayerName='" + name + "'");
+            s.executeUpdate("UPDATE McMPData SET MuteReason='" + reason + "' WHERE PlayerName='" + name + "'");
+            s.executeUpdate("UPDATE McMPData SET MuteUntil=" + until + " WHERE PlayerName='" + name+ "'");
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void unmute(){
+        try{
+            Statement statement = Utility.getConnection().createStatement();
+            statement.executeUpdate("UPDATE McMPData SET Muted=0 WHERE PlayerName='" + name + "'");
+            statement.executeUpdate("UPDATE McMPData SET MuteReason=null WHERE PlayerName='" + name + "'");
+            statement.executeUpdate("UPDATE McMPData SET MuteUntil=0 WHERE PlayerName='" + name + "'");
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void setLastLogin(){
+        try{
+            Utility.getConnection().createStatement().executeUpdate("UPDATE McMPData SET LastLogin=" +
+                    Calendar.getInstance().getTimeInMillis() + " WHERE PlayerName='" + name + "'");
         }catch(SQLException e){
             e.printStackTrace();
         }

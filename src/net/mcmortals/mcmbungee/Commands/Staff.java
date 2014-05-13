@@ -1,7 +1,6 @@
 package net.mcmortals.mcmbungee.Commands;
 
 import net.mcmortals.mcmbungee.Utility.Utility;
-import net.mcmortals.mcmbungee.main;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -11,11 +10,8 @@ import net.md_5.bungee.api.plugin.Command;
 
 public class Staff extends Command {
 
-    private main m;
-
-    public Staff(main main) {
+    public Staff() {
         super("staff", "");
-        m = main;
     }
 
     public void execute(CommandSender sender, String[] args) {
@@ -23,7 +19,7 @@ public class Staff extends Command {
         sender.sendMessage(Utility.prefix().append("Online Staff:").color(ChatColor.GOLD).bold(true).create());
         for (ProxiedPlayer p : ProxyServer.getInstance().getPlayers()) {
             if (Utility.hasPermission(p, 4)) {
-                sender.sendMessage(new ComponentBuilder("> ").color(ChatColor.GOLD).bold(true).append(this.m.getPlayerDisplay(p))
+                sender.sendMessage(new ComponentBuilder("> ").color(ChatColor.GOLD).bold(true).append(Utility.getPlayerDisplay(p))
                         .append(" (Connected to " + p.getServer().getInfo().getName() + ")").color(ChatColor.GRAY).italic(true).create());
             }
         }

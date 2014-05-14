@@ -50,7 +50,7 @@ public class Tempban extends Command {
         //Ban Player
         player.ban(msg, c.getTimeInMillis());
         //Register an infraction
-        Database.addInfraction(args[0], sender.getName(), Database.InfractionType.TEMP_BAN, args[1], msg);
+        Database.addInfraction(args[0], sender.getName(), Database.InfractionType.Temporary_Ban, args[1], msg);
         //Alert Staff
         Utility.sendToStaff(ChatColor.AQUA + sender.getName() + " banned " + args[0] + " for " + args[1] + " for" + msg + ".");
         //Is Online Check

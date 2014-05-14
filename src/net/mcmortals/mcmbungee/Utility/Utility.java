@@ -22,10 +22,6 @@ public class Utility {
         return new ComponentBuilder("[").color(ChatColor.DARK_RED).append("McM").color(ChatColor.RED).append("] ").color(ChatColor.DARK_RED);
     }
 
-    public static main getMainInstance(){
-        return main;
-    }
-
     public static void prepareConnection(main m){
         main = m;
         try {
@@ -38,7 +34,7 @@ public class Utility {
 
     public static boolean isOnline(String player){
         try{
-            Utility.getMainInstance().getProxy().getPlayer(player);
+            main.getProxy().getPlayer(player);
         }
         catch(Exception e){
             return false;

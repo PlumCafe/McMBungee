@@ -39,7 +39,7 @@ public class Kick extends Command {
         ProxyServer.getInstance().getPlayer(args[0]).disconnect(new ComponentBuilder("You have been kicked from the server!").color(ChatColor.RED).append("\n")
                     .append("Reason:").color(ChatColor.RED).append(msg).color(ChatColor.GOLD).create());
         //Register an Infraction
-        Database.addInfraction(args[0], sender.getName(), Database.InfractionType.KICK, "", msg);
+        Database.addInfraction(args[0], sender.getName(), Database.InfractionType.Kick, "", msg);
         //Alert Staff
         Utility.sendToStaff(ChatColor.AQUA + sender.getName() + " kicked " + args[0] + " for" + msg + ".");
     }

@@ -27,13 +27,13 @@ public class Lookup extends Command {
             return;
         }
         DatabasePlayer player = Database.getPlayer(args[0]);
-        if (player.exists()) {
+        if (!player.exists()) {
             sender.sendMessage(Utility.prefix().append("No info found for ").color(ChatColor.RED).append(args[0]).color(ChatColor.AQUA).create());
         }
-        int bans = Database.getInfractions(args[0], Database.InfractionType.TEMP_BAN).size() +
-                Database.getInfractions(args[0], Database.InfractionType.PERMANENT_BAN).size();
-        int kicks = Database.getInfractions(args[0], Database.InfractionType.KICK).size();
-        int mutes = Database.getInfractions(args[0], Database.InfractionType.MUTE).size();
+        int bans = Database.getInfractions(args[0], Database.InfractionType.Temporary_Ban).size() +
+                Database.getInfractions(args[0], Database.InfractionType.Permanent_Ban).size();
+        int kicks = Database.getInfractions(args[0], Database.InfractionType.Kick).size();
+        int mutes = Database.getInfractions(args[0], Database.InfractionType.Mute).size();
         int inf = bans + kicks + mutes;
         //-------------------------------DATE STRINGS----------------------------------
         String firstlogin = player.getFirstLogin() == 0 ? ChatColor.GRAY + "Unknown" : DateFormat.getInstance().format(new Date(player.getFirstLogin()));

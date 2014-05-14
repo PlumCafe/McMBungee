@@ -40,6 +40,7 @@ public class R extends Command {
                     append(Utility.getPlayerDisplay(rec)).bold(false).
                     append(":").color(ChatColor.LIGHT_PURPLE).
                     append(msg).color(ChatColor.GRAY).create());
+            Utility.replies.put(sender, rec);
         } catch (Exception ex) {
             sender.sendMessage(Utility.prefix().append("That player is offline!").color(ChatColor.RED).create());
             ex.printStackTrace();

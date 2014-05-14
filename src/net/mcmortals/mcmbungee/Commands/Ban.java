@@ -26,7 +26,7 @@ public class Ban extends Command {
         }
         DatabasePlayer player = Database.getPlayer(args[0]);
         //Has Joined Check
-        if (player.exists()) {
+        if (!player.exists()) {
             sender.sendMessage(Utility.prefix().append("No such player has ever joined!").color(ChatColor.RED).create()); return;
         }
         //Is Banned Check
@@ -45,7 +45,7 @@ public class Ban extends Command {
         //Alert Staff
         Utility.sendToStaff(ChatColor.AQUA + sender.getName() + " banned " + args[0] + " for" + msg + ".");
         //Register An Infraction
-        Database.addInfraction(args[0], sender.getName(), Database.InfractionType.PERMANENT_BAN, "",  msg);
+        Database.addInfraction(args[0], sender.getName(), Database.InfractionType.Permanent_Ban, "",  msg);
         //Disconnect The Player
         if(Utility.isOnline(args[0])) {
             ProxyServer.getInstance().getPlayer(args[0]).disconnect(new ComponentBuilder("You have been banned from the server!").color(ChatColor.RED)

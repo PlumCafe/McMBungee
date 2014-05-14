@@ -55,7 +55,7 @@ public class Mute extends Command {
         //Mute Player
         player.mute(msg, c.getTimeInMillis());
         //Register Infraction
-        Database.addInfraction(args[0], sender.getName(), Database.InfractionType.MUTE, textToSec(args[1]) == 864000 ? "10d" : args[1], msg);
+        Database.addInfraction(args[0], sender.getName(), Database.InfractionType.Mute, textToSec(args[1]) == 864000 ? "10d" : args[1], msg);
         //Alert Staff
         Utility.sendToStaff(ChatColor.AQUA + sender.getName() + " muted " + args[0] + " for " + (textToSec(args[1]) == 864000 ? "10d" : args[1]) + " for" + msg + ".");
         if(!Utility.isOnline(args[0])) {

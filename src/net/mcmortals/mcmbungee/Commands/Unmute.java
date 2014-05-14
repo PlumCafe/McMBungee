@@ -26,12 +26,12 @@ public class Unmute extends Command {
         }
         DatabasePlayer player = Database.getPlayer(args[0]);
         //Has Joined Check
-        if (player.exists()) {
+        if (!player.exists()) {
             sender.sendMessage(Utility.prefix().append("No such player has ever joined!").color(ChatColor.RED).create());
             return;
         }
         //Is Muted Check
-        if (player.isMuted()) {
+        if (!player.isMuted()) {
             sender.sendMessage(Utility.prefix().append("This player is not muted!").color(ChatColor.RED).create());
             return;
         }

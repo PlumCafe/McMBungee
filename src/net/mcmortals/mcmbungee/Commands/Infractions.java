@@ -22,12 +22,12 @@ public class Infractions extends Command {
         }
         //Argument Length Check
         if (args.length != 1) {
-            sender.sendMessage(Utility.prefix().append("Usage: ").color(ChatColor.RED).append("/infr [Player]").color(ChatColor.AQUA).create());
+            sender.sendMessage(Utility.prefix().append("Usage: ").color(ChatColor.RED).append("/infractions [Player]").color(ChatColor.AQUA).create());
             return;
         }
+        sender.sendMessage(Utility.prefix().append("Infractions for: ").color(ChatColor.GOLD).bold(true).append(args[0]).create());
         try {
-            sender.sendMessage(Utility.prefix().append("Infractions for: ").color(ChatColor.GOLD).bold(true).append(args[0]).create());
-            for (Infraction i : Database.getInfractions(args[0], Database.InfractionType.ALL)) {
+            for (Infraction i : Database.getInfractions(args[0], Database.InfractionType.all)) {
                 sender.sendMessage(new ComponentBuilder(i.getType() + ": ").color(ChatColor.RED).bold(true).append("Reason: ")
                         .color(ChatColor.AQUA).bold(false).append(i.getReason()).color(ChatColor.GOLD).create());
                 String time = i.getTime();
@@ -39,7 +39,8 @@ public class Infractions extends Command {
                 }
             }
         }catch(Exception e){
-            sender.sendMessage(Utility.prefix().append("Tha player has no registered Infractions!").color(ChatColor.RED).create());
+            sender.sendMessage(Utility.prefix().append("That player has no registered Infractions!").color(ChatColor.RED).create());
+            e.printStackTrace();
         }
     }
 }

@@ -26,12 +26,12 @@ public class Unban extends Command {
         }
         DatabasePlayer player = Database.getPlayer(args[0]);
         //Has Joined Check
-        if (player.exists()) {
+        if (!player.exists()) {
             sender.sendMessage(Utility.prefix().append("No such player has ever joined!").color(ChatColor.RED).create());
             return;
         }
         //Is Banned Check
-        if (player.isBanned()) {
+        if (!player.isBanned()) {
             sender.sendMessage(Utility.prefix().append("This player is not banned!").color(ChatColor.RED).create());
             return;
         }

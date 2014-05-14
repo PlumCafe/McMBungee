@@ -3,14 +3,13 @@ package net.mcmortals.mcmbungee.Utility;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 public class Database {
 
     private final static ArrayList<DatabasePlayer> cachedPlayers = new ArrayList<DatabasePlayer>();
 
     public static DatabasePlayer getPlayer(String name){
-        for(DatabasePlayer player : cachedPlayers){
+        /*for(DatabasePlayer player : cachedPlayers){
             if(player.getName().equals(name)){
                 return player;
             }
@@ -23,7 +22,8 @@ public class Database {
                 cachedPlayers.remove(p);
             }
         }, 5, TimeUnit.MINUTES);
-        return p;
+        return p;*/
+        return new DatabasePlayer(name);
     }
 
     public static void removeCachedPlayer(String name){
@@ -46,7 +46,8 @@ public class Database {
                 }
                 while (res1.next()) {
                     infractions.add(new Infraction
-                            (InfractionType.valueOf(res1.getString("Type")), res1.getString("Enforcer"), res1.getString("Time"), res1.getString("Reason")));
+                            (InfractionType.valueOf(res1.getString("Type").replace(' ', '_')),
+                                    res1.getString("Enforcer"), res1.getString("Time"), res1.getString("Reason")));
                 }
             }
             else {
@@ -59,8 +60,8 @@ public class Database {
                     infractions.add(new Infraction(type, res1.getString("Enforcer"), res1.getString("Time"), res1.getString("Reason")));
                 }
             }
-        }catch(SQLException ignored){
-
+        }catch(SQLException e){
+            e.printStackTrace();
         }
         return infractions;
     }
@@ -76,7 +77,7 @@ public class Database {
     }
 
     public enum InfractionType{
-        TEMP_BAN("Temporary Ban"), PERMANENT_BAN("Permanent Ban"), KICK("Kick"), MUTE("Mute"), ALL("all");
+        Temporary_Ban("Temporary Ban"), Permanent_Ban("Permanent Ban"), Kick("Kick"), Mute("Mute"), all("all");
         public final String value;
 
         private InfractionType(String value) {

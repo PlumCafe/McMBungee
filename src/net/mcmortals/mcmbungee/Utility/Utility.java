@@ -123,8 +123,8 @@ public class Utility {
         return false;
     }
 
-    public static void setRank(String playerName, int rankk) {
-        rank.put(playerName,rankk);
+    public static void setRank(String playerName, int rank) {
+        Utility.rank.put(playerName,rank);
     }
 
     public static Integer getRank(String playerName) {

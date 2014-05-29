@@ -79,6 +79,7 @@ public class Mcm extends Command {
             }
             try {
                 player.setRank(Integer.parseInt(args[2]));
+                Utility.setRank(args[1], Integer.parseInt(args[2]));
                 Utility.sendToStaff(ChatColor.AQUA + "Set " + args[1] + "'s rank to " + getRank(Integer.parseInt(args[2])) + ChatColor.GREEN + "");
 
             } catch (Exception ex) {

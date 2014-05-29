@@ -47,7 +47,7 @@ public class Utility {
         try {
             String t = "";
             if (Utility.hasPermission(p,10)) {
-                return "§4§lOp §b" + t +  p.getName() + "§r";
+                return "§4§lOP §b" + t +  p.getName() + "§r";
             }
             if (Utility.hasPermission(p,9)) {
                 return "§5§lDev §b" + t + p.getName() + "§r";
@@ -84,7 +84,7 @@ public class Utility {
 
     public static String getPlayerName(String name, int rank){
         switch (rank){
-            case (10): return "§4§lOp §b" + name + "§r";
+            case (10): return "§4§lOP §b" + name + "§r";
             case (9): return "§5§lDev §b"+ name + "§r";
             case (8): return "§c§lAdmin §b" + name + "§r";
             case (7): return "§2Mod §f" +   name + "§r";

@@ -30,10 +30,25 @@ public class Lookup extends Command {
         if (!player.exists()) {
             sender.sendMessage(Utility.prefix().append("No info found for ").color(ChatColor.RED).append(args[0]).color(ChatColor.AQUA).create());
         }
-        int bans = Database.getInfractions(args[0], Database.InfractionType.Temporary_Ban).size() +
-                Database.getInfractions(args[0], Database.InfractionType.Permanent_Ban).size();
-        int kicks = Database.getInfractions(args[0], Database.InfractionType.Kick).size();
-        int mutes = Database.getInfractions(args[0], Database.InfractionType.Mute).size();
+        int bans = 0, kicks = 0, mutes = 0;
+        try {
+            bans = Database.getInfractions(args[0], Database.InfractionType.Temporary_Ban).size() +
+                    Database.getInfractions(args[0], Database.InfractionType.Permanent_Ban).size();
+
+        }catch(NullPointerException ignored){
+
+        }
+        try {
+            mutes = Database.getInfractions(args[0], Database.InfractionType.Mute).size();
+        }catch(NullPointerException ignored){
+
+        }
+        try {
+            kicks = Database.getInfractions(args[0], Database.InfractionType.Kick).size();
+        }catch(NullPointerException ignored){
+
+        }
+
         int inf = bans + kicks + mutes;
         //-------------------------------DATE STRINGS----------------------------------
         String firstlogin = player.getFirstLogin() == 0 ? ChatColor.GRAY + "Unknown" : DateFormat.getInstance().format(new Date(player.getFirstLogin()));
@@ -64,9 +79,9 @@ public class Lookup extends Command {
             unMute = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/unmute "+args[0]);
         }
         //------------------------------INFRACTIONS EVENTS-----------------------------
-        TextComponent ban = new TextComponent("Bans: " + ChatColor.AQUA + bans + "\n"); ban.setColor(ChatColor.GOLD);
-        TextComponent kick = new TextComponent("Kicks: " + ChatColor.AQUA + kicks + "\n"); kick.setColor(ChatColor.GOLD);
-        TextComponent mute = new TextComponent("Mutes: " + ChatColor.AQUA + mutes); mute.setColor(ChatColor.GOLD);
+        TextComponent ban = new TextComponent("Bans " + ChatColor.AQUA + bans + "\n"); ban.setColor(ChatColor.GOLD);
+        TextComponent kick = new TextComponent("Kicks " + ChatColor.AQUA + kicks + "\n"); kick.setColor(ChatColor.GOLD);
+        TextComponent mute = new TextComponent("Mutes " + ChatColor.AQUA + mutes); mute.setColor(ChatColor.GOLD);
         BaseComponent[] infractionsInfo = {ban, kick, mute};
         HoverEvent infractions = new HoverEvent(HoverEvent.Action.SHOW_TEXT, infractionsInfo);
         //------------------------------MESSAGE SENDING--------------------------------

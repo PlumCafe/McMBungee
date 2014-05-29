@@ -28,7 +28,7 @@ public class Infractions extends Command {
         sender.sendMessage(Utility.prefix().append("Infractions for: ").color(ChatColor.GOLD).bold(true).append(args[0]).create());
         try {
             for (Infraction i : Database.getInfractions(args[0], Database.InfractionType.all)) {
-                sender.sendMessage(new ComponentBuilder(i.getType() + ": ").color(ChatColor.RED).bold(true).append("Reason: ")
+                sender.sendMessage(new ComponentBuilder(i.getType() + ": ").color(ChatColor.RED).bold(true).append("Reason:")
                         .color(ChatColor.AQUA).bold(false).append(i.getReason()).color(ChatColor.GOLD).create());
                 String time = i.getTime();
                 ComponentBuilder m = new ComponentBuilder("- Issued by ").color(ChatColor.AQUA).append(i.getEnforcer()).color(ChatColor.GOLD);

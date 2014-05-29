@@ -38,7 +38,7 @@ public class Database {
     public static ArrayList<Infraction> getInfractions(String player, InfractionType type){
         ArrayList<Infraction> infractions = new ArrayList<Infraction>();
         try{
-            if(type.value.equals("all")){
+            if(type.getValue().equals("all")){
                 ResultSet res1 = Utility.getConnection().createStatement()
                         .executeQuery("SELECT * FROM McMInfractions WHERE PlayerName='" + player + "'");
                 if (!res1.isBeforeFirst()) {
@@ -52,7 +52,7 @@ public class Database {
             }
             else {
                 ResultSet res1 = Utility.getConnection().createStatement()
-                        .executeQuery("SELECT * FROM McMInfractions WHERE PlayerName='" + player + "' AND Type='" + type + "'");
+                        .executeQuery("SELECT * FROM McMInfractions WHERE PlayerName='" + player + "' AND Type='" + type.getValue() + "'");
                 if (!res1.isBeforeFirst()) {
                     return null;
                 }
@@ -78,10 +78,14 @@ public class Database {
 
     public enum InfractionType{
         Temporary_Ban("Temporary Ban"), Permanent_Ban("Permanent Ban"), Kick("Kick"), Mute("Mute"), all("all");
-        public final String value;
+        private final String value;
 
         private InfractionType(String value) {
             this.value = value;
+        }
+
+        public String getValue() {
+            return value;
         }
     }
 }

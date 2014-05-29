@@ -26,7 +26,7 @@ public class Utility {
         main = m;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://mysql.hostbukkit.com/hostbukk_444?autoReconnect=true", "hostbukk_444", "#w(oEkobfco&");
+            connection = DriverManager.getConnection("jdbc:mysql://0.0.0.0/minecraft_10", "root", "seanhi2");
         } catch (Exception e) {
             ProxyServer.getInstance().getLogger().severe("Cannot connect to MySQL!");
         }

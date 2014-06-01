@@ -78,10 +78,9 @@ public class main extends Plugin implements Listener {
         }
         Utility.setRank(PlayerName, player.getRank());
         player.setLastLogin();
-        if (Utility.getRank(PlayerName) <= 1){
-            return;
-        }
+        if (Utility.getRank(PlayerName) >= 3){
         Utility.sendToStaff(ChatColor.YELLOW + Utility.getPlayerName(PlayerName, Utility.getRank(PlayerName)) + ChatColor.AQUA + " joined!");
+        }
     }
 
     @EventHandler

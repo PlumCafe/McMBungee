@@ -99,7 +99,7 @@ public class Mcm extends Command {
             case (4):return ChatColor.DARK_AQUA + "Builder";
             case (3):return ChatColor.GOLD + "YouTuber";
             case (2):return ChatColor.LIGHT_PURPLE + "Immortal";
-            case (1):return ChatColor.GREEN + "Mortals";
+            case (1):return ChatColor.GREEN + "Mortal";
             default:return "Normal";
         }
     }

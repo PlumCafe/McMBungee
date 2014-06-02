@@ -26,7 +26,7 @@ public class Utility {
         main = m;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://0.0.0.0/minecraft_10", "root", "seanhi2");
+            connection = DriverManager.getConnection("jdbc:mysql://0.0.0.0/minecraft_10?autoReconnect=true", "root", "seanhi2");
         } catch (Exception e) {
             ProxyServer.getInstance().getLogger().severe("Cannot connect to MySQL!");
         }
@@ -56,25 +56,25 @@ public class Utility {
                 return "§c§lAdmin §b" + t + p.getName() + "§r";
             }
             if (Utility.hasPermission(p,7)) {
-                return "§2Mod §f" + ChatColor.WHITE +  t +   p.getName() + "§r";
+                return "§2§lMod §f" + ChatColor.WHITE +  t +   p.getName() + "§r";
             }
             if (Utility.hasPermission(p,6)) {
-                return "§9Helper §f" + ChatColor.WHITE + t +  p.getName() + "§r";
+                return "§9§lHelper §f" + ChatColor.WHITE + t +  p.getName() + "§r";
             }
             if (Utility.hasPermission(p,5)) {
-                return "§2Host " + ChatColor.WHITE +  t + p.getName() + "§r";
+                return "§2§lHost " + ChatColor.WHITE +  t + p.getName() + "§r";
             }
             if (Utility.hasPermission(p,4)) {
-                return "§3Builder §f" + ChatColor.WHITE + t +  p.getName() + "§r";
+                return "§3§lBuilder §f" + ChatColor.WHITE + t +  p.getName() + "§r";
             }
             if (Utility.hasPermission(p,3)) {
-                return "§6YouTuber §f" + ChatColor.WHITE + t +  p.getName() + "§r";
+                return "§6§lYT §f" + ChatColor.WHITE + t +  p.getName() + "§r";
             }
             if (Utility.hasPermission(p,2)) {
-                return "§6Immortal §f"+ ChatColor.WHITE + t +  p.getName() + "§r";
+                return "§d§lImmortal §f"+ ChatColor.WHITE + t +  p.getName() + "§r";
             }
             if (Utility.hasPermission(p,1)) {
-                return "§aMortal §f" + ChatColor.WHITE + t + p.getName() + "§r";
+                return "§a§lMortal §f" + ChatColor.WHITE + t + p.getName() + "§r";
             }
             return "§7" + ChatColor.WHITE + t + p.getName() + "§r";
         } catch (Exception ex) {
@@ -87,20 +87,20 @@ public class Utility {
             case (10): return "§4§lOP §b" + name + "§r";
             case (9): return "§5§lDev §b"+ name + "§r";
             case (8): return "§c§lAdmin §b" + name + "§r";
-            case (7): return "§2Mod §f" +   name + "§r";
-            case (6): return "§9Helper §f" + name + "§r";
-            case (5): return "§2Host §f" + name + "§r";
-            case (4): return "§3Builder §f" +  name + "§r";
-            case (3): return "§6YouTuber §f" + name + "§r";
-            case (2): return "§6Immortal §f" + name + "§r";
-            case (1): return "§aMortal §f" + name + "§r";
+            case (7): return "§2§lMod §f" +   name + "§r";
+            case (6): return "§9§lHelper §f" + name + "§r";
+            case (5): return "§2§lHost §f" + name + "§r";
+            case (4): return "§3§lBuilder §f" +  name + "§r";
+            case (3): return "§6YT §f" + name + "§r";
+            case (2): return "§d§lImmortal §f" + name + "§r";
+            case (1): return "§a§lMortal §f" + name + "§r";
             default: return ChatColor.WHITE + name + "§r";
         }
     }
 
     public static void sendToStaff(String msg) {
         for (ProxiedPlayer p : ProxyServer.getInstance().getPlayers()) {
-            if (Utility.hasPermission(p, 5)) {
+            if (Utility.hasPermission(p, 6)) {
                 ProxyServer.getInstance().getConsole().sendMessage(new ComponentBuilder("[Staff] ").color(ChatColor.GOLD).append("").color(ChatColor.RESET).append(msg).create());
                 p.sendMessage(new ComponentBuilder("[Staff] ").color(ChatColor.GOLD).append("").color(ChatColor.RESET).append(msg).create());
             }

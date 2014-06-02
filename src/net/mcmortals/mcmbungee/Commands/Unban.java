@@ -15,7 +15,7 @@ public class Unban extends Command {
 
     public void execute(CommandSender sender, String[] args) {
         //Permissions Check
-        if (!Utility.hasPermission(sender,6)) {
+        if (!Utility.hasPermission(sender,7)) {
             sender.sendMessage(Utility.prefix().append("You cannot do that!").color(ChatColor.RED).create());
             return;
         }

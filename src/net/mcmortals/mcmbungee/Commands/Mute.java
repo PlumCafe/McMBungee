@@ -58,7 +58,7 @@ public class Mute extends Command {
         Database.addInfraction(args[0], sender.getName(), Database.InfractionType.Mute, textToSec(args[1]) == 864000 ? "10d" : args[1], msg);
         //Alert Staff
         Utility.sendToStaff(ChatColor.AQUA + sender.getName() + " muted " + args[0] + " for " + (textToSec(args[1]) == 864000 ? "10d" : args[1]) + " for" + msg + ".");
-        if(!Utility.isOnline(args[0])) {
+        if(Utility.isOnline(args[0])) {
             //Alert Victim
             ProxyServer.getInstance().getPlayer(args[0]).sendMessage("§4[§cMcM§4] §cYou have been muted! Reason:§6" + msg);
             ProxyServer.getInstance().getPlayer(args[0]).sendMessage("§4[§cMcM§4] §cYour mute expires on: §6" + c.getTime().toGMTString().replace("GMT", "UTC"));
